@@ -21,13 +21,11 @@ enum RequestMethod: String{
 /// 定义一个闭包
 typealias HHNetworkDataBack = (_ response: [String:AnyObject]?,_ error: Error?) -> ()
 
-class HHNetworkTools: AFHTTPSessionManager {
-    var networkDataBack: HHNetworkDataBack?
-    
+class HHNetworkTools: AFHTTPSessionManager {    
     // 建立一个网络单利baseURL:URL.init(string: "http://test.haihuilai.com")
     static let shareTools: HHNetworkTools = {
         var instace = HHNetworkTools(baseURL: URL(string: HH_SERVER_URL))
-        instace?.responseSerializer.acceptableContentTypes?.insert("text/plain")
+//        print(instace?.responseSerializer.acceptableContentTypes ?? "NO")
         return instace!
     }()
     

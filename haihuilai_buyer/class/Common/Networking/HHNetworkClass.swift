@@ -7,18 +7,14 @@
 //
 
 import UIKit
-typealias HHNetworkClassDataBack = (_ response: [String:AnyObject]?,_ error: Error?) -> ()
 
 class HHNetworkClass:NSObject {
-    static let networkClass = HHNetworkClass()
-    var networkClassDataBack: HHNetworkClassDataBack?
+//    static let networkClass = HHNetworkClass()
     
-    
-    func getCountryNumber(parameter: [String:AnyObject]?, networkClassData: @escaping HHNetworkClassDataBack){
-        HHNetworkTools.shareTools.request(isLogin: false, method: .GET, URLString: "app/countries", parameters: parameter) { [weak self](response, error) in
-            self?.networkClassDataBack!(response, error)
+    func getCountryNumber(parameter: [String:AnyObject]?, networkClassData: @escaping HHNetworkDataBack){
+        HHNetworkTools.shareTools.request(isLogin: false, method: .GET, URLString: "app/countries", parameters: parameter) {(response, error) in
+            networkClassData(response, error)
         }
     }
-    
     
 }
