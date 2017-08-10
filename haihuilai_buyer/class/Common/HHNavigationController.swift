@@ -48,9 +48,9 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
     }
     
     private lazy var navBar: UIButton = {
-        var btn:UIButton = UIButton.init(action: #selector(clickAction), target: self, title: "返回", imageName: "back", color: UIColor.red, fontSize: 20)
-//        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0)
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, -50, 0, 0)
+        var btn:UIButton = UIButton.init(action: #selector(clickAction), target: self, title: "返回", imageName: "back", color: UIColor.white, fontSize: 20)
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -45, 0, 0)
+        btn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0)
         btn.frame = CGRect(x:0, y:0, width:100, height:50)
         return btn
     }()

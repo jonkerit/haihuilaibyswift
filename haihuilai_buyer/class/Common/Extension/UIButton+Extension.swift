@@ -24,6 +24,20 @@ extension UIButton {
             titleLabel?.font = UIFont.systemFont(ofSize: fontSize!)
         }
     }
+    convenience init(title: String?, backgroudImageName: String?, color: UIColor?, fontSize: CGFloat?) {
+        self.init()
+        setTitle(title, for: .normal)
+        if backgroudImageName != nil {
+            setBackgroundImage(UIImage(named:backgroudImageName!), for: .normal)
+        }
+        if color != nil {
+            setTitleColor(color, for: .normal)
+        }
+        if fontSize != nil {
+            titleLabel?.font = UIFont.systemFont(ofSize: fontSize!)
+        }
+    }
+
     
     convenience init(action: Selector?,target: AnyObject, title: String?, imageName: String?, color: UIColor?, fontSize: CGFloat?) {
         self.init()

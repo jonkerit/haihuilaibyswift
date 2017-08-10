@@ -15,7 +15,16 @@
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
 		9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */; };
-		9BD560A31F31A04D0054AF8F /* HHLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD560A21F31A04D0054AF8F /* HHLogInView.swift */; };
+		9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA011F3AEC5B00461B4F /* HHLogInView.swift */; };
+		9B33CA041F3AED8600461B4F /* HHLogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B33CA031F3AED8600461B4F /* HHLogInView.xib */; };
+		9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */; };
+		9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA071F3C41D300461B4F /* HHChoiceCuntryController.swift */; };
+		9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA091F3C432500461B4F /* HHChoiceCountryCell.swift */; };
+		9B33CA0C1F3C432500461B4F /* HHChoiceCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B33CA0A1F3C432500461B4F /* HHChoiceCountryCell.xib */; };
+		9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0D1F3C449A00461B4F /* HHChoiceCountryModel.swift */; };
+		9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */; };
+		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
+		9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */; };
 		9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */; };
 		9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9C4CC1DF9934F0065D9F7 /* AppDelegate.swift */; };
 		9BF9C4D41DF9934F0065D9F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BF9C4D31DF9934F0065D9F7 /* Assets.xcassets */; };
@@ -39,7 +48,16 @@
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
 		9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HHAccountViewModel.swift; path = haihuilai_buyer/class/Common/Networking/HHAccountViewModel.swift; sourceTree = SOURCE_ROOT; };
 		9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAccountModel.swift; sourceTree = "<group>"; };
-		9BD560A21F31A04D0054AF8F /* HHLogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInView.swift; sourceTree = "<group>"; };
+		9B33CA011F3AEC5B00461B4F /* HHLogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInView.swift; sourceTree = "<group>"; };
+		9B33CA031F3AED8600461B4F /* HHLogInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHLogInView.xib; sourceTree = "<group>"; };
+		9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLoadNibDelegate.swift; sourceTree = "<group>"; };
+		9B33CA071F3C41D300461B4F /* HHChoiceCuntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceCuntryController.swift; sourceTree = "<group>"; };
+		9B33CA091F3C432500461B4F /* HHChoiceCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceCountryCell.swift; sourceTree = "<group>"; };
+		9B33CA0A1F3C432500461B4F /* HHChoiceCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHChoiceCountryCell.xib; sourceTree = "<group>"; };
+		9B33CA0D1F3C449A00461B4F /* HHChoiceCountryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceCountryModel.swift; sourceTree = "<group>"; };
+		9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceModel.swift; sourceTree = "<group>"; };
+		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
+		9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInAndSignUpView.swift; sourceTree = "<group>"; };
 		9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTestViewController.swift; sourceTree = "<group>"; };
 		9BF9C4C91DF9934F0065D9F7 /* haihuilai_buyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haihuilai_buyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF9C4CC1DF9934F0065D9F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */,
+				9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -150,10 +169,11 @@
 			isa = PBXGroup;
 			children = (
 				9BFA7AD71E02DC52005D6D3F /* HeaderFile.swift */,
+				9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */,
+				9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */,
+				9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */,
 				9BF9C4E01DF993E00065D9F7 /* HHBaseTableViewController.swift */,
 				9BF9C4E11DF993E00065D9F7 /* HHBaseViewController.swift */,
-				9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */,
-				9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */,
 				9B0BCD9E1DFF9CF80087FC35 /* Extension */,
 				9B0BCDAF1E014A170087FC35 /* Networking */,
 			);
@@ -206,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				9BF9C4E91DF993E00065D9F7 /* HHLoginController.swift */,
+				9B33CA071F3C41D300461B4F /* HHChoiceCuntryController.swift */,
 				9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */,
 			);
 			path = Controller;
@@ -215,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */,
+				9B33CA0D1F3C449A00461B4F /* HHChoiceCountryModel.swift */,
+				9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,7 +245,11 @@
 		9BF9C4EB1DF993E00065D9F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9BD560A21F31A04D0054AF8F /* HHLogInView.swift */,
+				9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */,
+				9B33CA011F3AEC5B00461B4F /* HHLogInView.swift */,
+				9B33CA031F3AED8600461B4F /* HHLogInView.xib */,
+				9B33CA091F3C432500461B4F /* HHChoiceCountryCell.swift */,
+				9B33CA0A1F3C432500461B4F /* HHChoiceCountryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,8 +365,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B33CA041F3AED8600461B4F /* HHLogInView.xib in Resources */,
 				9BF9C4D71DF9934F0065D9F7 /* LaunchScreen.storyboard in Resources */,
 				9BF9C4D41DF9934F0065D9F7 /* Assets.xcassets in Resources */,
+				9B33CA0C1F3C432500461B4F /* HHChoiceCountryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,12 +427,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BD560A31F31A04D0054AF8F /* HHLogInView.swift in Sources */,
+				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
+				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
 				9B0BCDA41DFFA4720087FC35 /* UIImageView+Extension.swift in Sources */,
+				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,
+				9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */,
 				9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */,
+				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
 				9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */,
 				9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */,
 				9B0BCDA21DFFA1A50087FC35 /* UILabel+Extension.swift in Sources */,
@@ -411,8 +444,11 @@
 				9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */,
 				9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */,
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
+				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
 				9B0BCDA61DFFA5EB0087FC35 /* UIBarButtonItem+Extension.swift in Sources */,
+				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
+				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,
 				9B0BCDA01DFF9D4F0087FC35 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

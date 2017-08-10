@@ -65,7 +65,14 @@ func RGBCOLOR(_ r: Float, _ g: Float, _ b: Float) -> UIColor {
 func RBGCOLOR(_ r: Float, _ g: Float, _ b: Float, _ a: Float) -> UIColor {
     return UIColor(colorLiteralRed: (r/255.0), green: (r/255.0), blue: (r/255.0), alpha: (a))
 }
-
+// 主图色
+func HHMAINCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (92/255.0), green: (194/255.0), blue: (216/255.0), alpha: (1))
+}
+// 点击主题色
+func HHMAINDEEPCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (26/255.0), green: (183/255.0), blue: (205/255.0), alpha: (1))
+}
 // 通知的定义
 
 // 沙河存储的key的定义
@@ -74,5 +81,5 @@ let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
 let HH_SERVER_URL = "http://test.haihuilai.com"
 let SUCCESSFUL = "0000" // 返回成功
 let HAIHUILAI = "还会来" // 重点字段
-let HHMAINCOLOR = RGBCOLOR(92, 194, 216) // 主图色
-let HHMAINDEEPCOLOR = RGBCOLOR(23, 4, 3)
+//let HHMAINCOLOR = RGBCOLOR(92, 194, 216) // 主图色
+//let HHMAINDEEPCOLOR = RGBCOLOR(26, 183, 205) // 点击主题色

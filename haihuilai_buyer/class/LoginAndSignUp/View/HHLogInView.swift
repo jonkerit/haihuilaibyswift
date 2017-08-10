@@ -2,69 +2,45 @@
 //  HHLogInView.swift
 //  haihuilai_buyer
 //
-//  Created by jonker on 17/8/2.
+//  Created by jonker on 17/8/9.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
-
-@objc protocol signUpOrLoginDelegate: class{
-    @objc optional func signUp(account: String)
-    @objc optional func login(account: String)
-}
-typealias signUpOrLoginblock = (_ account: String?) -> ()
-
+typealias choiceCountryBlock = () -> ()
+typealias forgetSecretBlock = () -> ()
+typealias signupBlock = () -> ()
+typealias loginBlock = (_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> ()
 import UIKit
-class HHLogInView: UIView {
-    weak var delegate: signUpOrLoginDelegate?
-    var signUpOrLoginblocks: signUpOrLoginblock?
+final class HHLogInView: UIView, HHLoadNibDelegate{
+    var choiceCountryB:choiceCountryBlock?
+    var forgetSecretB:forgetSecretBlock?
+    var signupB:signupBlock?
+    var loginB:loginBlock?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    private func setUI() {
-        addSubview(logInBtn)
-        addSubview(signUpBtn)
-        
-        logInBtn.mas_makeConstraints { (make) in
-            make!.centerY.equalTo()(self)
-            make!.centerX.equalTo()(self)?.setOffset(-50)
-            make!.size.mas_equalTo()(CGSize(width:100,height:50))
-        }
-        signUpBtn.mas_makeConstraints { (make) in
-            make!.centerY.equalTo()(self)
-            make!.centerX.equalTo()(self)?.setOffset(50)
-            make!.size.mas_equalTo()(CGSize(width:100,height:50))
+    @IBOutlet weak var contryNumber: UIButton!
+    @IBOutlet weak var phoneNumber: UITextField!
+    @IBOutlet weak var secretNumber: UITextField!
+    @IBOutlet weak var btnForLogin: UIButton!
+    
+    @IBAction func contryBtn() {
+        if self.choiceCountryB != nil {
+            self.choiceCountryB!()
         }
     }
-    
-    
-    lazy var logInBtn:UIButton = {
-        let btn = UIButton.init(action: #selector(HHLogInView.logIn), target: self, title: "登录", imageName: nil, color: RGBCOLOR(20, 200, 199), fontSize: 16)
-        return btn
-    }()
-    lazy var signUpBtn:UIButton = {
-        let btn = UIButton.init(action: #selector(HHLogInView.signUp), target: self, title: "注册", imageName: nil, color: UIColor.red, fontSize: 16)
-        return btn
-    }()
-    
-    @objc private func logIn(){
-        print("logIn")
-        if self.delegate != nil{
-            self.delegate?.login!(account:(logInBtn.titleLabel?.text)!)
+    @IBAction func forgetSecret() {
+        if self.forgetSecretB != nil{
+            self.forgetSecretB!()
         }
-        
     }
-    @objc private func signUp(){
-        print("signUp")
-//        if self.signUpOrLoginblocks != nil {
-//            self.signUpOrLoginblocks!((signUpBtn.titleLabel?.text)!)
-//        }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "A"), object: (signUpBtn.titleLabel?.text)!, userInfo: nil)
+    @IBAction func loginBtn() {
+        if self.loginB != nil {
+            self.loginB!(contryNumber.titleLabel?.text, phoneNumber.text, secretNumber.text)
+        }
     }
-   
+    @IBAction func signUp() {
+        if self.signupB != nil {
+            self.signupB!()
+        }
+    }
 }
