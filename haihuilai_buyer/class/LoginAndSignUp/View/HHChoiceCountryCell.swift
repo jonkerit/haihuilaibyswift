@@ -11,17 +11,12 @@ import UIKit
 class HHChoiceCountryCell: UITableViewCell {
     @IBOutlet weak var countryName: UILabel!
     @IBOutlet weak var countryNumber: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var line: UILabel!
+    var choiceModel: HHChoiceModel?{
+        didSet{
+            countryName.text = choiceModel?.name
+            countryNumber.text = choiceModel?.val
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
-    
-    
 }

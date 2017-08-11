@@ -17,8 +17,15 @@ class HHLoginController: UIViewController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillShow(notifice:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillHide(notifice:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.aaa(notice:)), name: NSNotification.Name(rawValue: "bb"), object: nil)
 
     }
+    @objc private func aaa(notice:NSNotification){
+        let model = notice.object as! HHChoiceModel
+        loginView.countryNumber.text = model.val
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -69,15 +76,16 @@ class HHLoginController: UIViewController{
         loginView.signupB = {
             print("signupB")
         }
-        loginView.loginB = {(_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
+        loginView.loginB = {[weak self](_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
              print(countryNumber ?? "空值哦",phoneNumber ?? "空值哦")
+            let paramters = Dictionary(dictionaryLiteral: ("country_code",countryNumber), ("mobile",phoneNumber),("password",secretNumber))
+            self?.action(paramters as! [String : String])
         }
     
     }
 
     
-    @objc fileprivate func action(){
-        let paramters = Dictionary(dictionaryLiteral: ("country_code","86"), ("mobile","18812345678"),("password","12345678"))
+    @objc private func action(_ paramters: [String: String]){
         
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, error) -> Void in
             // 处理返回结果
@@ -88,7 +96,6 @@ class HHLoginController: UIViewController{
     }
     @objc private func keyboardWillShow(notifice:NSNotification){
         let hight = (notifice.userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect).size.height
-//        let offset = (self.dengLuView.frame.origin.y+self.dengLuView.frame.size.height+40) - (self.view.frame.size.height - kbHeight);
         let time = notifice.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! CGFloat
         weak var weakself = self
         if hight>0 {
@@ -112,6 +119,8 @@ class HHLoginController: UIViewController{
         view.endEditing(true)
     }
     
+    
+    /// 懒加载
     fileprivate lazy var logInAndSignUpView:HHLogInAndSignUpView = {
         let logInAndSignUpView = HHLogInAndSignUpView.init()
         logInAndSignUpView.delegate = self
@@ -126,14 +135,22 @@ class HHLoginController: UIViewController{
     }()
     fileprivate lazy var loginView:HHLogInView = {
         let loginView = HHLogInView.loadFromNib()
+        loginView.countryNumber.isUserInteractionEnabled = false
         loginView.layer.cornerRadius = 8
         loginView.layer.masksToBounds = true
         loginView.btnForLogin.layer.cornerRadius = 22
         loginView.btnForLogin.layer.masksToBounds = true
         return loginView
     }()
+//    fileprivate lazy var choiceCuntryController:HHChoiceCuntryController = {
+//        let choiceCuntryController = HHChoiceCuntryController()
+////        choiceCuntryController.delegate = self
+//        return choiceCuntryController
+//    }()
 }
 
+
+// MARK: - delegate
 extension HHLoginController: signUpOrLoginDelegate{
     func login(account: String) {
         print(account)
@@ -152,4 +169,9 @@ extension HHLoginController: signUpOrLoginDelegate{
         }
     }
 }
-
+extension HHLoginController:HHChoiceCountryDelegate{
+    func getCountryNumber(countryName: String?, countryNumber: String?) {
+        loginView.countryNumber.text = countryNumber
+    }
+    
+}

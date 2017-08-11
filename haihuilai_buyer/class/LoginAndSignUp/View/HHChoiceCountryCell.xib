@@ -31,17 +31,31 @@
                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUA-w7-avW">
+                        <rect key="frame" x="0.0" y="36" width="320" height="7"/>
+                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="6Yb-2K-QmF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="Hje-3y-eDE" secondAttribute="trailing" constant="15" id="5NZ-zW-Qkl"/>
+                    <constraint firstAttribute="bottom" secondItem="UUA-w7-avW" secondAttribute="bottom" id="ELr-N1-L3v"/>
                     <constraint firstItem="Yo3-pb-QRA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="S2c-HN-j1L"/>
+                    <constraint firstItem="UUA-w7-avW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="TXq-zm-tZg"/>
                     <constraint firstItem="Yo3-pb-QRA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UbW-To-4M8"/>
+                    <constraint firstAttribute="trailing" secondItem="UUA-w7-avW" secondAttribute="trailing" id="qpR-xR-FZx"/>
                     <constraint firstItem="Hje-3y-eDE" firstAttribute="centerY" secondItem="Yo3-pb-QRA" secondAttribute="centerY" id="wUW-Mt-ZWQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="countryName" destination="Yo3-pb-QRA" id="GIA-of-uaB"/>
                 <outlet property="countryNumber" destination="Hje-3y-eDE" id="UZu-st-GMQ"/>
+                <outlet property="line" destination="UUA-w7-avW" id="qoh-x0-pvr"/>
             </connections>
         </tableViewCell>
     </objects>
