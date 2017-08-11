@@ -23,17 +23,12 @@ PODS:
   - Bugtags (2.0.3):
     - Bugtags/Core (= 2.0.3)
   - Bugtags/Core (2.0.3)
-  - JSPatch (1.1.1):
-    - JSPatch/Core (= 1.1.1)
-  - JSPatch/Core (1.1.1)
+  - JSPatch (1.1.3):
+    - JSPatch/Core (= 1.1.3)
+  - JSPatch/Core (1.1.3)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
-  - ReactiveCocoa (5.0.0-alpha.3):
-    - ReactiveSwift (~> 1.0.0-alpha.3)
-  - ReactiveSwift (1.0.0-alpha.4):
-    - Result (~> 3.0)
-  - Result (3.1.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -45,21 +40,17 @@ DEPENDENCIES:
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.12)
-  - ReactiveCocoa (~> 5.0.0-alpha.3)
   - SDWebImage (~> 3.8.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Bugtags: 0c72a6926e073a698833c53afac09f7ce08f0827
-  JSPatch: a4e4d28aef1dc17f4334d9e6bd590d7f0a0cd7b1
+  JSPatch: 02cfed591cb907bbfe80a346666e5a35fc2d349d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  ReactiveCocoa: d8a03d3deae0dd76410a30589946328d76ab9d2b
-  ReactiveSwift: 3fa49d2db97609ea700cd2b8f1bfbdd162024f97
-  Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: a2a25559c7817fb6bb231b3f80ce30ac6bbf9937
+PODFILE CHECKSUM: 6ab12ed30b39d3381c8194fd7bda0bfdc17a67d4
 
 COCOAPODS: 1.2.0.beta.1

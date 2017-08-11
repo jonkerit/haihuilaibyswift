@@ -23,14 +23,14 @@ class HHChoiceCuntryController: HHBaseTableViewController {
         
         
         // 请求数据
-        weak var seakself = self
+//        weak var seakself = self
         HHNetworkClass().getCountryNumber(parameter: nil) {[weak self] (dataArray, error) in
-            seakself?.dataArray = dataArray as! [HHChoiceCountryModel]
-            seakself?.tableView.reloadData()
+            self?.dataArray = dataArray as! [HHChoiceCountryModel]
+            self?.tableView.reloadData()
         }
     }
     deinit {
-        
+        print("我被移除了")
     }
 }
 // tableView dataDelegate
