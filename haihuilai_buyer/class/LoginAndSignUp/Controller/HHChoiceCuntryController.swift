@@ -33,6 +33,7 @@ class HHChoiceCuntryController: HHBaseTableViewController {
         print("我被移除了")
     }
 }
+
 // tableView dataDelegate
 extension HHChoiceCuntryController{
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,13 +72,10 @@ extension HHChoiceCuntryController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "bb"), object: choiceModel, userInfo: nil)
-//        if self.delegate != nil {
-//            let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
-//            self.delegate?.getCountryNumber!(countryName: choiceModel?.name, countryNumber: choiceModel?.val)
-//        }
+        if self.delegate != nil {
+            let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
+            self.delegate?.getCountryNumber!(countryName: choiceModel?.name, countryNumber: choiceModel?.val)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }

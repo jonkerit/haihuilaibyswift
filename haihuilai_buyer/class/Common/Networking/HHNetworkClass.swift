@@ -6,7 +6,7 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
-typealias HHResultBlock = (_ dataArray:Array<Any>?, _ error:Error?)->()
+typealias HHResultBlock = (_ dataArray:Array<Any>?, _ errorString:String?)->()
 import UIKit
 
 class HHNetworkClass:NSObject {
@@ -18,12 +18,11 @@ class HHNetworkClass:NSObject {
     ///   - networkClassData: 结果回调
     func getCountryNumber(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock){
         HHNetworkTools.shareTools.request(isLogin: false, method: .GET, URLString: "app/countries", parameters: parameter) {(response, error) in
-            if (response!["status"] as! String == "0000") && (response!["data"] as! Array<Dictionary<String, Any>>).count>0 {
+            if SUCCESSFUL(response?["status"]){
                 let dataArray = HHChoiceCountryModel().countryArrays(arrayForDictionary: response!["data"] as! Array<Dictionary<String, Any>>)
                 networkClassData(dataArray,nil)
-            
             }else{
-                networkClassData(nil, error)
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
             }
         }
     }

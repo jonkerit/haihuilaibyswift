@@ -24,6 +24,7 @@
 		9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0D1F3C449A00461B4F /* HHChoiceCountryModel.swift */; };
 		9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */; };
 		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
+		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
 		9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */; };
 		9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */; };
 		9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9C4CC1DF9934F0065D9F7 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		9B33CA0D1F3C449A00461B4F /* HHChoiceCountryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceCountryModel.swift; sourceTree = "<group>"; };
 		9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceModel.swift; sourceTree = "<group>"; };
 		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
+		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
 		9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInAndSignUpView.swift; sourceTree = "<group>"; };
 		9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTestViewController.swift; sourceTree = "<group>"; };
 		9BF9C4C91DF9934F0065D9F7 /* haihuilai_buyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haihuilai_buyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +112,7 @@
 				9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */,
 				9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */,
 			);
-			path = Networking;
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		9B0BCDB51E027DF10087FC35 /* ViewModel */ = {
@@ -120,6 +122,16 @@
 			);
 			name = ViewModel;
 			path = View/ViewModel;
+			sourceTree = "<group>";
+		};
+		9B33CA131F417B5200461B4F /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				9B0BCDAF1E014A170087FC35 /* Networking */,
+				9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */,
+			);
+			name = Tool;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		9BF9C4C01DF9934F0065D9F7 = {
@@ -174,8 +186,8 @@
 				9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */,
 				9BF9C4E01DF993E00065D9F7 /* HHBaseTableViewController.swift */,
 				9BF9C4E11DF993E00065D9F7 /* HHBaseViewController.swift */,
+				9B33CA131F417B5200461B4F /* Tool */,
 				9B0BCD9E1DFF9CF80087FC35 /* Extension */,
-				9B0BCDAF1E014A170087FC35 /* Networking */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -439,6 +451,7 @@
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
 				9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */,
 				9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */,
+				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
 				9B0BCDA21DFFA1A50087FC35 /* UILabel+Extension.swift in Sources */,
 				9BF9C4F21DF993E00065D9F7 /* HHBaseViewController.swift in Sources */,
 				9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */,
@@ -575,7 +588,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.buyerforabroad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -595,7 +608,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.buyerforabroad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
