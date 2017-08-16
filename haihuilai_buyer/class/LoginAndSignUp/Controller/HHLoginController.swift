@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Alamofire
 class HHLoginController: UIViewController{
     
     var loginY: CGFloat = 0
@@ -134,8 +135,6 @@ class HHLoginController: UIViewController{
     @objc private func end(){
         view.endEditing(true)
     }
-    
-    
     /// 懒加载
     fileprivate lazy var logInAndSignUpView:HHLogInAndSignUpView = {
         let logInAndSignUpView = HHLogInAndSignUpView.init()

@@ -8,7 +8,6 @@
 
 import UIKit
 import AFNetworking
-
 typealias HHNetworkExameBack = (Int) -> () //或者 () -> Void
 
 class HHCommon: NSObject {

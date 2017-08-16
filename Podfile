@@ -7,12 +7,13 @@ target 'haihuilai_buyer' do
   use_frameworks!
 
   # Pods for haihuilai_buyer
-    pod 'AFNetworking', '~> 2.5.0'
+  pod 'AFNetworking', '~> 2.5.0'
     pod 'Masonry', '~> 1.0.2'
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'SDWebImage', '~> 3.8.2'
     pod 'MJRefresh', '~> 3.1.12'
     pod 'JSPatch', '~> 1.1.1'
     pod 'Bugtags', '~> 2.0.3'
+    pod 'Alamofire', '~> 4.4'
 end
 

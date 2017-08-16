@@ -12,7 +12,7 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
         
     var popDelegate:Any?
     
-    override class func initialize (){
+      override class func initialize (){
         // 设置navBar背景图、字体颜色、透明度
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "dark_gray"), for: UIBarMetrics.default)
         UINavigationBar.appearance().isTranslucent = false
