@@ -58,16 +58,16 @@ extension HHPhotoPickManager: UIImagePickerControllerDelegate, UINavigationContr
         
         // 存储照片
         if info.keys.contains("UIImagePickerControllerMediaMetadata") {
-            UIImageWriteToSavedPhotosAlbum(info["UIImagePickerControllerOriginalImage"], self, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(info["UIImagePickerControllerOriginalImage"] as! UIImage, self, nil, nil)
         }
         pickerController.dismiss(animated: true) { 
-            HHPhotoPickCallBackBlock(info, false)
+//            HHPhotoPickCallBackBlock(info, false)
         }
     }
 
     // 没有选择照片
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        HHPhotoPickCallBackBlock(nil, true)
+//        HHPhotoPickCallBackBlock(nil, true)
 
     }
     

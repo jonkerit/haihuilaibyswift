@@ -82,7 +82,7 @@ class HHLoginController: UIViewController{
         loginView.signupB = {
             print("signupB")
             let registVC=HHRegistProtocolController()
-            self.navigationController?.pushViewController(registVC, animated: true)
+            self.navigationController?.pushViewController(HHLayerController(), animated: true)
         }
         loginView.loginB = {[weak self](_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
             self?.view.endEditing(true)

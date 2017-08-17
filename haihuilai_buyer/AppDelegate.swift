@@ -20,10 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置navbar和tabBar的颜色
         setUIAppearance()
-//        let nav = HHNavigationController(rootViewController:HHLoginController())
+        let nav = HHNavigationController(rootViewController:HHLoginController())
         
         //测试修改
-        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
+//        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
         
         window?.rootViewController = nav
         
@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setUIAppearance(){
         UINavigationBar.appearance().tintColor = UIColor.orange
         UITabBar.appearance().tintColor = UIColor.orange
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+
     }
     
     
