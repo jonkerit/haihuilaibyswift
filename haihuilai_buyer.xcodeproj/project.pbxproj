@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AADEC41F455B420024D4E3 /* HHRegistProtocolController.swift */; };
+		28AADEC71F455B8C0024D4E3 /* HHChioceRoleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AADEC61F455B8C0024D4E3 /* HHChioceRoleController.swift */; };
+		28AADECD1F456FDA0024D4E3 /* HHChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AADECC1F456FDA0024D4E3 /* HHChoiceView.swift */; };
 		9B0BCDA01DFF9D4F0087FC35 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCD9F1DFF9D4F0087FC35 /* UIButton+Extension.swift */; };
 		9B0BCDA21DFFA1A50087FC35 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDA11DFFA1A50087FC35 /* UILabel+Extension.swift */; };
 		9B0BCDA41DFFA4720087FC35 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDA31DFFA4720087FC35 /* UIImageView+Extension.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		02BA5D718C7BAC88A1E4EEA5 /* Pods_haihuilai_buyer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_haihuilai_buyer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28AADEC41F455B420024D4E3 /* HHRegistProtocolController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHRegistProtocolController.swift; sourceTree = "<group>"; };
+		28AADEC61F455B8C0024D4E3 /* HHChioceRoleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChioceRoleController.swift; sourceTree = "<group>"; };
+		28AADECC1F456FDA0024D4E3 /* HHChoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceView.swift; sourceTree = "<group>"; };
 		9B0BCD9F1DFF9D4F0087FC35 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		9B0BCDA11DFFA1A50087FC35 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		9B0BCDA31DFFA4720087FC35 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 				9BF9C4E91DF993E00065D9F7 /* HHLoginController.swift */,
 				9B33CA071F3C41D300461B4F /* HHChoiceCuntryController.swift */,
 				9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */,
+				28AADEC41F455B420024D4E3 /* HHRegistProtocolController.swift */,
+				28AADEC61F455B8C0024D4E3 /* HHChioceRoleController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 				9B33CA031F3AED8600461B4F /* HHLogInView.xib */,
 				9B33CA091F3C432500461B4F /* HHChoiceCountryCell.swift */,
 				9B33CA0A1F3C432500461B4F /* HHChoiceCountryCell.xib */,
+				28AADECC1F456FDA0024D4E3 /* HHChoiceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +354,7 @@
 		9BF9C4C11DF9934F0065D9F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HH;
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = haihuilai;
@@ -463,6 +473,9 @@
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
 				9B0BCDA61DFFA5EB0087FC35 /* UIBarButtonItem+Extension.swift in Sources */,
+				28AADECD1F456FDA0024D4E3 /* HHChoiceView.swift in Sources */,
+				28AADEC71F455B8C0024D4E3 /* HHChioceRoleController.swift in Sources */,
+				28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */,
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
 				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,

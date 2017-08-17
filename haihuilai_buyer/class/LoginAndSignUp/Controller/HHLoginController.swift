@@ -35,7 +35,7 @@ class HHLoginController: UIViewController{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.view.endEditing(true)
+        view.endEditing(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -81,6 +81,8 @@ class HHLoginController: UIViewController{
         }
         loginView.signupB = {
             print("signupB")
+            let registVC=HHRegistProtocolController()
+            self.navigationController?.pushViewController(registVC, animated: true)
         }
         loginView.loginB = {[weak self](_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
             self?.view.endEditing(true)
@@ -166,6 +168,7 @@ extension HHLoginController: signUpOrLoginDelegate{
         loginY = loginView.frame.origin.y
 
         UIView.animate(withDuration: 1, animations: {
+
             weakSelf!.logInAndSignUpView.frame = CGRect(x:-SCREEN_WIDTH, y:weakSelf!.logInAndSignUpView.frame.origin.y, width:weakSelf!.logInAndSignUpView.frame.size.width, height:weakSelf!.logInAndSignUpView.frame.size.height)
             
             weakSelf!.loginView.frame = CGRect(x:(SCREEN_WIDTH-weakSelf!.loginView.frame.size.width)/2, y:weakSelf!.loginView.frame.origin.y, width:weakSelf!.loginView.frame.size.width, height:weakSelf!.loginView.frame.size.height)
