@@ -20,10 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置navbar和tabBar的颜色
         setUIAppearance()
-        let nav = HHNavigationController(rootViewController:HHLoginController())
+//        let nav = HHNavigationController(rootViewController:HHLoginController())
         
         //测试修改
-//        let nav = HHNavigationController(rootViewController:RegistProtocolController())
+        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
         
         window?.rootViewController = nav
         
