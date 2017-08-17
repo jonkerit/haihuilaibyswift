@@ -25,6 +25,7 @@
 		9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */; };
 		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
 		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
+		9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */; };
 		9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */; };
 		9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */; };
 		9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9C4CC1DF9934F0065D9F7 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceModel.swift; sourceTree = "<group>"; };
 		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
 		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
+		9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPhotoPickManager.swift; sourceTree = "<group>"; };
 		9BD560A21F31A04D0054AF8F /* HHLogInAndSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInAndSignUpView.swift; sourceTree = "<group>"; };
 		9BF00B231E0910E90045E4D0 /* HHTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTestViewController.swift; sourceTree = "<group>"; };
 		9BF9C4C91DF9934F0065D9F7 /* haihuilai_buyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haihuilai_buyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 			children = (
 				9B0BCDAF1E014A170087FC35 /* Networking */,
 				9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */,
+				9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */,
 			);
 			name = Tool;
 			path = Networking;
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,

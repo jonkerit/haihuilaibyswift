@@ -84,7 +84,7 @@ func SUCCESSFUL(_ resultString: AnyObject?) -> Bool{
 // 获取主屏幕
 let HHKeyWindow = UIApplication.shared.keyWindow
 // 通知的定义
-
+let NotificationForCountryNumber = "NotificationForCountryNumber" // 选择国家码通知
 // 沙河存储的key的定义
 let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
 // 关键字的定义

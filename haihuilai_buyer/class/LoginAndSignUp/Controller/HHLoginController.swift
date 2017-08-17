@@ -19,16 +19,14 @@ class HHLoginController: UIViewController{
         dealBoclk()
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillShow(notifice:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillHide(notifice:)), name: .UIKeyboardWillHide, object: nil)
-        
         // 点击空白手势
 //        let gestureRecognizer = UIGestureRecognizer.init(target: self, action: #selector(end))
 //        gestureRecognizer.cancelsTouchesInView = false
 //        loginView.addGestureRecognizer(gestureRecognizer)
-        
+        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: NotificationForCountryNumber), object: nil)
     }
-    @objc private func aaa(notice:NSNotification){
-        let model = notice.object as! HHChoiceModel
-        loginView.countryNumber.text = model.val
+    @objc private func getCountryNumber(notifice:NSNotification){
+        loginView.countryNumber.text = notifice.object as! String?
 
     }
     
@@ -76,7 +74,7 @@ class HHLoginController: UIViewController{
         weak var weakSelf = self
         loginView.choiceCountryB = {
             print("choiceCountryB")
-            weakSelf?.navigationController?.pushViewController((weakSelf?.choiceCuntryController)!, animated: true)
+            weakSelf?.navigationController?.pushViewController(HHChoiceCuntryController(), animated: true)
         }
         loginView.forgetSecretB = {
             print("forgetSecretB")
@@ -104,9 +102,9 @@ class HHLoginController: UIViewController{
 
     
     @objc private func action(_ paramters: [String: String]){
-        HHProgressHUD.shareTool.showHUDAddedTo(title: "come on", isImage:true, boardView: HHKeyWindow, animated: true)
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "登录中...", isImage:true, boardView: HHKeyWindow, animated: true)
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
-//            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
             if errorString == nil {
                 self.navigationController?.pushViewController(HHTestViewController(), animated: true)
@@ -157,11 +155,6 @@ class HHLoginController: UIViewController{
         loginView.btnForLogin.layer.masksToBounds = true
         return loginView
     }()
-    fileprivate lazy var choiceCuntryController:HHChoiceCuntryController = {
-        let choiceCuntryController = HHChoiceCuntryController()
-        choiceCuntryController.delegate = self
-        return choiceCuntryController
-    }()
 }
 
 
@@ -185,10 +178,4 @@ extension HHLoginController: signUpOrLoginDelegate{
             })
         }
     }
-}
-extension HHLoginController:HHChoiceCountryDelegate{
-    func getCountryNumber(countryName: String?, countryNumber: String?) {
-        loginView.countryNumber.text = countryNumber
-    }
-    
 }

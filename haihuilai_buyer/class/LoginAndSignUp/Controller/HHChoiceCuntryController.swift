@@ -5,16 +5,9 @@
 //  Created by jonker on 17/8/10.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
-@objc protocol HHChoiceCountryDelegate: class{
-    @objc optional func getCountryNumber(countryName: String?, countryNumber: String?)
-}
-
 import UIKit
 
-class HHChoiceCuntryController: HHBaseTableViewController {
-
-    weak var delegate: HHChoiceCountryDelegate?
-    
+class HHChoiceCuntryController: HHBaseTableViewController {    
     var dataArray = [HHChoiceCountryModel]()
     
     override func viewDidLoad() {
@@ -23,8 +16,9 @@ class HHChoiceCuntryController: HHBaseTableViewController {
         
         
         // 请求数据
-//        weak var seakself = self
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "网络加载中...", isImage: true, isHidden: false, boardView: HHKeyWindow, animated: true)
         HHNetworkClass().getCountryNumber(parameter: nil) {[weak self] (dataArray, error) in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             self?.dataArray = dataArray as! [HHChoiceCountryModel]
             self?.tableView.reloadData()
         }
@@ -73,10 +67,8 @@ extension HHChoiceCuntryController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.delegate != nil {
-            let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
-            self.delegate?.getCountryNumber!(countryName: choiceModel?.name, countryNumber: choiceModel?.val)
-        }
+        let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationForCountryNumber), object: choiceModel?.val, userInfo: nil)
         self.navigationController?.popViewController(animated: true)
     }
 }

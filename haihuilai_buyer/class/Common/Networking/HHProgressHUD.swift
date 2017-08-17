@@ -10,8 +10,6 @@ import UIKit
 import MBProgressHUD
 class HHProgressHUD: NSObject {
     static let shareTool = HHProgressHUD()
-    
-    
     /// 只带图的默认MBProgressHUD
     ///
     /// - Parameters:
@@ -31,12 +29,13 @@ class HHProgressHUD: NSObject {
     }
     
     
-    /// 只带标题的默认MBProgressHUD
+    /// 可控制标题和图片的默认MBProgressHUD
     ///
     /// - Parameters:
     ///   - title: 提示语
     ///   - boardView: 父view
     ///   - animated: 是否有动画
+    ///   - isImage: 是否有图片
     func showHUDAddedTo(title: String?, isImage: Bool, boardView: UIView?, animated:Bool){
         var keyView: UIView?
         if boardView == nil {
@@ -50,6 +49,10 @@ class HHProgressHUD: NSObject {
         } else {
             
             if !isImage {
+                if is_empty_string(title) {
+                    assert(is_empty_string(title), "title和Image不能用时为空")
+                    return;
+                }
                 hud.mode = .text
             }
             hud.label.text = title
@@ -60,6 +63,23 @@ class HHProgressHUD: NSObject {
         }
     }
     
+    /// 提示可以消失的可控制标题和图片的默认MBProgressHUD
+    /// 可控制标题和图片的默认MBProgressHUD
+    ///
+    /// - Parameters:
+    ///   - title: 提示语
+    ///   - boardView: 父view
+    ///   - animated: 是否有动画
+    ///   - isImage: 是否有图片
+    ///   - isHidden: 提示是否消失
+    func showHUDAddedTo(title: String?, isImage: Bool, isHidden: Bool, boardView: UIView?, animated:Bool){
+        showHUDAddedTo(title: title, isImage: isImage, boardView: boardView, animated: animated)
+        if isHidden {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+DispatchTimeInterval.seconds(1)) {
+                self.hideHUDForView(boardView: boardView, animated: animated)
+            }
+        }
+    }
     /// 隐藏hideHUDForView
     ///
     /// - Parameters:
