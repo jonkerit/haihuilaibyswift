@@ -72,6 +72,10 @@ class HHLoginController: UIViewController{
     
     private func dealBoclk(){
         weak var weakSelf = self
+        logInAndSignUpView.signUpOrLoginblocks = {(_) ->  String in
+            weakSelf?.navigationController?.pushViewController(HHLayerController(), animated: true)
+            return "注册"
+        }
         loginView.choiceCountryB = {
             print("choiceCountryB")
             weakSelf?.navigationController?.pushViewController(HHChoiceCuntryController(), animated: true)
@@ -81,8 +85,7 @@ class HHLoginController: UIViewController{
         }
         loginView.signupB = {
             print("signupB")
-            let registVC=HHRegistProtocolController()
-            self.navigationController?.pushViewController(HHLayerController(), animated: true)
+            weakSelf?.navigationController?.pushViewController(HHLayerController(), animated: true)
         }
         loginView.loginB = {[weak self](_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
             self?.view.endEditing(true)
@@ -108,8 +111,8 @@ class HHLoginController: UIViewController{
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
+            self.navigationController?.pushViewController(HHTestViewController(), animated: true)
             if errorString == nil {
-                self.navigationController?.pushViewController(HHTestViewController(), animated: true)
             }
         })
     }
@@ -143,7 +146,7 @@ class HHLoginController: UIViewController{
     }()
     
     fileprivate lazy var backImageViw:UIButton = {
-        let imageView = UIButton.init(title: nil, backgroudImageName: "starting", color: nil, fontSize: nil)
+        let imageView = UIButton.init(title: nil, backgroudImageName: "starting", fontColor: nil, fontSize: nil)
         imageView.setBackgroundImage(UIImage(named:"starting"), for: .highlighted)
         imageView.addTarget(self, action: #selector(HHLoginController.end), for: .touchUpInside)
         return imageView

@@ -32,9 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setUIAppearance(){
-        UINavigationBar.appearance().tintColor = UIColor.orange
-        UITabBar.appearance().tintColor = UIColor.orange
-//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().tintColor = UIColor.white
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
 
     }

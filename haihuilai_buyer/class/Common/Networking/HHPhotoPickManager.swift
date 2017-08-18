@@ -10,14 +10,14 @@ enum pickerType:Int {
     case PickerType_Camera = 1
     case PickerType_Photo = 0
 }
-typealias HHPhotoPickCallBackBlock = (_ infoDict:Dictionary<String, Any>?, _ isCancel: Bool)->()
+typealias HHPhotoPickCallBackBlock = (_ infoDict:[String: Any]?, _ isCancel: Bool)->()
 import UIKit
 
 class HHPhotoPickManager: NSObject {
-    
+    var photoPickCallBackBlock: HHPhotoPickCallBackBlock?
     static let shareTools = HHPhotoPickManager()
-    
     func photoPick(pickerTypes:pickerType, targetVC: UIViewController,photoPickCallBack: @escaping HHPhotoPickCallBackBlock){
+        photoPickCallBackBlock = photoPickCallBack
         if pickerTypes == .PickerType_Camera {
             if UIImagePickerController.isCameraDeviceAvailable(.rear) && UIImagePickerController.isSourceTypeAvailable(.camera) {
                 pickerController.sourceType = .camera
@@ -61,13 +61,15 @@ extension HHPhotoPickManager: UIImagePickerControllerDelegate, UINavigationContr
             UIImageWriteToSavedPhotosAlbum(info["UIImagePickerControllerOriginalImage"] as! UIImage, self, nil, nil)
         }
         pickerController.dismiss(animated: true) { 
-//            HHPhotoPickCallBackBlock(info, false)
+            self.photoPickCallBackBlock!(info, false)
+            self.photoPickCallBackBlock = nil   // 防止控制器引用它儿引起循环引用
         }
     }
 
     // 没有选择照片
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        HHPhotoPickCallBackBlock(nil, true)
+        self.photoPickCallBackBlock!(nil, true)
+        self.photoPickCallBackBlock = nil // 防止控制器引用它儿引起循环引用
 
     }
     

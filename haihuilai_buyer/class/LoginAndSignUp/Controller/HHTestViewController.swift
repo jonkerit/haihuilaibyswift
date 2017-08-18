@@ -9,7 +9,6 @@
 import UIKit
 
 class HHTestViewController: UIViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +16,8 @@ class HHTestViewController: UIViewController {
         
         print(HHAccountViewModel.shareAcount.accountToken ?? "失败")
         print(student8)
+        view.addSubview(btn)
+
     }
 
     struct Student {
@@ -42,16 +43,18 @@ class HHTestViewController: UIViewController {
     deinit {
         
     }
-//    
-//    private func test(){
-//        let backGroundQueue = DispatchQueue(label: "currentQueue")
-//        backGroundQueue.async(execute: <#T##() -> Void#>)
-//    
-//    }
-//    
-//    let wirte = DispatchWorkItem(flags: .barrier){
-//          // write data
-//          }
-//    let dataQueue = DispatchQueue(label: "data",attributes: .concurrent)
-//        dataQueue.async(execute: wirte)
+    
+    @objc private func chiocePhone(){
+        HHPhotoPickManager.shareTools.photoPick(pickerTypes: pickerType(rawValue: 0)!, targetVC: self) {(infoDic, isOk) in
+            
+            if infoDic != nil {
+                self.btn.setImage(infoDic!["UIImagePickerControllerOriginalImage"] as! UIImage?, for: .normal)
+            }
+        }
+    }
+    private lazy var btn: UIButton = {
+       let btn = UIButton.init(action: #selector(HHTestViewController.chiocePhone), target: self, title: nil, backgroudImageName: "main_dark", fontColor: nil, fontSize: 16)
+        btn.frame = CGRect(x:10, y:150, width:100, height:50)
+        return btn
+    }()
 }

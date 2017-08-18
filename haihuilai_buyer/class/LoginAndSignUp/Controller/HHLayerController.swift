@@ -12,22 +12,16 @@ class HHLayerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         setUI()
-        
-        // Do any additional setup after loading the view.
     }
 
     func setUI(){
-        let agreeBtn = UIButton.init(title:"同意并注册", backgroudImageName: "main_light", color: UIColor.white, fontSize: 18)
+        let agreeBtn = UIButton.init(title:"同意并注册", backgroudImageName: "main_light", fontColor: UIColor.white, fontSize: 18)
         agreeBtn.addTarget(self, action:#selector(HHLayerController.nextPage), for: .touchDown)
         let webView = UIWebView()
         webView.delegate = self
         
         let urlStr:String = HH_SERVER_URL + "/app/accounts/secret"
-//        let strUrl = urlStr.addingPercentEncoding(withAllowedCharacters: .)
-        
         let urls:URL = URL.init(string: urlStr)!
         webView.loadRequest(URLRequest.init(url: urls))
         
@@ -46,7 +40,7 @@ class HHLayerController: UIViewController {
         }
     }
     @objc private func nextPage() {
-            self.navigationController?.pushViewController(HHChioceRoleController(), animated: true)
+            navigationController?.pushViewController(HHChioceRoleController(), animated: true)
         
     }
     

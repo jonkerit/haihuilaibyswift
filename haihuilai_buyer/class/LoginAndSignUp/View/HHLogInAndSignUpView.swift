@@ -43,7 +43,7 @@ class HHLogInAndSignUpView: UIView {
     
     
     lazy var logInBtn:UIButton = {
-        let btn = UIButton.init(action: #selector(HHLogInAndSignUpView.logIn), target: self, title: "登录", imageName: nil, color: HHMAINCOLOR(), fontSize: 16)
+        let btn = UIButton.init(action: #selector(HHLogInAndSignUpView.logIn), target: self, title: "登录", imageName: nil, fontColor: HHMAINCOLOR(), fontSize: 16)
         btn.layer.cornerRadius = 22.0
         btn.layer.masksToBounds = true
         btn.backgroundColor = UIColor.white
@@ -51,7 +51,7 @@ class HHLogInAndSignUpView: UIView {
         return btn
     }()
     lazy var signUpBtn:UIButton = {
-        let btn = UIButton.init(action: #selector(HHLogInAndSignUpView.signUp), target: self, title: "注册", imageName: nil, color: UIColor.white, fontSize: 16)
+        let btn = UIButton.init(action: #selector(HHLogInAndSignUpView.signUp), target: self, title: "注册", imageName: nil, fontColor: UIColor.white, fontSize: 16)
         btn.layer.cornerRadius = 22.0
         btn.layer.masksToBounds = true
         btn.backgroundColor = HHMAINCOLOR()

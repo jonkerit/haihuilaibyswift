@@ -12,41 +12,42 @@ class HHChioceRoleController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "选择身份(1/4)"
+        navigationItem.leftBarButtonItem = nil
         view.backgroundColor=RGBCOLOR(243, 243, 243)
-        self.navigationItem.title="选择身份(1/4)"
         view.addSubview(tip1)
         view.addSubview(tip2)
         view.addSubview(cheDaoV)
         view.addSubview(duiZhangV)
         view.addSubview(nextBtn)
-        tip1.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.view)
-            make?.right.equalTo()(self.view)
-            make?.top.equalTo()(self.view)?.offset()(10)
-            make?.height.mas_equalTo()(30)
+        tip1.mas_makeConstraints{ (make) in
+            make!.left.equalTo()(self.view)
+            make!.right.equalTo()(self.view)
+            make!.top.equalTo()(self.view)?.setOffset(10)
+            make!.height.equalTo()(30)
         }
         tip2.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.view)
-            make?.right.equalTo()(self.view)
-            make?.top.equalTo()(self.tip1.mas_bottom)
+            make!.left.equalTo()(self.view)
+            make!.right.equalTo()(self.view)
+            make!.top.equalTo()(self.tip1.mas_bottom)
         }
         cheDaoV.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.view)
-            make?.right.equalTo()(self.view)
-            make?.top.equalTo()(self.tip2.mas_bottom)?.offset()(5)
-            make?.height.mas_equalTo()(80)
+            make!.left.equalTo()(self.view)
+            make!.right.equalTo()(self.view)
+            make!.top.equalTo()(self.tip2.mas_bottom)?.setOffset(5)
+            make!.height.mas_equalTo()(80)
         }
         duiZhangV.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.view)
-            make?.right.equalTo()(self.view)
-            make?.top.equalTo()(self.cheDaoV.mas_bottom)?.offset()(10)
-            make?.height.mas_equalTo()(80)
+            make!.left.equalTo()(self.view)
+            make!.right.equalTo()(self.view)
+            make!.top.equalTo()(self.cheDaoV.mas_bottom)?.setOffset(10)
+            make!.height.mas_equalTo()(80)
         }
         nextBtn.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.view)
-            make?.right.equalTo()(self.view)
-            make?.bottom.equalTo()(self.view)
-            make?.height.mas_equalTo()(60)
+            make!.left.equalTo()(self.view)
+            make!.right.equalTo()(self.view)
+            make!.bottom.equalTo()(self.view)
+            make!.height.mas_equalTo()(60)
         }
     }
     
