@@ -13,15 +13,16 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
     var popDelegate:Any?
     
       override class func initialize (){
-        // 设置navBar背景图、字体颜色、透明度
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "main_dark"), for: UIBarMetrics.default)
-        UINavigationBar.appearance().isTranslucent = false
+        
     }
     
     override init(rootViewController: UIViewController) {
         super.init(nibName: nil, bundle: nil)
         addChildViewController(rootViewController)
-        
+        // 设置navBar背景图、字体颜色、透明度
+    self.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.white]
+        self.navigationBar.isTranslucent=false
+        self.navigationBar.setBackgroundImage(UIImage(named: "main_dark"), for: UIBarMetrics.default)
         self.delegate = self
         popDelegate = self.interactivePopGestureRecognizer?.delegate
     }

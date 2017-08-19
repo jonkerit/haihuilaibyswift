@@ -14,6 +14,7 @@ class HHChioceRoleController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "选择身份(1/4)"
         navigationItem.leftBarButtonItem = nil
+//        self.navigationController?.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.white]
         view.backgroundColor=RGBCOLOR(243, 243, 243)
         view.addSubview(tip1)
         view.addSubview(tip2)
