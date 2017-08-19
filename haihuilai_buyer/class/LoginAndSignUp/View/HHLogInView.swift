@@ -18,7 +18,7 @@ final class HHLogInView: UIView, HHLoadNibDelegate{
     
     
     
-    @IBOutlet weak var contryNumber: UIButton!
+    @IBOutlet weak var countryNumber: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var secretNumber: UITextField!
     @IBOutlet weak var btnForLogin: UIButton!
@@ -35,7 +35,7 @@ final class HHLogInView: UIView, HHLoadNibDelegate{
     }
     @IBAction func loginBtn() {
         if self.loginB != nil {
-            self.loginB!(contryNumber.titleLabel?.text, phoneNumber.text, secretNumber.text)
+            self.loginB!(countryNumber.text, phoneNumber.text, secretNumber.text)
         }
     }
     @IBAction func signUp() {

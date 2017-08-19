@@ -7,7 +7,7 @@
 //
 
 import UIKit
-typealias HHNetworkDataBacks = (_ responses: Any?,_ errors: Error?) -> ()
+typealias HHNetworkDataBacks = (_ responses: Any?,_ errorString: String?) -> ()
 
 class HHAccountViewModel: NSObject {
     // 创建一个单利
@@ -36,15 +36,15 @@ class HHAccountViewModel: NSObject {
         HHNetworkTools.shareTools.request(isLogin: false, method: .POST, URLString: urlString, parameters: paramters, networkDataBack: { (response, error) -> Void in
             // 处理返回结果
             if response != nil {
-                if response?["status"] as! String == SUCCESSFUL{
+                if SUCCESSFUL(response?["status"]) {
                     self.accountModel = HHAccountModel(dict: response?["data"] as! [String : AnyObject])
                     self.saveUseAccount(response?["data"] as! [String : AnyObject])
                     networkDataBacks(true,nil)
                 }else{
-                    networkDataBacks(response?["msg"],nil)
+                    networkDataBacks(nil,HHCommon.shareCommon.handleError(response, error))
                 }
             }else{
-                networkDataBacks(nil,error)
+                networkDataBacks(nil,HHCommon.shareCommon.handleError(response, error))
             }
         })
     }

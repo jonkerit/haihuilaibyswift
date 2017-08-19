@@ -3,7 +3,6 @@
 //
 
 #import <MBProgressHUD/MBProgressHUD.h>
-#import <AFNetworking/AFNetworking.h>
 #import <Bugtags/Bugtags.h>
 #import <JSPatch/JPEngine.h>
 #import <Masonry/Masonry.h>

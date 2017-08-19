@@ -39,7 +39,9 @@ class HHTestViewController: UIViewController {
     let student6 = Student()
     let student7 = Student(chinese: 90, math: 80, english: 70)
     let student8 = Student(stringScore: "70,80,90")
-    
+    deinit {
+        
+    }
 //    
 //    private func test(){
 //        let backGroundQueue = DispatchQueue(label: "currentQueue")

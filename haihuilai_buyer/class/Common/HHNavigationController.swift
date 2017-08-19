@@ -12,9 +12,9 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
         
     var popDelegate:Any?
     
-    override class func initialize (){
+      override class func initialize (){
         // 设置navBar背景图、字体颜色、透明度
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "dark_gray"), for: UIBarMetrics.default)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "main_dark"), for: UIBarMetrics.default)
         UINavigationBar.appearance().isTranslucent = false
     }
     
@@ -48,7 +48,7 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
     }
     
     private lazy var navBar: UIButton = {
-        var btn:UIButton = UIButton.init(action: #selector(clickAction), target: self, title: "返回", imageName: "back", color: UIColor.white, fontSize: 20)
+        var btn:UIButton = UIButton.init(action: #selector(clickAction), target: self, title: "返回", imageName: "back", color: UIColor.white, fontSize: 18)
         btn.imageEdgeInsets = UIEdgeInsetsMake(0, -45, 0, 0)
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0)
         btn.frame = CGRect(x:0, y:0, width:100, height:50)

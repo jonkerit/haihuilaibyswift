@@ -5,32 +5,71 @@
 //  Created by jonker on 17/8/10.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
-
 import UIKit
 
-class HHChoiceCuntryController: HHBaseTableViewController {
-
+class HHChoiceCuntryController: HHBaseTableViewController {    
+    var dataArray = [HHChoiceCountryModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        HHNetworkClass().getCountryNumber(parameter: nil) { (respones, error) in
-            
+        tableView.register(UINib.init(nibName: "HHChoiceCountryCell", bundle: nil), forCellReuseIdentifier: "HHChoiceCountryCell")
+        
+        
+        // 请求数据
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "网络加载中...", isImage: true, isHidden: false, boardView: HHKeyWindow, animated: true)
+        HHNetworkClass().getCountryNumber(parameter: nil) {[weak self] (dataArray, error) in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            self?.dataArray = dataArray as! [HHChoiceCountryModel]
+            self?.tableView.reloadData()
         }
+    }
+    deinit {
+        print("我被移除了")
     }
 }
 
+// tableView dataDelegate
 extension HHChoiceCuntryController{
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return dataArray.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let choiceCountryModel = dataArray[section]
+        return (choiceCountryModel.countries?.count) ?? 0
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-          
-     return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HHChoiceCountryCell", for: indexPath) as! HHChoiceCountryCell
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        let choiceModelArray = dataArray[indexPath.section].countries
+        if indexPath.row == (choiceModelArray?.count)!-1 {
+            cell.line.isHidden = true
+        }else{
+            cell.line.isHidden = false
+        }
+        cell.choiceModel = choiceModelArray?[indexPath.row] 
+        return cell
      }
 
 }
+
+// tableView dataScourceDelegate
+extension HHChoiceCuntryController{
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let choiceCountryModel = dataArray[section]
+
+        return choiceCountryModel.index
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationForCountryNumber), object: choiceModel?.val, userInfo: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+

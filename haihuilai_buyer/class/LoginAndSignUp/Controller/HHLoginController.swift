@@ -8,21 +8,34 @@
 
 import UIKit
 import Foundation
+import Alamofire
 class HHLoginController: UIViewController{
+    
+    var loginY: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         dealBoclk()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillShow(notifice:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillHide(notifice:)), name: .UIKeyboardWillHide, object: nil)
+        // 点击空白手势
+//        let gestureRecognizer = UIGestureRecognizer.init(target: self, action: #selector(end))
+//        gestureRecognizer.cancelsTouchesInView = false
+//        loginView.addGestureRecognizer(gestureRecognizer)
+        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: NotificationForCountryNumber), object: nil)
+    }
+    @objc private func getCountryNumber(notifice:NSNotification){
+        loginView.countryNumber.text = notifice.object as! String?
 
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        view.endEditing(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -68,50 +81,61 @@ class HHLoginController: UIViewController{
         }
         loginView.signupB = {
             print("signupB")
+            let registVC=HHRegistProtocolController()
+            self.navigationController?.pushViewController(HHLayerController(), animated: true)
         }
-        loginView.loginB = {(_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
-             print(countryNumber ?? "空值哦",phoneNumber ?? "空值哦")
+        loginView.loginB = {[weak self](_ countryNumber: String?, _ phoneNumber: String?, _ secretNumber: String?) -> Void in
+            self?.view.endEditing(true)
+            if is_empty_string(countryNumber) {
+            
+            }
+            
+            if is_empty_string(phoneNumber) {
+                
+            }
+            if is_empty_string(secretNumber) {
+                
+            }
+            let paramters = Dictionary(dictionaryLiteral: ("country_code",countryNumber), ("mobile",phoneNumber),("password",secretNumber))
+            self?.action(paramters as! [String : String])
         }
     
     }
 
     
-    @objc fileprivate func action(){
-        let paramters = Dictionary(dictionaryLiteral: ("country_code","86"), ("mobile","18812345678"),("password","12345678"))
-        
-        HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, error) -> Void in
+    @objc private func action(_ paramters: [String: String]){
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "登录中...", isImage:true, boardView: HHKeyWindow, animated: true)
+        HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
-            if response != nil {
+            if errorString == nil {
                 self.navigationController?.pushViewController(HHTestViewController(), animated: true)
             }
         })
     }
     @objc private func keyboardWillShow(notifice:NSNotification){
         let hight = (notifice.userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect).size.height
-//        let offset = (self.dengLuView.frame.origin.y+self.dengLuView.frame.size.height+40) - (self.view.frame.size.height - kbHeight);
         let time = notifice.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! CGFloat
-        weak var weakself = self
+        
         if hight>0 {
             UIView.animate(withDuration: TimeInterval(time), animations: {
-                weakself?.loginView.frame.origin.y = (weakself?.loginView.frame.origin.y)!-hight
+                self.loginView.frame.origin.y = self.loginY-hight
             })
         }
 
     }
     @objc private func keyboardWillHide(notifice:NSNotification){
-        let hight = (notifice.userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect).size.height
         let time = notifice.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! CGFloat
-        weak var weakself = self
         if time>0 {
             UIView.animate(withDuration: TimeInterval(time), animations: {
-                weakself!.loginView.frame.origin.y = SCREEN_HEIGHT-hight-55
+                self.loginView.frame.origin.y = self.loginY
             })
         }
     }
     @objc private func end(){
         view.endEditing(true)
     }
-    
+    /// 懒加载
     fileprivate lazy var logInAndSignUpView:HHLogInAndSignUpView = {
         let logInAndSignUpView = HHLogInAndSignUpView.init()
         logInAndSignUpView.delegate = self
@@ -126,6 +150,7 @@ class HHLoginController: UIViewController{
     }()
     fileprivate lazy var loginView:HHLogInView = {
         let loginView = HHLogInView.loadFromNib()
+        loginView.countryNumber.isUserInteractionEnabled = false
         loginView.layer.cornerRadius = 8
         loginView.layer.masksToBounds = true
         loginView.btnForLogin.layer.cornerRadius = 22
@@ -134,11 +159,16 @@ class HHLoginController: UIViewController{
     }()
 }
 
+
+// MARK: - delegate
 extension HHLoginController: signUpOrLoginDelegate{
     func login(account: String) {
         print(account)
         weak var weakSelf = self
+        loginY = loginView.frame.origin.y
+
         UIView.animate(withDuration: 1, animations: {
+
             weakSelf!.logInAndSignUpView.frame = CGRect(x:-SCREEN_WIDTH, y:weakSelf!.logInAndSignUpView.frame.origin.y, width:weakSelf!.logInAndSignUpView.frame.size.width, height:weakSelf!.logInAndSignUpView.frame.size.height)
             
             weakSelf!.loginView.frame = CGRect(x:(SCREEN_WIDTH-weakSelf!.loginView.frame.size.width)/2, y:weakSelf!.loginView.frame.origin.y, width:weakSelf!.loginView.frame.size.width, height:weakSelf!.loginView.frame.size.height)
@@ -152,4 +182,3 @@ extension HHLoginController: signUpOrLoginDelegate{
         }
     }
 }
-

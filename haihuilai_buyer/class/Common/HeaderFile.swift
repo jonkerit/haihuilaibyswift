@@ -52,7 +52,11 @@ func h(_ object: UIView) -> CGFont{
 
 // 判断object是否为空
 func is_empty_string(_ string: String?) -> Bool{
-    return string!.isEmpty
+    if string == nil || string == "" {
+        return true
+    }else{
+        return false
+    }
 }
 
 func is_empty_array(_ array: [AnyObject]?) -> Bool {
@@ -73,13 +77,18 @@ func HHMAINCOLOR() -> UIColor {
 func HHMAINDEEPCOLOR() -> UIColor {
     return UIColor.init(colorLiteralRed: (26/255.0), green: (183/255.0), blue: (205/255.0), alpha: (1))
 }
+// 判断网络请求是否返回成功
+func SUCCESSFUL(_ resultString: AnyObject?) -> Bool{
+    return resultString as! String == "0000"
+}
+// 获取主屏幕
+let HHKeyWindow = UIApplication.shared.keyWindow
 // 通知的定义
-
+let NotificationForCountryNumber = "NotificationForCountryNumber" // 选择国家码通知
 // 沙河存储的key的定义
 let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
 // 关键字的定义
 let HH_SERVER_URL = "http://test.haihuilai.com"
-let SUCCESSFUL = "0000" // 返回成功
 let HAIHUILAI = "还会来" // 重点字段
 //let HHMAINCOLOR = RGBCOLOR(92, 194, 216) // 主图色
 //let HHMAINDEEPCOLOR = RGBCOLOR(26, 183, 205) // 点击主题色
