@@ -28,6 +28,7 @@
 		9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */; };
 		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
 		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
+		9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */; };
 		9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */; };
 		9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A481F45E3CF0055746C /* HHLayerController.swift */; };
 		9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */; };
@@ -68,6 +69,7 @@
 		9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceModel.swift; sourceTree = "<group>"; };
 		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
 		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
+		9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTimer.swift; sourceTree = "<group>"; };
 		9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPhotoPickManager.swift; sourceTree = "<group>"; };
 		9B6E5A481F45E3CF0055746C /* HHLayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLayerController.swift; sourceTree = "<group>"; };
 		9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPickerView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */,
 				9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */,
 				9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */,
+				9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */,
 			);
 			name = Tool;
 			path = Networking;
@@ -482,6 +485,7 @@
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
 				9B0BCDA61DFFA5EB0087FC35 /* UIBarButtonItem+Extension.swift in Sources */,
 				28AADECD1F456FDA0024D4E3 /* HHChoiceView.swift in Sources */,
+				9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */,
 				28AADEC71F455B8C0024D4E3 /* HHChioceRoleController.swift in Sources */,
 				28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */,
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,

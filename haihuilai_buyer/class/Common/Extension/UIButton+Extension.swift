@@ -16,6 +16,7 @@ extension UIButton {
         setTitle(title, for: .normal)
         if imageName != nil {
             setImage(UIImage(named: imageName!), for: .normal)
+            setImage(UIImage(named: imageName!), for: .highlighted)
         }
         if fontColor != nil {
             setTitleColor(fontColor, for: .normal)
@@ -29,6 +30,8 @@ extension UIButton {
         setTitle(title, for: .normal)
         if backgroudImageName != nil {
             setBackgroundImage(UIImage(named:backgroudImageName!), for: .normal)
+            setBackgroundImage(UIImage(named: backgroudImageName!), for: .highlighted)
+
         }
         if fontColor != nil {
             setTitleColor(fontColor, for: .normal)
@@ -44,6 +47,8 @@ extension UIButton {
         setTitle(title, for: .normal)
         if imageName != nil {
             setImage(UIImage(named: imageName!), for: .normal)
+            setImage(UIImage(named: imageName!), for: .highlighted)
+
         }
         if fontColor != nil {
             setTitleColor(fontColor, for: .normal)
@@ -59,6 +64,7 @@ extension UIButton {
         self.init()
         setTitle(title, for: .normal)
         if backgroudImageName != nil {
+            setBackgroundImage(UIImage(named: backgroudImageName!), for: .highlighted)
             setBackgroundImage(UIImage(named: backgroudImageName!), for: .normal)
         }
         if fontColor != nil {

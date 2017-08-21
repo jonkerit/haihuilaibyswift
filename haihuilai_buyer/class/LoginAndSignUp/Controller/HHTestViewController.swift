@@ -10,14 +10,16 @@ import UIKit
 
 class HHTestViewController: UIViewController {
     
+    var timer: HHTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = RGBCOLOR(135, 155, 155)
+        view.backgroundColor = UIColor.white
         
         print(HHAccountViewModel.shareAcount.accountToken ?? "失败")
         print(student8)
         view.addSubview(btn)
-
+        HHTimer().scheduledTimerWithTimeInterval(timeInterval: 1, target: self, selector: #selector(timerAction), totleTime:10)
     }
 
     struct Student {
@@ -43,18 +45,24 @@ class HHTestViewController: UIViewController {
     deinit {
         
     }
+    @objc private func timerAction(){
+        btn.setTitle(Date().description, for: .normal)
+    }
     
     @objc private func chiocePhone(){
-        HHPhotoPickManager.shareTools.photoPick(pickerTypes: pickerType(rawValue: 0)!, targetVC: self) {(infoDic, isOk) in
-            
-            if infoDic != nil {
-                self.btn.setImage(infoDic!["UIImagePickerControllerOriginalImage"] as! UIImage?, for: .normal)
-            }
-        }
+//        timer?.stop()
+        HHPickerView().initWithArray(DataArray: [["1"],["2"]])
+        
+//        HHPhotoPickManager.shareTools.photoPick(pickerTypes: pickerType(rawValue: 0)!, targetVC: self) {(infoDic, isOk) in
+//            
+//            if infoDic != nil {
+//                self.btn.setImage(infoDic!["UIImagePickerControllerOriginalImage"] as! UIImage?, for: .normal)
+//            }
+//        }
     }
     private lazy var btn: UIButton = {
-       let btn = UIButton.init(action: #selector(HHTestViewController.chiocePhone), target: self, title: nil, backgroudImageName: "main_dark", fontColor: nil, fontSize: 16)
-        btn.frame = CGRect(x:10, y:150, width:100, height:50)
+        let btn = UIButton.init(action: #selector(HHTestViewController.chiocePhone), target: self, title: nil, backgroudImageName: "main_dark", fontColor: nil, fontSize: 16)
+        btn.frame = CGRect(x:10, y:150, width:250, height:50)
         return btn
     }()
 }
