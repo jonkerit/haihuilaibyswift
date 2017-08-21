@@ -93,7 +93,7 @@ class HHChioceRoleController: UIViewController {
        let choice = HHChoiceView()
         choice.imageName="ZC-cd"
         choice.titleStr="我是车导"
-        choice.subStr="这是车导"
+        choice.subStr="车导是车队的成员，负责订单业务"
         return choice
     }()
     
@@ -101,7 +101,7 @@ class HHChioceRoleController: UIViewController {
        let choice = HHChoiceView()
         choice.imageName="ZC-dz-f"
         choice.titleStr="我是队长"
-        choice.subStr="这是队长"
+        choice.subStr="队长是车队的管理员，负责管理、接单和结算"
         return choice
     }()
     fileprivate lazy var nextBtn:UIButton={
