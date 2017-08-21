@@ -9,12 +9,11 @@
 import UIKit
 
 class HHChioceRoleController: UIViewController {
-
+    private var selectedName:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "选择身份(1/4)"
         navigationItem.leftBarButtonItem = nil
-//        self.navigationController?.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.white]
         view.backgroundColor=RGBCOLOR(243, 243, 243)
         view.addSubview(tip1)
         view.addSubview(tip2)
@@ -27,6 +26,11 @@ class HHChioceRoleController: UIViewController {
             make!.top.equalTo()(self.view)?.setOffset(10)
             make!.height.equalTo()(30)
         }
+        let tap=UITapGestureRecognizer(target: self, action: #selector(choiceCheDao))
+        cheDaoV.addGestureRecognizer(tap)
+        let tap1=UITapGestureRecognizer(target: self, action: #selector(choiceDuiZhang))
+        duiZhangV.addGestureRecognizer(tap1)
+
         tip2.mas_makeConstraints { (make) in
             make!.left.equalTo()(self.view)
             make!.right.equalTo()(self.view)
@@ -53,16 +57,23 @@ class HHChioceRoleController: UIViewController {
     }
     
     @objc func nextStep(){
-        print("下一步")
-        
+        if selectedName=="chedao" {
+            print("chedao")
+        }else if selectedName=="duizhang"{
+            print("duizhang")
+        }else{
+            print("请选择身份")
+        }
     }
     @objc func choiceCheDao(){
-        print("车导")
+        self.selectedName="chedao"
         cheDaoV.backgroundColor=HHMAINCOLOR()
+        duiZhangV.backgroundColor=UIColor.white
     }
     @objc func choiceDuiZhang(){
-        print("车队")
+        self.selectedName="duizhang"
         duiZhangV.backgroundColor=HHMAINCOLOR()
+        cheDaoV.backgroundColor=UIColor.white
     }
     
     fileprivate lazy var tip1:UILabel={
@@ -82,9 +93,7 @@ class HHChioceRoleController: UIViewController {
        let choice = HHChoiceView()
         choice.imageName="ZC-cd"
         choice.titleStr="我是车导"
-        choice.subStr="这是车导"
-        var tap=UIGestureRecognizer(target: self, action: #selector(choiceCheDao))
-        choice.addGestureRecognizer(tap)
+        choice.subStr="车导是车队的成员，负责订单业务"
         return choice
     }()
     
@@ -92,8 +101,7 @@ class HHChioceRoleController: UIViewController {
        let choice = HHChoiceView()
         choice.imageName="ZC-dz-f"
         choice.titleStr="我是队长"
-        choice.subStr="这是队长"
-        var tap=UIGestureRecognizer(target: self, action: #selector(choiceDuiZhang))
+        choice.subStr="队长是车队的管理员，负责管理、接单和结算"
         return choice
     }()
     fileprivate lazy var nextBtn:UIButton={

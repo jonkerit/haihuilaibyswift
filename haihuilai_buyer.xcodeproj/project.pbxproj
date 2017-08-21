@@ -371,6 +371,7 @@
 					9BF9C4C81DF9934F0065D9F7 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 9N33P6WHUJ;
+						DevelopmentTeam = 4GL3X7VCT2;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -613,6 +614,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9N33P6WHUJ;
+				DEVELOPMENT_TEAM = 4GL3X7VCT2;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -634,6 +636,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9N33P6WHUJ;
+				DEVELOPMENT_TEAM = 4GL3X7VCT2;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
