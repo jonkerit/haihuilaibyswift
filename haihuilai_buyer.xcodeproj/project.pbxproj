@@ -29,6 +29,13 @@
 		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
 		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
 		9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */; };
+		9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */; };
+		9B4F76631F4BCDF900EDDC03 /* HHOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */; };
+		9B4F76651F4BD81000EDDC03 /* HHOrderHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */; };
+		9B4F76681F4C00DE00EDDC03 /* HHOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */; };
+		9B4F76691F4C00DE00EDDC03 /* HHOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */; };
+		9B4F766B1F4C041800EDDC03 /* HHOrderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */; };
+		9B4F766D1F4C13CB00EDDC03 /* HHOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */; };
 		9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */; };
 		9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A481F45E3CF0055746C /* HHLayerController.swift */; };
 		9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */; };
@@ -70,6 +77,13 @@
 		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
 		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
 		9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTimer.swift; sourceTree = "<group>"; };
+		9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHBaseScrollViewController.swift; sourceTree = "<group>"; };
+		9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderController.swift; sourceTree = "<group>"; };
+		9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderHeadView.swift; sourceTree = "<group>"; };
+		9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderCell.swift; sourceTree = "<group>"; };
+		9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHOrderCell.xib; sourceTree = "<group>"; };
+		9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderTableView.swift; sourceTree = "<group>"; };
+		9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderModel.swift; sourceTree = "<group>"; };
 		9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPhotoPickManager.swift; sourceTree = "<group>"; };
 		9B6E5A481F45E3CF0055746C /* HHLayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLayerController.swift; sourceTree = "<group>"; };
 		9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPickerView.swift; sourceTree = "<group>"; };
@@ -151,6 +165,167 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		9B4F764C1F4AD90D00EDDC03 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F764D1F4AD90D00EDDC03 /* Controller */,
+				9B4F764E1F4AD90D00EDDC03 /* Model */,
+				9B4F764F1F4AD90D00EDDC03 /* View */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		9B4F764D1F4AD90D00EDDC03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B4F764E1F4AD90D00EDDC03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B4F764F1F4AD90D00EDDC03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */,
+				9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */,
+				9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */,
+				9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B4F76501F4BC61A00EDDC03 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F76511F4BC61A00EDDC03 /* Controller */,
+				9B4F76521F4BC61A00EDDC03 /* Model */,
+				9B4F76531F4BC61A00EDDC03 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9B4F76511F4BC61A00EDDC03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B4F76521F4BC61A00EDDC03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B4F76531F4BC61A00EDDC03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B4F76541F4BC61A00EDDC03 /* Individual */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F76551F4BC61A00EDDC03 /* Controller */,
+				9B4F76561F4BC61A00EDDC03 /* Model */,
+				9B4F76571F4BC61A00EDDC03 /* View */,
+			);
+			path = Individual;
+			sourceTree = "<group>";
+		};
+		9B4F76551F4BC61A00EDDC03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B4F76561F4BC61A00EDDC03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B4F76571F4BC61A00EDDC03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B4F76581F4BC67E00EDDC03 /* Motorcade */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F76591F4BC67E00EDDC03 /* Controller */,
+				9B4F765A1F4BC67E00EDDC03 /* Model */,
+				9B4F765B1F4BC67E00EDDC03 /* View */,
+			);
+			path = Motorcade;
+			sourceTree = "<group>";
+		};
+		9B4F76591F4BC67E00EDDC03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B4F765A1F4BC67E00EDDC03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B4F765B1F4BC67E00EDDC03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B4F765C1F4BC68700EDDC03 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F765D1F4BC68700EDDC03 /* Controller */,
+				9B4F765E1F4BC68700EDDC03 /* Model */,
+				9B4F765F1F4BC68700EDDC03 /* View */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		9B4F765D1F4BC68700EDDC03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B4F765E1F4BC68700EDDC03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B4F765F1F4BC68700EDDC03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9BF9C4C01DF9934F0065D9F7 = {
 			isa = PBXGroup;
 			children = (
@@ -186,10 +361,12 @@
 			isa = PBXGroup;
 			children = (
 				9BF9C4DF1DF993E00065D9F7 /* Common */,
-				9BF9C4E31DF993E00065D9F7 /* InquiryPrice */,
 				9BF9C4E71DF993E00065D9F7 /* LoginAndSignUp */,
-				9BF9C4EC1DF993E00065D9F7 /* QuotedPrice */,
-				9BF9C4F01DF993E00065D9F7 /* Tool */,
+				9B4F764C1F4AD90D00EDDC03 /* Order */,
+				9B4F765C1F4BC68700EDDC03 /* Calendar */,
+				9B4F76581F4BC67E00EDDC03 /* Motorcade */,
+				9B4F76501F4BC61A00EDDC03 /* Home */,
+				9B4F76541F4BC61A00EDDC03 /* Individual */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -203,41 +380,11 @@
 				9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */,
 				9BF9C4E01DF993E00065D9F7 /* HHBaseTableViewController.swift */,
 				9BF9C4E11DF993E00065D9F7 /* HHBaseViewController.swift */,
+				9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */,
 				9B33CA131F417B5200461B4F /* Tool */,
 				9B0BCD9E1DFF9CF80087FC35 /* Extension */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		9BF9C4E31DF993E00065D9F7 /* InquiryPrice */ = {
-			isa = PBXGroup;
-			children = (
-				9BF9C4E41DF993E00065D9F7 /* Controller */,
-				9BF9C4E51DF993E00065D9F7 /* Model */,
-				9BF9C4E61DF993E00065D9F7 /* View */,
-			);
-			path = InquiryPrice;
-			sourceTree = "<group>";
-		};
-		9BF9C4E41DF993E00065D9F7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9BF9C4E51DF993E00065D9F7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9BF9C4E61DF993E00065D9F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9BF9C4E71DF993E00065D9F7 /* LoginAndSignUp */ = {
@@ -287,44 +434,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9BF9C4EC1DF993E00065D9F7 /* QuotedPrice */ = {
-			isa = PBXGroup;
-			children = (
-				9BF9C4ED1DF993E00065D9F7 /* Controller */,
-				9BF9C4EE1DF993E00065D9F7 /* Model */,
-				9BF9C4EF1DF993E00065D9F7 /* View */,
-			);
-			path = QuotedPrice;
-			sourceTree = "<group>";
-		};
-		9BF9C4ED1DF993E00065D9F7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9BF9C4EE1DF993E00065D9F7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9BF9C4EF1DF993E00065D9F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9BF9C4F01DF993E00065D9F7 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tool;
-			sourceTree = "<group>";
-		};
 		D444B466CF4E88DEED960C9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,7 +479,6 @@
 				TargetAttributes = {
 					9BF9C4C81DF9934F0065D9F7 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9N33P6WHUJ;
 						DevelopmentTeam = 4GL3X7VCT2;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
@@ -400,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B4F76691F4C00DE00EDDC03 /* HHOrderCell.xib in Resources */,
 				9B33CA041F3AED8600461B4F /* HHLogInView.xib in Resources */,
 				9BF9C4D71DF9934F0065D9F7 /* LaunchScreen.storyboard in Resources */,
 				9BF9C4D41DF9934F0065D9F7 /* Assets.xcassets in Resources */,
@@ -463,13 +572,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
+				9B4F76681F4C00DE00EDDC03 /* HHOrderCell.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
+				9B4F76631F4BCDF900EDDC03 /* HHOrderController.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
+				9B4F766B1F4C041800EDDC03 /* HHOrderTableView.swift in Sources */,
 				9B0BCDA41DFFA4720087FC35 /* UIImageView+Extension.swift in Sources */,
 				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,
+				9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */,
 				9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */,
 				9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */,
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
@@ -481,6 +594,7 @@
 				9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */,
 				9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */,
 				9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */,
+				9B4F76651F4BD81000EDDC03 /* HHOrderHeadView.swift in Sources */,
 				9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */,
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
@@ -490,6 +604,7 @@
 				28AADEC71F455B8C0024D4E3 /* HHChioceRoleController.swift in Sources */,
 				28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */,
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
+				9B4F766D1F4C13CB00EDDC03 /* HHOrderModel.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
 				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,
 				9B0BCDA01DFF9D4F0087FC35 /* UIButton+Extension.swift in Sources */,
@@ -613,7 +728,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9N33P6WHUJ;
 				DEVELOPMENT_TEAM = 4GL3X7VCT2;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -635,7 +749,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9N33P6WHUJ;
 				DEVELOPMENT_TEAM = 4GL3X7VCT2;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

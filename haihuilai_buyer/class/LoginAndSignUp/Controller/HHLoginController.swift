@@ -111,7 +111,7 @@ class HHLoginController: UIViewController{
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
-            self.navigationController?.pushViewController(HHTestViewController(), animated: true)
+            self.navigationController?.pushViewController(HHOrderController(), animated: true)
             if errorString == nil {
             }
         })

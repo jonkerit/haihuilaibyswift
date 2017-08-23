@@ -69,7 +69,11 @@ func RGBCOLOR(_ r: Float, _ g: Float, _ b: Float) -> UIColor {
 func RBGCOLOR(_ r: Float, _ g: Float, _ b: Float, _ a: Float) -> UIColor {
     return UIColor(colorLiteralRed: (r/255.0), green: (r/255.0), blue: (r/255.0), alpha: (a))
 }
-// 主图色
+// 主题灰
+func HHGRAYCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (243/255.0), green: (243/255.0), blue: (243/255.0), alpha: (1))
+}
+// 主题色
 func HHMAINCOLOR() -> UIColor {
     return UIColor.init(colorLiteralRed: (92/255.0), green: (194/255.0), blue: (216/255.0), alpha: (1))
 }
@@ -77,12 +81,32 @@ func HHMAINCOLOR() -> UIColor {
 func HHMAINDEEPCOLOR() -> UIColor {
     return UIColor.init(colorLiteralRed: (26/255.0), green: (183/255.0), blue: (205/255.0), alpha: (1))
 }
+//字体颜色-黑体
+func HHWORDCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (74/255.0), green: (74/255.0), blue: (74/255.0), alpha: (1))
+}
+//字体颜色-灰体
+func HHWORDGAYCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (155/255.0), green: (155/255.0), blue: (155/255.0), alpha: (1))
+}
+// 橙红
+func HHMAINREDCOLOR() -> UIColor {
+    return UIColor.init(colorLiteralRed: (237/255.0), green: (78/255.0), blue: (78/255.0), alpha: (1))
+}
+
+
 // 判断网络请求是否返回成功
-func SUCCESSFUL(_ resultString: AnyObject?) -> Bool{
-    return resultString as! String == "0000"
+func SUCCESSFUL(_ dataDic: [String: AnyObject]?) -> Bool{
+    if dataDic == nil {
+        return false
+    }else{
+        return dataDic?["status"] as! String == "0000"
+    }
 }
 // 获取主屏幕
 let HHKeyWindow = UIApplication.shared.keyWindow
+// 获取当前版本号
+let HHEditionVision = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
 // 通知的定义
 let NotificationForCountryNumber = "NotificationForCountryNumber" // 选择国家码通知
 // 沙河存储的key的定义

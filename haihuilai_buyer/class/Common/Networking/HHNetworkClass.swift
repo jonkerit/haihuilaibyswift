@@ -17,9 +17,25 @@ class HHNetworkClass:NSObject {
     ///   - parameter: 参数
     ///   - networkClassData: 结果回调
     func getCountryNumber(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock){
-        HHNetworkTools.shareTools.request(isLogin: false, method: .GET, URLString: "app/countries", parameters: parameter) {(response, error) in
-            if SUCCESSFUL(response?["status"]){
+        HHNetworkTools.shareTools.request(isLogin: false, method: .GET, URLString: "/app/countries", parameters: parameter) {(response, error) in
+            if SUCCESSFUL(response){
                 let dataArray = HHChoiceCountryModel().countryArrays(arrayForDictionary: response!["data"] as! Array<Dictionary<String, Any>>)
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 获取订单列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getOrderList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock){
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "/app/bookings", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHOrderModel().orderArrays(arrayForDictionary: response!["data"] as! [AnyObject])
                 networkClassData(dataArray,nil)
             }else{
                 networkClassData(nil, HHCommon.shareCommon.handleError(response, error))

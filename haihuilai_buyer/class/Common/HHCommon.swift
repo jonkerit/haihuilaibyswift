@@ -49,7 +49,7 @@ class HHCommon: NSObject {
             if is_empty_string(resultString){
                 return "网络未知错误"
             } else {
-                if SUCCESSFUL(resultDictionary?["status"]) {
+                if SUCCESSFUL(resultDictionary) {
                     return nil;
                 } else {
                     // 重新登录

@@ -14,7 +14,15 @@ class HHAccountViewModel: NSObject {
     static let shareAcount = HHAccountViewModel()
 
     
-    var accountModel: HHAccountModel?
+    var accountModel: HHAccountModel?{
+        didSet{
+            if accountModel?.user_type == "CompanySupplier" {
+                isCompanySupplier = true
+            }else{
+                isCompanySupplier = false
+            }
+        }
+    }
     
     var accountToken: String?{
         return accountModel?.user_token
@@ -27,6 +35,8 @@ class HHAccountViewModel: NSObject {
         
         return accountToken != nil
     }
+    var isCompanySupplier: Bool?
+    
     
     override init(){
         super.init()
@@ -36,7 +46,7 @@ class HHAccountViewModel: NSObject {
         HHNetworkTools.shareTools.request(isLogin: false, method: .POST, URLString: urlString, parameters: paramters, networkDataBack: { (response, error) -> Void in
             // 处理返回结果
             if response != nil {
-                if SUCCESSFUL(response?["status"]) {
+                if SUCCESSFUL(response) {
                     self.accountModel = HHAccountModel(dict: response?["data"] as! [String : AnyObject])
                     self.saveUseAccount(response?["data"] as! [String : AnyObject])
                     networkDataBacks(true,nil)

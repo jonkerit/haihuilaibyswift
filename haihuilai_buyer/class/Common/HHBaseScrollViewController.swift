@@ -1,17 +1,19 @@
 //
-//  HHBaseViewController.swift
-//  haihuilaiForSupplier
+//  HHBaseScrollViewController.swift
+//  haihuilai_buyer
 //
-//  Created by jonker on 16/12/8.
-//  Copyright © 2016年 haihuilai. All rights reserved.
+//  Created by jonker on 17/8/22.
+//  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
 import UIKit
-class HHBaseViewController: UIViewController {
+
+class HHBaseScrollViewController: HHBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = HHGRAYCOLOR()
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

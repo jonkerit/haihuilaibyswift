@@ -48,7 +48,11 @@ class HHNetworkTools: AFHTTPSessionManager {
         }
         // 是否含有登陆信息
         if isLogin {
-           
+            let version:String = "Ios_" + (HHEditionVision as! String)
+           parameter.updateValue(HHAccountViewModel.shareAcount.accountEmail as AnyObject, forKey: "user_email")
+           parameter.updateValue(HHAccountViewModel.shareAcount.accountToken as AnyObject, forKey: "user_token")
+           parameter.updateValue(HHAccountViewModel.shareAcount.accountModel?.user_type as AnyObject, forKey: "user_type")
+            parameter.updateValue(version as AnyObject, forKey: "version")
         }
         
         // 1. 成功的回调闭包
