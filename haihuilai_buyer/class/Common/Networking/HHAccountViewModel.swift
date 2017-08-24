@@ -35,7 +35,7 @@ class HHAccountViewModel: NSObject {
         
         return accountToken != nil
     }
-    var isCompanySupplier: Bool?
+    var isCompanySupplier = false
     
     
     override init(){

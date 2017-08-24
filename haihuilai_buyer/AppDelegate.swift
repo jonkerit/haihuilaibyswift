@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //测试修改
 //        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
         
-        window?.rootViewController = nav
+        window?.rootViewController = HHbaseBarController()
         
         window?.makeKeyAndVisible()
         return true

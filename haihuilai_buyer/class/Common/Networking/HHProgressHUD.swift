@@ -72,9 +72,9 @@ class HHProgressHUD: NSObject {
     ///   - animated: 是否有动画
     ///   - isImage: 是否有图片
     ///   - isHidden: 提示是否消失
-    func showHUDAddedTo(title: String?, isImage: Bool, isHidden: Bool, boardView: UIView?, animated:Bool){
+    func showHUDAddedTo(title: String?, isImage: Bool, isDisappear: Bool, boardView: UIView?, animated:Bool){
         showHUDAddedTo(title: title, isImage: isImage, boardView: boardView, animated: animated)
-        if isHidden {
+        if isDisappear {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+DispatchTimeInterval.seconds(1)) {
                 self.hideHUDForView(boardView: boardView, animated: animated)
             }

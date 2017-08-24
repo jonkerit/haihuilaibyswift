@@ -13,6 +13,8 @@ class HHBaseTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        view.backgroundColor = UIColor.white
+        tableView.showsVerticalScrollIndicator = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -5,19 +5,23 @@
 //  Created by jonker on 17/8/22.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
-
+@objc protocol HHOrderTableViewDelegate:class{
+    @objc optional func openOrderTableView(bookingId:String?)
+}
 import UIKit
-
+import MJRefresh
 class HHOrderTableView: UIView {
     
-    var listType: String?
-    var dataArray: [HHOrderModel]?
+    weak var orderTableViewDelegate: HHOrderTableViewDelegate? // 代理
+    var listType: String? // 列表类型
+    var dataArray: [HHOrderModel]? // 数据组
+    var pagNum: Int = 2 // 分页页码
+    
     init(type: String?, frame: CGRect?) {
         super.init(frame: frame!)
         listType = type
         tableView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height:self.frame.size.height)
         addSubview(tableView)
-        requireData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,16 +29,35 @@ class HHOrderTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func requireData() {
+   @objc func requireDataForHeader() {
         HHNetworkClass().getOrderList(parameter: ["status":self.listType as AnyObject,"page":"1" as AnyObject]) { (response, errorSting) in
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.resetNoMoreData()
             if response != nil{
                 self.dataArray = response as! [HHOrderModel]?
                 self.tableView.reloadData()
             }else{
-                HHProgressHUD().showHUDAddedTo(title: errorSting, isImage: false, isHidden: true, boardView: HHKeyWindow, animated: true)
+                HHProgressHUD().showHUDAddedTo(title: errorSting, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             }
         }
     }
+    @objc func requireDataForfooter() {
+        HHNetworkClass().getOrderList(parameter: ["status":self.listType as AnyObject,"page":pagNum as AnyObject]) { (response, errorSting) in
+            self.tableView.mj_footer.endRefreshing()
+            if response != nil{
+                if (response?.count)! > 0 {
+                    self.dataArray =  self.dataArray! + (response as? [HHOrderModel])!
+                    self.tableView.reloadData()
+                    self.pagNum += 1
+                }else{
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                }
+            }else{
+                HHProgressHUD().showHUDAddedTo(title: errorSting, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            }
+        }
+    }
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.tableFooterView = UIView()
@@ -43,11 +66,19 @@ class HHOrderTableView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = HHGRAYCOLOR()
         tableView.register(UINib.init(nibName: "HHOrderCell", bundle: nil), forCellReuseIdentifier: "HHOrderCell")
+        let header = MJRefreshNormalHeader()
+        let footer = MJRefreshBackNormalFooter()
+        header.setRefreshingTarget(self, refreshingAction: #selector(HHOrderTableView.requireDataForHeader))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(HHOrderTableView.requireDataForfooter))
+        tableView.mj_header = header
+        tableView.mj_footer = footer
+        header.beginRefreshing()
         return tableView
     }()
 }
 
 extension HHOrderTableView: UITableViewDelegate, UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -60,6 +91,10 @@ extension HHOrderTableView: UITableViewDelegate, UITableViewDataSource{
         orderCell.selectionStyle = .none
         orderCell.listType = listType
         orderCell.orderModel = dataArray?[indexPath.row]
+        // 预加载数据
+        if indexPath.row + 3 ==  dataArray?.count{
+            requireDataForfooter()
+        }
         return orderCell
     }
     
@@ -82,6 +117,14 @@ extension HHOrderTableView: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if self.orderTableViewDelegate != nil {
+            let bookingID = dataArray?[indexPath.row].booking_id
+            if !is_empty_string(bookingID) {
+                self.orderTableViewDelegate?.openOrderTableView!(bookingId: bookingID)
+            }else{
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "订单号不存在", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            }
+        }
     }
 
 }

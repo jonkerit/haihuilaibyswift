@@ -16,7 +16,7 @@ class HHChoiceCuntryController: HHBaseTableViewController {
         
         
         // 请求数据
-        HHProgressHUD.shareTool.showHUDAddedTo(title: "网络加载中...", isImage: true, isHidden: false, boardView: HHKeyWindow, animated: true)
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "网络加载中...", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
         HHNetworkClass().getCountryNumber(parameter: nil) {[weak self] (dataArray, error) in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             self?.dataArray = dataArray as! [HHChoiceCountryModel]

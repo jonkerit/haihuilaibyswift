@@ -54,22 +54,18 @@ class HHOrderController: HHBaseScrollViewController {
     }
     private func dealBlock(){
         headView.orderHeadViewBlocks = {[weak self](_ btnTag: Int?) -> Void in
+            // 消息按钮
             if btnTag == 3 {
+                print("消息按钮")
                 return
             }
+            // 搜索按钮
             if btnTag == 4 {
+                print("搜索按钮")
                 return
             }
+            // 标签按钮的选择逻辑
             self?.selectedBtn?.setTitleColor(UIColor.white, for: .normal)
-            if btnTag == 0 {
-                self?.headView.servingBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            }
-            if btnTag == 1 {
-                self?.headView.unBeginBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            }
-            if btnTag == 2 {
-                self?.headView.finishedBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            }
             self?.scrollViewList.contentOffset = CGPoint(x:SCREEN_WIDTH * CGFloat(btnTag!), y:0)
             self?.locaedNum = btnTag!
         }
@@ -87,16 +83,17 @@ class HHOrderController: HHBaseScrollViewController {
         }
     }
     func setTableView() {
-//        var i: Int = 0
-//        for type in self.typeArray{
-//            let tableView = HHOrderTableView.init(type: type, frame: CGRect(x: SCREEN_WIDTH * CGFloat(i), y: 0, width: SCREEN_WIDTH, height:self.view.frame.size.height-100))
-//            tableViewArray?.append(tableView)
-//            i += 1
-//            scrollViewList.addSubview(tableView)
-//        }
-        let tableView = HHOrderTableView.init(type: typeArray[locaedNum], frame: CGRect(x: SCREEN_WIDTH * CGFloat(locaedNum), y: 0, width: SCREEN_WIDTH, height:self.view.frame.size.height-100))
-        scrollViewList.addSubview(tableView)
-        tableViewArray?[locaedNum] = tableView
+        var i: Int = 0
+        for type in self.typeArray{
+            let tableView = HHOrderTableView.init(type: type, frame: CGRect(x: SCREEN_WIDTH * CGFloat(i), y: 0, width: SCREEN_WIDTH, height:self.view.frame.size.height-100))
+            tableView.orderTableViewDelegate = self
+            tableViewArray?.append(tableView)
+            i += 1
+            scrollViewList.addSubview(tableView)
+        }
+//        let tableView = HHOrderTableView.init(type: typeArray[locaedNum], frame: CGRect(x: SCREEN_WIDTH * CGFloat(locaedNum), y: 0, width: SCREEN_WIDTH, height:self.view.frame.size.height-100))
+//        scrollViewList.addSubview(tableView)
+//        tableViewArray?[locaedNum] = tableView
         
     }
 
@@ -135,24 +132,16 @@ extension HHOrderController: UIScrollViewDelegate{
         let num:CGFloat = (scrollView.contentOffset.x/SCREEN_WIDTH) * (SCREEN_WIDTH/3)
         let i:Int = Int(scrollView.contentOffset.x/SCREEN_WIDTH+0.5)
         selectedBtn?.setTitleColor(UIColor.white, for: .normal)
-        switch i {
-        case 0:
-            headView.servingBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            break
-        case 1:
-            headView.unBeginBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            break
-        case 2:
-            headView.finishedBtn.setTitleColor(HHMAINDEEPCOLOR(), for: .normal)
-            break
-        default:
-            break
-        }
         headView.movingBtn.mas_updateConstraints {(make) in
             make!.left.equalTo()(self.headView)?.setOffset((SCREEN_WIDTH/3-70)/2 + num)
         }
         locaedNum = i
     }
-
+}
+extension HHOrderController:HHOrderTableViewDelegate{
+    func openOrderTableView(bookingId: String?) {
+        print((bookingId)!)
+    }
+    
 
 }

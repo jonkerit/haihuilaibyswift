@@ -18,6 +18,11 @@
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
 		9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */; };
+		9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */; };
+		9B2E35E61F4E7D48008E7BAC /* HHMotorcadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */; };
+		9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */; };
+		9B2E35EA1F4E7E03008E7BAC /* HHHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E91F4E7E03008E7BAC /* HHHomeController.swift */; };
+		9B2E35EC1F4E7E2E008E7BAC /* HHIndividualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35EB1F4E7E2E008E7BAC /* HHIndividualController.swift */; };
 		9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA011F3AEC5B00461B4F /* HHLogInView.swift */; };
 		9B33CA041F3AED8600461B4F /* HHLogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B33CA031F3AED8600461B4F /* HHLogInView.xib */; };
 		9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */; };
@@ -49,6 +54,9 @@
 		9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */; };
 		9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF9C4E91DF993E00065D9F7 /* HHLoginController.swift */; };
 		9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA7AD71E02DC52005D6D3F /* HeaderFile.swift */; };
+		9BFF8FB81F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FB71F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift */; };
+		9BFF8FBA1F4EB196002AF33B /* HHMotorcadeSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FB91F4EB196002AF33B /* HHMotorcadeSecondCell.swift */; };
+		9BFF8FBC1F4EC9FD002AF33B /* HHMotorcadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FBB1F4EC9FD002AF33B /* HHMotorcadeModel.swift */; };
 		EBB21E850E374082ACBE04B7 /* Pods_haihuilai_buyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BA5D718C7BAC88A1E4EEA5 /* Pods_haihuilai_buyer.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +74,11 @@
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
 		9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HHAccountViewModel.swift; path = haihuilai_buyer/class/Common/Networking/HHAccountViewModel.swift; sourceTree = SOURCE_ROOT; };
 		9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAccountModel.swift; sourceTree = "<group>"; };
+		9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHbaseBarController.swift; sourceTree = "<group>"; };
+		9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeController.swift; sourceTree = "<group>"; };
+		9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCalendarController.swift; sourceTree = "<group>"; };
+		9B2E35E91F4E7E03008E7BAC /* HHHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHHomeController.swift; sourceTree = "<group>"; };
+		9B2E35EB1F4E7E2E008E7BAC /* HHIndividualController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHIndividualController.swift; sourceTree = "<group>"; };
 		9B33CA011F3AEC5B00461B4F /* HHLogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLogInView.swift; sourceTree = "<group>"; };
 		9B33CA031F3AED8600461B4F /* HHLogInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHLogInView.xib; sourceTree = "<group>"; };
 		9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLoadNibDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +112,9 @@
 		9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNavigationController.swift; sourceTree = "<group>"; };
 		9BF9C4E91DF993E00065D9F7 /* HHLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLoginController.swift; sourceTree = "<group>"; };
 		9BFA7AD71E02DC52005D6D3F /* HeaderFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderFile.swift; sourceTree = "<group>"; };
+		9BFF8FB71F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeFirstCell.swift; sourceTree = "<group>"; };
+		9BFF8FB91F4EB196002AF33B /* HHMotorcadeSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeSecondCell.swift; sourceTree = "<group>"; };
+		9BFF8FBB1F4EC9FD002AF33B /* HHMotorcadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeModel.swift; sourceTree = "<group>"; };
 		BC6128481E1D396E3399B6D5 /* Pods-haihuilai_buyer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.debug.xcconfig"; sourceTree = "<group>"; };
 		DDDAECBC33DF554AF2EF511B /* Pods-haihuilai_buyer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.release.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +231,7 @@
 		9B4F76511F4BC61A00EDDC03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E35E91F4E7E03008E7BAC /* HHHomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,6 +263,7 @@
 		9B4F76551F4BC61A00EDDC03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E35EB1F4E7E2E008E7BAC /* HHIndividualController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 		9B4F76591F4BC67E00EDDC03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +303,7 @@
 		9B4F765A1F4BC67E00EDDC03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9BFF8FBB1F4EC9FD002AF33B /* HHMotorcadeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +311,8 @@
 		9B4F765B1F4BC67E00EDDC03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9BFF8FB71F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift */,
+				9BFF8FB91F4EB196002AF33B /* HHMotorcadeSecondCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +330,7 @@
 		9B4F765D1F4BC68700EDDC03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -378,6 +401,7 @@
 				9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */,
 				9B33CA051F3B054A00461B4F /* HHLoadNibDelegate.swift */,
 				9BF9C4E21DF993E00065D9F7 /* HHNavigationController.swift */,
+				9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */,
 				9BF9C4E01DF993E00065D9F7 /* HHBaseTableViewController.swift */,
 				9BF9C4E11DF993E00065D9F7 /* HHBaseViewController.swift */,
 				9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */,
@@ -479,7 +503,7 @@
 				TargetAttributes = {
 					9BF9C4C81DF9934F0065D9F7 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4GL3X7VCT2;
+						DevelopmentTeam = 9N33P6WHUJ;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -571,8 +595,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFF8FB81F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift in Sources */,
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
 				9B4F76681F4C00DE00EDDC03 /* HHOrderCell.swift in Sources */,
+				9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
 				9B4F76631F4BCDF900EDDC03 /* HHOrderController.swift in Sources */,
@@ -586,6 +612,7 @@
 				9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */,
 				9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */,
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
+				9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */,
 				9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */,
 				9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */,
 				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
@@ -594,10 +621,13 @@
 				9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */,
 				9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */,
 				9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */,
+				9B2E35EA1F4E7E03008E7BAC /* HHHomeController.swift in Sources */,
 				9B4F76651F4BD81000EDDC03 /* HHOrderHeadView.swift in Sources */,
 				9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */,
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
+				9B2E35EC1F4E7E2E008E7BAC /* HHIndividualController.swift in Sources */,
+				9BFF8FBA1F4EB196002AF33B /* HHMotorcadeSecondCell.swift in Sources */,
 				9B0BCDA61DFFA5EB0087FC35 /* UIBarButtonItem+Extension.swift in Sources */,
 				28AADECD1F456FDA0024D4E3 /* HHChoiceView.swift in Sources */,
 				9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */,
@@ -605,9 +635,11 @@
 				28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */,
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
 				9B4F766D1F4C13CB00EDDC03 /* HHOrderModel.swift in Sources */,
+				9BFF8FBC1F4EC9FD002AF33B /* HHMotorcadeModel.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
 				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,
 				9B0BCDA01DFF9D4F0087FC35 /* UIButton+Extension.swift in Sources */,
+				9B2E35E61F4E7D48008E7BAC /* HHMotorcadeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,7 +760,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4GL3X7VCT2;
+				DEVELOPMENT_TEAM = 9N33P6WHUJ;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -749,7 +781,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4GL3X7VCT2;
+				DEVELOPMENT_TEAM = 9N33P6WHUJ;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

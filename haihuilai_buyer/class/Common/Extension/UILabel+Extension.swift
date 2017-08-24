@@ -9,10 +9,10 @@
 import UIKit
 
 extension UILabel {
-    convenience init(title: String, color: UIColor, fontSize: CGFloat, alignment:NSTextAlignment) {
+    convenience init(title: String, fontColor: UIColor, fontSize: CGFloat, alignment:NSTextAlignment) {
         self.init()
         text = title
-        textColor = color
+        textColor = fontColor
         if fontSize > 0 {
             font = UIFont.systemFont(ofSize: fontSize)
         }

@@ -64,10 +64,10 @@ func is_empty_array(_ array: [AnyObject]?) -> Bool {
 }
 // 
 func RGBCOLOR(_ r: Float, _ g: Float, _ b: Float) -> UIColor {
-    return UIColor.init(colorLiteralRed: (r/255.0), green: (r/255.0), blue: (r/255.0), alpha: (1))
+    return UIColor.init(colorLiteralRed: (r/255.0), green: (g/255.0), blue: (b/255.0), alpha: (1))
 }
 func RBGCOLOR(_ r: Float, _ g: Float, _ b: Float, _ a: Float) -> UIColor {
-    return UIColor(colorLiteralRed: (r/255.0), green: (r/255.0), blue: (r/255.0), alpha: (a))
+    return UIColor.init(colorLiteralRed: (r/255.0), green: (g/255.0), blue: (b/255.0), alpha: (a))
 }
 // 主题灰
 func HHGRAYCOLOR() -> UIColor {

@@ -43,4 +43,19 @@ class HHNetworkClass:NSObject {
         }
     }
     
+    /// 获取导游列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getDriverList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/driver_suppliers", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHMotorcadeModel().driverList(arrayForDictionary: response!["data"] as! [AnyObject] as! Array<Dictionary<String, Any>>)
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 }
