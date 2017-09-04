@@ -74,6 +74,7 @@ extension HHMotorcadeController{
                 cell = HHMotorcadeFirstCell.init(style: .default, reuseIdentifier: "HHMotorcadeFirstCell")
             }
             cell?.selectionStyle = .none
+            cell?.lineLabel.isHidden = true
             return cell!
         } else {
             var cell:HHMotorcadeSecondCell? = tableView.dequeueReusableCell(withIdentifier: "HHMotorcadeSecondCell") as? HHMotorcadeSecondCell
@@ -83,9 +84,11 @@ extension HHMotorcadeController{
             if indexPath.section == 1 {
                 cell?.detailLabel.isHidden = true
                 cell?.nameLabel.text = "临时导游"
+                cell?.lineLabel.isHidden = true
             }else{
                 cell?.detailLabel.isHidden = false
                 cell?.model = motorcadeDataArray?[indexPath.row]
+                cell?.lineLabel.isHidden = false
             }
             
             return cell!
