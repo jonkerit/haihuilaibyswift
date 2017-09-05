@@ -37,7 +37,7 @@ class HHOrderTableView: UIView {
                 self.dataArray = response as! [HHOrderModel]?
                 self.tableView.reloadData()
             }else{
-                HHProgressHUD().showHUDAddedTo(title: errorSting, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+//                HHProgressHUD().showHUDAddedTo(title: errorSting, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             }
         }
     }

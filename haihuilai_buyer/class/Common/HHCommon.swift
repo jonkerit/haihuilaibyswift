@@ -75,4 +75,22 @@ class HHCommon: NSObject {
         }
     }
     
+    
+    /// 获取字符串的尺寸
+    ///
+    /// - Parameters:
+    ///   - inputString: 目标字符串
+    ///   - fontSize: 字符串的字体大小
+    ///   - MAXSize: 最大宽度
+    /// - Returns: 返回尺寸
+    func obtainStringLength(_ inputString: String?, _ fontSize: CGFloat, _ MAXSize:CGSize) -> CGSize {
+        if is_empty_string(inputString) {
+            return CGSize(width: 0,height: 0)
+        } else {
+            let StringRect = inputString?.boundingRect(with: MAXSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)], context:nil)
+            return StringRect!.size
+        }
+    }
+    
+    
 }

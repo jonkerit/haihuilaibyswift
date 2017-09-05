@@ -7,6 +7,8 @@
 //
 
 typealias HHResultBlock = (_ dataArray:Array<Any>?, _ errorString:String?)->()
+typealias HHResultDataBack = (_ response: [String:AnyObject]?, _ errorString:String?) -> ()
+
 import UIKit
 
 class HHNetworkClass:NSObject {
@@ -74,4 +76,68 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    
+    /// 获取审核状态
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getReviewStatus(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/suppliers/review_status", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response, nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 获取个人信息（粗略）
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getIndividualInfo(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/user_info", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response, nil)
+                // 存储
+            }else{
+                // 取出存储数据
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 获取消息中心是否有未读消息
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getNotificationsAll_read(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/notifications/all_read", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response, nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
+    /// 获取消息中心是否有未读消息
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getInfoViewList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/info_complete_rate", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response, nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
+
 }
