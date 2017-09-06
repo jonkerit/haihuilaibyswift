@@ -13,6 +13,7 @@ class HHAccountViewModel: NSObject {
     // 创建一个单利
     static let shareAcount = HHAccountViewModel()
 
+    var noticeImageName = "top_notice"
     
     var accountModel: HHAccountModel?{
         didSet{

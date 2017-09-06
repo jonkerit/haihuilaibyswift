@@ -5,14 +5,18 @@
 //  Created by jonker on 17/9/4.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
+//@objc protocol HHIndividualDelegate:class{
+//    @objc optional func openInfoView(tag:Int?)
+//}
+
 @objc protocol HHIndividualDelegate:class{
-    @objc optional func openInfoView(bookingId:String?)
+    @objc optional func openInfoView(openId:IndexPath?)
 }
 import UIKit
 
 class HHInfoView: UIView {
     weak var individualDelegate: HHIndividualDelegate? // 代理
-    var dataArray: [Any]?
+    var dataDict: [String: AnyObject]?
     var rate: CGFloat?{
         didSet{
             rateLabel.text = "信息完整度 " + String(describing: rate)
@@ -32,11 +36,12 @@ class HHInfoView: UIView {
     }
     
    
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = HHGRAYCOLOR()
         tableView.register(HHInfoCell.self, forCellReuseIdentifier: "HHInfoCell")
@@ -68,7 +73,13 @@ class HHInfoView: UIView {
             return ["GRZX-cdrz","GRZX-gzmx"]
         }
     }()
-
+    fileprivate lazy var detailArray:[String] = {
+        if HHAccountViewModel.shareAcount.isCompanySupplier{
+            return ["car_rate","service_rate","certify_rate","plus_rate"]
+        }else{
+            return ["certify_rate","car_rate"]
+        }
+    }()
 }
 
 extension HHInfoView: UITableViewDelegate, UITableViewDataSource{
@@ -89,13 +100,22 @@ extension HHInfoView: UITableViewDelegate, UITableViewDataSource{
         infoCell.selectionStyle = .none
         infoCell.headerImageView.image = UIImage(named: imageNameArray[indexPath.row])
         infoCell.titleLabel.text = titleNameArray[indexPath.row]
-       
+        let key = detailArray[indexPath.row] as String
+        infoCell.detailLabel.isHidden = ((dataDict?[key]) != nil )
         return infoCell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.white
+        let vuale = dataDict?["total_rate"]?.floatValue
+        if (vuale != nil) {
+            rateLabel.text = "信息完整度 " + (String(vuale!*100)) + "%"
+            rateimage.progress = vuale!
+        } else {
+            rateLabel.text = "信息完整度 0.0%"
+            rateimage.progress = 0.0
+        }
         view.addSubview(rateLabel)
         view.addSubview(rateimage)
         rateLabel.mas_makeConstraints { (make) in
@@ -118,6 +138,9 @@ extension HHInfoView: UITableViewDelegate, UITableViewDataSource{
         return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if individualDelegate != nil {
+            self.individualDelegate?.openInfoView!(openId: indexPath)
+        }
     }
     
 }

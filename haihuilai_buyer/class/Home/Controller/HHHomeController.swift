@@ -31,8 +31,18 @@ class HHHomeController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = HHGRAYCOLOR()
+        navigationItem.title = "全球合伙人"
         collectionView?.register(HHHomeCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         setRedPoint()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshNewsButton()
+    }
+    /// 给标签赋值
+    private func refreshNewsButton(){
+        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHHomeController.openNewCenter))
+        navigationItem.leftBarButtonItem = barItem
     }
     
     private func setRedPoint(){
@@ -46,6 +56,11 @@ class HHHomeController: UICollectionViewController {
                 HHProgressHUD().showHUDAddedTo(title: "加载失败", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             }
         }
+    }
+    /// @objc方法
+    @objc private func openNewCenter(){
+        print("进消息中心")
+        
     }
 }
 

@@ -124,7 +124,7 @@ class HHNetworkClass:NSObject {
         }
     }
 
-    /// 获取消息中心是否有未读消息
+    /// 获取个人信息完整度情况
     ///
     /// - Parameters:
     ///   - parameter: 参数

@@ -15,14 +15,38 @@ class HHMotorcadeController: HHBaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "车队"
         tableView.register(NSClassFromString("HHMotorcadeFirstCell"), forCellReuseIdentifier: "HHMotorcadeFirstCell")
         tableView.register(NSClassFromString("HHMotorcadeSecondCell"), forCellReuseIdentifier: "HHMotorcadeSecondCell")
         let header = MJRefreshNormalHeader()
         header.setRefreshingTarget(self, refreshingAction: #selector(HHMotorcadeController.updata))
         header.beginRefreshing()
         tableView.mj_header = header
+        setRightBar()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshNewsButton()
+    }
+    /// 给标签赋值
+    private func refreshNewsButton(){
+        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHMotorcadeController.openNewCenter))
+        navigationItem.leftBarButtonItem = barItem
+    }
+    private func setRightBar(){
+        let barItem:UIBarButtonItem = UIBarButtonItem.init(title: "", imageName: "top_add", target: self, action: #selector(HHMotorcadeController.invite))
+        navigationItem.rightBarButtonItem = barItem
+        
     }
     
+    /// @objc方法
+    @objc private func openNewCenter(){
+        print("进消息中心")
+        
+    }
+    @objc private func invite(){
+        print("添加好友")
+    }
     @objc private func updata(){
         HHNetworkClass().getDriverList(parameter: nil) { (response, errorSting) in
             self.tableView.mj_header.endRefreshing()

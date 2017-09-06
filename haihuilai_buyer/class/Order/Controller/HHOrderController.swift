@@ -40,18 +40,42 @@ class HHOrderController: HHBaseScrollViewController {
         // 默认选择的按钮
         locaedNum = 0
         setUI()
+        //  处理block
         dealBlock()
+        //  添加tableView
         setTableView()
-
+        // 更新消息按钮的状态
+        updataNoticeStatus()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        refreshNewsButton()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    private func updataNoticeStatus(){
+        HHNetworkClass().getNotificationsAll_read(parameter: nil, networkClassData: { (response, errorString) in
+            print("写消息按钮")
+            if SUCCESSFUL(response){
+                var imageName: String?
+                if (response?["data"]?.boolValue)!{
+                    imageName = "top_notice_new"
+                }else{
+                    imageName = "top_notice"
+                }
+                HHAccountViewModel.shareAcount.noticeImageName = imageName!
+                self.refreshNewsButton()
+            }
+        })
+    }
+    // 设置消息按钮的状态
+    private func refreshNewsButton(){
+        headView.newsBtn.setImage(UIImage(named: HHAccountViewModel.shareAcount.noticeImageName), for: .normal)
+    }
+    //  处理block
     private func dealBlock(){
         headView.orderHeadViewBlocks = {[weak self](_ btnTag: Int?) -> Void in
             // 消息按钮

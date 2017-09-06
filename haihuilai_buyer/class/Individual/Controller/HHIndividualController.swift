@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import MJRefresh
 
 class HHIndividualController: HHBaseViewController {
+    // 背景的view
+    fileprivate var backViews: UIView?
+    // 信息的字典
+    fileprivate var infoDict: [String: AnyObject]?
     // 提示字符串的高度
-    var stringHeight: CGFloat?
+    fileprivate var stringHeight: CGFloat?
     // 提示字符串的内容
-    var warmString: String?{
+    fileprivate var warmString: String?{
         didSet{
+            warmLabel.text = warmString
             let height = HHCommon.shareCommon.obtainStringLength(warmString, 14, CGSize(width: SCREEN_WIDTH - 30,height:CGFloat(Int.max))).height
             if height == 0 {
                 stringHeight = 0
@@ -21,21 +27,53 @@ class HHIndividualController: HHBaseViewController {
                 stringHeight = HHCommon.shareCommon.obtainStringLength(warmString, 14, CGSize(width: SCREEN_WIDTH - 30,height:CGFloat(Int.max))).height + 26
             }
         }
+        
+    }
+    // 审核状态记录
+    fileprivate var status: String = "inactive"{
+        didSet{
+            switch status {
+            case "pending_review":
+                warmString = "账号正在排队审核中，因近期注册人数较多，审核时间较慢，如填写了下方的资料信息，可提高审核速度。"
+                break
+            case "reviewed":
+                 warmString = nil
+                break
+            case "refused":
+                 warmString = "审核不通过"
+                break
+            case "inactive":
+                 warmString = "未激活"
+                break
+            default:
+                break
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = HHGRAYCOLOR()
-        warmString = "说来的地洒了很久了多哈健康监控力度撒回家了回家的卡萨和蝴蝶结阿克苏 打火机卡号多久啊了很久后的撒娇哭会对哈手机客户端撒娇哭的哈萨克领导喝酒啊好多拉黑就多哈健康"
+        warmString = "账号正在排队审核中，因近期注册人数较多，审核时间较慢，如填写了下方的资料信息，可提高审核速度。"
         setUI()
+        setRightBar()
         updata()
     }
+    private func setRightBar(){
+        navigationItem.title = "个人中心"
+        let barItem:UIBarButtonItem = UIBarButtonItem.init(title: "", imageName: "GRZX-cl", target: self, action: #selector(HHIndividualController.setting))
+        navigationItem.rightBarButtonItem = barItem
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshNewsButton()
+    }
+   
     private func setUI(){
         let backView = UIView()
-        let scrollowView = UIScrollView()
-        scrollowView.showsVerticalScrollIndicator = false
-        let NameView = UIView()
-        NameView.backgroundColor = UIColor.white
+        backViews = backView
         let teamView = UIView()
         teamView.backgroundColor = UIColor.white
         
@@ -45,7 +83,7 @@ class HHIndividualController: HHBaseViewController {
             make!.edges.equalTo()(self.view)
         }
         backView.mas_makeConstraints { (make) in
-            make!.edges.equalTo()(scrollowView)
+            make!.edges.equalTo()(self.scrollowView)
             make!.width.equalTo()(SCREEN_WIDTH)
         }
         
@@ -69,7 +107,7 @@ class HHIndividualController: HHBaseViewController {
             make!.size.mas_equalTo()(CGSize(width:SCREEN_WIDTH,height:60))
         }
         teamView.mas_makeConstraints { (make) in
-            make?.top.equalTo()(NameView.mas_bottom)?.setOffset(10)
+            make?.top.equalTo()(self.NameView.mas_bottom)?.setOffset(10)
             make!.left.equalTo()(backView)
             make!.size.mas_equalTo()(CGSize(width:SCREEN_WIDTH,height:60))
         }
@@ -78,16 +116,16 @@ class HHIndividualController: HHBaseViewController {
         let imageView1 = UIImageView.init(image: UIImage(named: "DL-jt"))
         NameView.addSubview(imageView1)
         nameLabel.mas_makeConstraints { (make) in
-            make!.left.equalTo()(NameView)?.setOffset(15)
-            make!.centerY.equalTo()(NameView)
+            make!.left.equalTo()(self.NameView)?.setOffset(15)
+            make!.centerY.equalTo()(self.NameView)
         }
         imageView1.mas_makeConstraints { (make) in
-            make!.right.equalTo()(NameView)?.setOffset(-15)
-            make!.centerY.equalTo()(NameView)
+            make!.right.equalTo()(self.NameView)?.setOffset(-15)
+            make!.centerY.equalTo()(self.NameView)
         }
         phoneNumberLabel.mas_makeConstraints { (make) in
             make!.right.equalTo()(imageView1.mas_left)?.setOffset(-10)
-            make!.centerY.equalTo()(NameView)
+            make!.centerY.equalTo()(self.NameView)
         }
         
         let label = UILabel.init(title: "车队", fontColor: HHWORDCOLOR(), fontSize: 16, alignment: .left)
@@ -120,39 +158,109 @@ class HHIndividualController: HHBaseViewController {
             })
         }
     }
+    /// @objc方法
+    @objc private func openNewCenter(){
+        print("进消息中心")
+
+    }
     
-    //  数据处理
-    private func updata(){
+    @objc private func setting(){
+        print("设置")
+    }
+    ///  数据处理
+    @objc private func updata(){
         HHProgressHUD.shareTool.showHUDAddedTo(title: nil, isImage: true, boardView: HHKeyWindow, animated: true)
-        //获取系统存在的全局队列
-        let queue = DispatchQueue.global(qos: .default)
-        //定义一个group
         let group = DispatchGroup()
-        //并发任务，顺序执行
-        queue.async(group: group) {
-            HHNetworkClass().getReviewStatus(parameter: nil, networkClassData: { (response, errorString) in
-                print("getReviewStatus")
-                
-            })
+        group.enter()
+        HHNetworkClass().getReviewStatus(parameter: nil, networkClassData: { (response, errorString) in
+            self.dealReviewStatusResult(result: response)
+            group.leave()
+        })
+        group.enter()
+
+        HHNetworkClass().getIndividualInfo(parameter: nil, networkClassData: { (response, errorString) in
+            print("getIndividualInfo")
+            self.dealIndividualInfoResult(result: response)
+            group.leave()
+        })
+        group.enter()
+
+        HHNetworkClass().getInfoViewList(parameter: nil, networkClassData: { (response, errorString) in
+            print("getInfoViewList")
+            self.dealInfoViewListResult(result: response)
+            group.leave()
+
+        })
+        
+        group.notify(queue: DispatchQueue.main) { 
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            self.scrollowView.mj_header.endRefreshing()
+            print("出来了哦")
+
         }
-        queue.async(group: group) {
-            HHNetworkClass().getIndividualInfo(parameter: nil, networkClassData: { (response, errorString) in
-                print("getIndividualInfo")
-                
+    }
+    
+    private func dealReviewStatusResult(result: [String: AnyObject]?){
+        if SUCCESSFUL(result) {
+            status = result?["data"]?["review_status"] as! String
+            NameView.mas_updateConstraints({ (make) in
+                make?.top.equalTo()(self.backViews)?.setOffset(self.stringHeight!)
             })
-        }
-        queue.async(group: group) {
-            
-            HHNetworkClass().getInfoViewList(parameter: nil, networkClassData: { (response, errorString) in
-                print("getInfoViewList")
-            })
+            // 存储审核状态
+            UserDefaults.standard.set(status, forKey: CHECK_STATUS_KEY)
+        } else {
+            // 取出审核状态
+            status = (UserDefaults.standard.object(forKey: CHECK_STATUS_KEY) as! String? ?? "")!
         }
         
-        //1,所有任务执行结束汇总，不阻塞当前线程
-        group.notify(queue: .global(), execute: {
-            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
-        })
+        // 获取信息中心是否有未读消息
+        if status != "reviewed" {
+            HHNetworkClass().getNotificationsAll_read(parameter: nil, networkClassData: { (response, errorString) in
+                print("写消息按钮")
+                if SUCCESSFUL(response){
+                    var imageName: String?
+                    if (response?["data"]?.boolValue)!{
+                        imageName = "top_notice_new"
+                    }else{
+                        imageName = "top_notice"
+                    }
+                    HHAccountViewModel.shareAcount.noticeImageName = imageName!
+                    self.refreshNewsButton()
+                }
+            })
+        }
     }
+    private func dealIndividualInfoResult(result: [String: AnyObject]?){
+        if SUCCESSFUL(result) {
+            infoDict = result?["data"] as! [String : AnyObject]?
+            UserDefaults.standard.set(result?["data"], forKey: INDIVIDUAL_KEY)
+        }else{
+            infoDict = UserDefaults.standard.object(forKey: INDIVIDUAL_KEY) as! [String : AnyObject]?
+        }
+        setIndividualVaule(infoDict: infoDict)
+    }
+    private func dealInfoViewListResult(result: [String: AnyObject]?){
+        if SUCCESSFUL(result) {
+            infoView.dataDict = result?["data"] as! [String : AnyObject]?
+            infoView.tableView.reloadData()
+        }
+    }
+    
+    /// 给标签赋值
+    private func setIndividualVaule(infoDict: [String: AnyObject]?){
+        nameLabel.text = infoDict?["name"] as! String?
+        phoneNumberLabel.text = infoDict?["mobile"] as! String?
+        teamNunberLabel.text = "车队ID " + (infoDict?["team_id"] as! String)
+        teamNameLabel.text = infoDict?["team_name"] as! String?
+    }
+    
+    
+    /// 给标签赋值
+    private func refreshNewsButton(){
+        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHIndividualController.openNewCenter))
+        navigationItem.leftBarButtonItem = barItem
+    }
+    
     
     private lazy var warmLabel: UILabel = {
         let label = UILabel.init(title: "话", fontColor: RGBCOLOR(237, 78, 78), fontSize: 14, alignment: .left)
@@ -177,10 +285,11 @@ class HHIndividualController: HHBaseViewController {
         let label = UILabel.init(title: "车队ID 2333", fontColor: HHWORDGAYCOLOR(), fontSize: 12, alignment: .left)
         return label
     }()
-    private lazy var infoView: UIView = {
+    private lazy var infoView: HHInfoView = {
         let infoView = HHInfoView.init(frame: CGRect.zero)
         infoView.layer.cornerRadius = 4
         infoView.layer.masksToBounds = true
+        infoView.individualDelegate = self
         return infoView
     }()
     private lazy var incomeView: UIView = {
@@ -205,5 +314,25 @@ class HHIndividualController: HHBaseViewController {
         let imageView = UIImageView.init(image: UIImage(named: "DL-jt"))
         return imageView
     }()
+    private lazy var NameView:UIView = {
+        let NameView = UIView()
+        NameView.backgroundColor = UIColor.white
+        return NameView
+    }()
+    private lazy var scrollowView:UIScrollView = {
+        let scrollowView = UIScrollView()
+        scrollowView.showsVerticalScrollIndicator = false
+        let header = MJRefreshNormalHeader()
+        header.setRefreshingTarget(self, refreshingAction: #selector(HHIndividualController.updata))
+        scrollowView.mj_header = header
+        return scrollowView
+    }()
+   
 }
 
+extension HHIndividualController: HHIndividualDelegate{
+    func openInfoView(openId: IndexPath?) {
+        print(openId?.row)
+    }
+
+}

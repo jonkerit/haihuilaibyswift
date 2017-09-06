@@ -23,14 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置navbar和tabBar的颜色
         setUIAppearance()
-        let nav = HHNavigationController(rootViewController:HHLoginController())
-        
+     
         //测试修改
 //        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
-        
-        window?.rootViewController = HHbaseBarController()
-        
+       
+        if HHAccountViewModel.shareAcount.isLogin {
+            window?.rootViewController = HHbaseBarController()
+        } else {
+            window?.rootViewController = HHLoginController()
+        }
         window?.makeKeyAndVisible()
+        // 改变根目录的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.changeRootController(notification:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
         return true
     }
     
@@ -41,7 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    
+    @objc private func changeRootController(notification:Notification){
+        if HHAccountViewModel.shareAcount.isLogin {
+            
+            window?.rootViewController = (NSClassFromString(notification.object as! String)!).self as? UIViewController
+        } else {
+            window?.rootViewController = HHLoginController()
+        }
+    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {

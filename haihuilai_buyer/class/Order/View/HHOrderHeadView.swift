@@ -92,8 +92,8 @@ class HHOrderHeadView: UIView {
         btn.layer.masksToBounds = true
         return btn
     }()
-    private lazy var newsBtn: UIButton = {
-        let btn: UIButton = UIButton.init(action: #selector(HHOrderHeadView.servingAction(btnTag:)), target: self, title: nil, imageName: "top_notice", fontColor: UIColor.white, fontSize: 14)
+    lazy var newsBtn: UIButton = {
+        let btn: UIButton = UIButton.init(action: #selector(HHOrderHeadView.servingAction(btnTag:)), target: self, title: nil, imageName: HHAccountViewModel.shareAcount.noticeImageName, fontColor: UIColor.white, fontSize: 14)
         btn.tag = 3
         return btn
     }()

@@ -26,6 +26,9 @@ func print_Rect(_ rect: CGRect) -> Void {
 let PATH_OF_APP_HOME = NSHomeDirectory()
 let PATH_OF_TEMP = NSTemporaryDirectory()
 let PATH_OF_DOCUMENT = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last
+// 沙河存储key
+let CHECK_STATUS_KEY = "checkStatusKey" // 审核状态（1:pending_review审核中,2:reviewed通过,3:refused拒绝,4:inactive未激活 ）
+let INDIVIDUAL_KEY = "individualKey" // 存储个人信息
 // 屏幕尺寸的定义
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let SCREEN_WIDTH = UIScreen.main.bounds.width
@@ -108,11 +111,12 @@ let HHKeyWindow = UIApplication.shared.keyWindow
 // 获取当前版本号
 let HHEditionVision = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
 // 通知的定义
-let NotificationForCountryNumber = "NotificationForCountryNumber" // 选择国家码通知
+let notification_country_number = "NotificationForCountryNumber" // 选择国家码通知
+let notification_changeinto_rootController = "Notification_changeIntoRootController" // 改变根目录
 // 沙河存储的key的定义
 let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
 // 关键字的定义
 let HH_SERVER_URL = "http://test.haihuilai.com"
 let HAIHUILAI = "还会来" // 重点字段
-//let HHMAINCOLOR = RGBCOLOR(92, 194, 216) // 主图色
-//let HHMAINDEEPCOLOR = RGBCOLOR(26, 183, 205) // 点击主题色
+
+// 开发环境打印

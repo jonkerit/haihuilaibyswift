@@ -23,7 +23,7 @@ class HHLoginController: UIViewController{
 //        let gestureRecognizer = UIGestureRecognizer.init(target: self, action: #selector(end))
 //        gestureRecognizer.cancelsTouchesInView = false
 //        loginView.addGestureRecognizer(gestureRecognizer)
-        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: NotificationForCountryNumber), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
     }
     @objc private func getCountryNumber(notifice:NSNotification){
         loginView.countryNumber.text = notifice.object as! String?
@@ -111,7 +111,7 @@ class HHLoginController: UIViewController{
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
-            self.navigationController?.pushViewController(HHOrderController(), animated: true)
+            self.navigationController?.pushViewController(HHbaseBarController(), animated: true)
             if errorString == nil {
             }
         })
