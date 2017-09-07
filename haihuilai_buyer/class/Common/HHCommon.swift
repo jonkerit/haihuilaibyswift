@@ -92,5 +92,25 @@ class HHCommon: NSObject {
         }
     }
     
+    /// 清理app缓存
+    func handleClearAPP(){
+        //删除三部分
+        //1.删除 sd 图片缓存
+        //先清除内存中的图片缓存
+        SDImageCache.shared().clearMemory()
+        //清除磁盘的缓存
+        SDImageCache.shared().cleanDisk()
+        //2.删除自己缓存
+        let myCachePath = NSHomeDirectory() + "Library/Caches"
+        do {
+            try  FileManager.default.removeItem(atPath: myCachePath)
+        } catch {
+            print("清除磁盘的缓存失败")
+        }
+        //3.清除所有的存储本地的数据
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        // 记录版本号(HHUserDefaults 里面的版本号和判断是否第一次使用APP的key不能清除)
+
+    }
     
 }

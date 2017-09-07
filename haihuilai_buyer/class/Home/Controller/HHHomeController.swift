@@ -41,7 +41,7 @@ class HHHomeController: UICollectionViewController {
     }
     /// 给标签赋值
     private func refreshNewsButton(){
-        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHHomeController.openNewCenter))
+        let barItem = UIBarButtonItem.init(image: UIImage(named:HHAccountViewModel.shareAcount.noticeImageName)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHHomeController.openNewCenter))
         navigationItem.leftBarButtonItem = barItem
     }
     

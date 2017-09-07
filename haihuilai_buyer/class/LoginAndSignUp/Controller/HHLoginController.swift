@@ -19,15 +19,14 @@ class HHLoginController: UIViewController{
         dealBoclk()
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillShow(notifice:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HHLoginController.keyboardWillHide(notifice:)), name: .UIKeyboardWillHide, object: nil)
-        // 点击空白手势
-//        let gestureRecognizer = UIGestureRecognizer.init(target: self, action: #selector(end))
-//        gestureRecognizer.cancelsTouchesInView = false
-//        loginView.addGestureRecognizer(gestureRecognizer)
-        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(getCountryNumber(notifice:)), name: NSNotification.Name(rawValue: notification_country_number), object: nil)
     }
     @objc private func getCountryNumber(notifice:NSNotification){
         loginView.countryNumber.text = notifice.object as! String?
 
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +77,7 @@ class HHLoginController: UIViewController{
         }
         loginView.choiceCountryB = {
             print("choiceCountryB")
-            weakSelf?.navigationController?.pushViewController(HHChoiceCuntryController(), animated: true)
+        weakSelf?.navigationController?.pushViewController(HHChoiceCuntryController(), animated: true)
         }
         loginView.forgetSecretB = {
             print("forgetSecretB")
@@ -111,8 +110,10 @@ class HHLoginController: UIViewController{
         HHAccountViewModel.shareAcount.userLogin(urlString: "/app/suppliers/token", paramters: paramters as [String : AnyObject], networkDataBacks: { (response, errorString) -> Void in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             // 处理返回结果
-            self.navigationController?.pushViewController(HHbaseBarController(), animated: true)
-            if errorString == nil {
+                if errorString == nil {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: "HHBaseBarController", userInfo: nil)
+                }else{
+                    HHProgressHUD.shareTool.showHUDAddedTo(title: errorString, isImage: false, boardView: HHKeyWindow, animated: true)
             }
         })
     }

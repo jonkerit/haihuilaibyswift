@@ -61,6 +61,7 @@
 		9BFF8FC01F5D01CA002AF33B /* HHHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FBF1F5D01CA002AF33B /* HHHomeCell.swift */; };
 		9BFF8FC21F5D63E1002AF33B /* HHInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC11F5D63E1002AF33B /* HHInfoView.swift */; };
 		9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC31F5E8910002AF33B /* HHInfoCell.swift */; };
+		9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC71F60DEAD002AF33B /* HHSettingController.swift */; };
 		EBB21E850E374082ACBE04B7 /* Pods_haihuilai_buyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BA5D718C7BAC88A1E4EEA5 /* Pods_haihuilai_buyer.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		9BFF8FBF1F5D01CA002AF33B /* HHHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHHomeCell.swift; sourceTree = "<group>"; };
 		9BFF8FC11F5D63E1002AF33B /* HHInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHInfoView.swift; sourceTree = "<group>"; };
 		9BFF8FC31F5E8910002AF33B /* HHInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHInfoCell.swift; sourceTree = "<group>"; };
+		9BFF8FC71F60DEAD002AF33B /* HHSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHSettingController.swift; sourceTree = "<group>"; };
 		BC6128481E1D396E3399B6D5 /* Pods-haihuilai_buyer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.debug.xcconfig"; sourceTree = "<group>"; };
 		DDDAECBC33DF554AF2EF511B /* Pods-haihuilai_buyer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.release.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				9B2E35EB1F4E7E2E008E7BAC /* HHIndividualController.swift */,
+				9BFF8FC61F60DE69002AF33B /* setting */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -470,6 +473,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9BFF8FC61F60DE69002AF33B /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF8FC71F60DEAD002AF33B /* HHSettingController.swift */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
 		D444B466CF4E88DEED960C9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +628,7 @@
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
+				9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */,
 				9B4F766B1F4C041800EDDC03 /* HHOrderTableView.swift in Sources */,
 				9B0BCDA41DFFA4720087FC35 /* UIImageView+Extension.swift in Sources */,
 				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,

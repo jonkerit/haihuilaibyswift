@@ -38,8 +38,11 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if viewController == self.viewControllers.first {
             interactivePopGestureRecognizer?.delegate = popDelegate as! UIGestureRecognizerDelegate?
+            viewController.hidesBottomBarWhenPushed = false;
+
         }else{
             interactivePopGestureRecognizer?.delegate = nil
+            viewController.hidesBottomBarWhenPushed = true;
         }
     }
     

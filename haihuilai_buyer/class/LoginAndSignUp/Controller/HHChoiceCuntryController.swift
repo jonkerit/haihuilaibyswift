@@ -69,7 +69,7 @@ extension HHChoiceCuntryController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let choiceModel = dataArray[indexPath.section].countries?[indexPath.row]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_country_number), object: choiceModel?.val, userInfo: nil)
-        self.navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated: true)
     }
 }
 

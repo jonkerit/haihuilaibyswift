@@ -25,12 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUIAppearance()
      
         //测试修改
-//        let nav = HHNavigationController(rootViewController:HHChioceRoleController())
-       
+        let loginNav = HHNavigationController(rootViewController:HHLoginController())
+
         if HHAccountViewModel.shareAcount.isLogin {
             window?.rootViewController = HHbaseBarController()
         } else {
-            window?.rootViewController = HHLoginController()
+            window?.rootViewController = loginNav
         }
         window?.makeKeyAndVisible()
         // 改变根目录的通知
@@ -46,11 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @objc private func changeRootController(notification:Notification){
-        if HHAccountViewModel.shareAcount.isLogin {
-            
-            window?.rootViewController = (NSClassFromString(notification.object as! String)!).self as? UIViewController
-        } else {
-            window?.rootViewController = HHLoginController()
+        let controllerName = notification.object as! String
+        switch controllerName {
+        case "HHLoginController":
+            let nav = HHNavigationController(rootViewController:HHLoginController())
+            window?.rootViewController = nav
+        break
+        default:
+            window?.rootViewController = HHbaseBarController()
+        break
         }
     }
     

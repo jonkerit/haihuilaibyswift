@@ -61,8 +61,7 @@ class HHIndividualController: HHBaseViewController {
     }
     private func setRightBar(){
         navigationItem.title = "个人中心"
-        let barItem:UIBarButtonItem = UIBarButtonItem.init(title: "", imageName: "GRZX-cl", target: self, action: #selector(HHIndividualController.setting))
-        navigationItem.rightBarButtonItem = barItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "GRZX-cl")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHIndividualController.setting))
         
     }
     
@@ -166,6 +165,7 @@ class HHIndividualController: HHBaseViewController {
     
     @objc private func setting(){
         print("设置")
+        navigationController?.pushViewController(HHSettingController(), animated: true)
     }
     ///  数据处理
     @objc private func updata(){
@@ -257,7 +257,7 @@ class HHIndividualController: HHBaseViewController {
     
     /// 给标签赋值
     private func refreshNewsButton(){
-        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHIndividualController.openNewCenter))
+        let barItem = UIBarButtonItem.init(image: UIImage(named: HHAccountViewModel.shareAcount.noticeImageName)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHIndividualController.openNewCenter))
         navigationItem.leftBarButtonItem = barItem
     }
     

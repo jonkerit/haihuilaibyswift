@@ -30,11 +30,11 @@ class HHMotorcadeController: HHBaseTableViewController {
     }
     /// 给标签赋值
     private func refreshNewsButton(){
-        let barItem = UIBarButtonItem.init(title: "", imageName: HHAccountViewModel.shareAcount.noticeImageName, target: self, action: #selector(HHMotorcadeController.openNewCenter))
+         let barItem = UIBarButtonItem.init(image: UIImage(named: HHAccountViewModel.shareAcount.noticeImageName)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHMotorcadeController.openNewCenter))
         navigationItem.leftBarButtonItem = barItem
     }
     private func setRightBar(){
-        let barItem:UIBarButtonItem = UIBarButtonItem.init(title: "", imageName: "top_add", target: self, action: #selector(HHMotorcadeController.invite))
+        let barItem = UIBarButtonItem.init(image: UIImage(named: "top_add")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHMotorcadeController.invite))
         navigationItem.rightBarButtonItem = barItem
         
     }
