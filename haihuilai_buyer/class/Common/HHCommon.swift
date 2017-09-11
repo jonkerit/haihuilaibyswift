@@ -113,4 +113,23 @@ class HHCommon: NSObject {
 
     }
     
+    
+    /// 返回一个table的header或者footer
+    ///
+    /// - Parameters:
+    ///   - tableView: tableView
+    ///   - section:
+    /// - Returns: 一个view
+    func createViewForHeaderView(_ tableView: UITableView,_ title:String) -> UIView? {
+        let backView = UIView()
+        backView.backgroundColor = HHGRAYCOLOR()
+        let label = UILabel.init(title: title, fontColor: HHWORDGAYCOLOR(), fontSize: 14, alignment: .left)
+        backView.addSubview(label)
+        label.mas_makeConstraints { (make) in
+            make?.left.equalTo()(backView)?.setOffset(15)
+            make!.centerY.equalTo()(backView)
+        }
+        return backView
+    }
+
 }

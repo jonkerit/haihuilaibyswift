@@ -42,7 +42,8 @@ class HHMotorcadeController: HHBaseTableViewController {
     /// @objc方法
     @objc private func openNewCenter(){
         print("进消息中心")
-        
+        self.navigationController?.pushViewController(HHBaseNewsController(), animated: true)
+
     }
     @objc private func invite(){
         print("添加好友")
@@ -59,24 +60,24 @@ class HHMotorcadeController: HHBaseTableViewController {
         }
     }
     
-    fileprivate func createViewForHeaderView(_ tableView: UITableView,section: Int) -> UIView? {
-        let backView = UIView()
-        backView.backgroundColor = HHGRAYCOLOR()
-        var titleArray: [String]?
-        if self.motorcadeDataArray == nil {
-            titleArray = [" ","临时导游","车队导游 (0)"]
-        }else{
-            let str:String = "车队导游 (" + String(self.motorcadeDataArray!.count) + ")"
-            titleArray = [" ","临时导游",str]
-        }
-        let label = UILabel.init(title: titleArray![section], fontColor: HHWORDGAYCOLOR(), fontSize: 14, alignment: .left)
-        backView.addSubview(label)
-        label.mas_makeConstraints { (make) in
-            make?.left.equalTo()(backView)?.setOffset(15)
-            make!.centerY.equalTo()(backView)
-        }
-        return backView
-    }
+//    fileprivate func createViewForHeaderView(_ tableView: UITableView,section: Int) -> UIView? {
+//        let backView = UIView()
+//        backView.backgroundColor = HHGRAYCOLOR()
+//        var titleArray: [String]?
+//        if self.motorcadeDataArray == nil {
+//            titleArray = [" ","临时导游","车队导游 (0)"]
+//        }else{
+//            let str:String = "车队导游 (" + String(self.motorcadeDataArray!.count) + ")"
+//            titleArray = [" ","临时导游",str]
+//        }
+//        let label = UILabel.init(title: titleArray![section], fontColor: HHWORDGAYCOLOR(), fontSize: 14, alignment: .left)
+//        backView.addSubview(label)
+//        label.mas_makeConstraints { (make) in
+//            make?.left.equalTo()(backView)?.setOffset(15)
+//            make!.centerY.equalTo()(backView)
+//        }
+//        return backView
+//    }
 }
 
 extension HHMotorcadeController{
@@ -128,8 +129,14 @@ extension HHMotorcadeController{
         }
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        return createViewForHeaderView(tableView, section: section)
+        var titleArray: [String]?
+        if self.motorcadeDataArray == nil {
+            titleArray = [" ","临时导游","车队导游 (0)"]
+        }else{
+            let str:String = "车队导游 (" + String(self.motorcadeDataArray!.count) + ")"
+            titleArray = [" ","临时导游",str]
+        }
+        return HHCommon.shareCommon.createViewForHeaderView(tableView, (titleArray?[section])!)
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

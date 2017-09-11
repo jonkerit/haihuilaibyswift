@@ -59,8 +59,9 @@ class HHHomeController: UICollectionViewController {
     }
     /// @objc方法
     @objc private func openNewCenter(){
-        print("进消息中心")
-        
+        HHPrint("进消息中心")
+        self.navigationController?.pushViewController(HHBaseNewsController(), animated: true)
+
     }
 }
 

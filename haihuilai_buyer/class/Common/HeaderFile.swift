@@ -11,16 +11,29 @@ import UIKit
 
 // 打印的宏定义
 func print_Class(_ objcet: AnyObject) -> Void {
+    #if DEBUG
     print("class:\(object_getClass(objcet))")
+    #endif
 }
 func print_Piont(_ point: CGPoint) -> Void{
+    #if DEBUG
     print("piont_x:\(point.x)\\piont_y:\(point.y)")
+    #endif
 }
 func print_Size(_ size: CGSize) -> Void {
+    #if DEBUG
     print("size_width:\(size.width)\\size_height:\(size.height)")
+    #endif
 }
 func print_Rect(_ rect: CGRect) -> Void {
+    #if DEBUG
     print("rect_x:\(rect.origin.x)\\rect_y:\(rect.origin.y)\\rect_width:\(rect.size.width)\\rect_hight:\(rect.size.height)")
+    #endif
+}
+func HHPrint(_ some: Any) -> Void {
+    #if DEBUG
+        print(some)
+    #endif
 }
 // 获取沙河的文件夹地址
 let PATH_OF_APP_HOME = NSHomeDirectory()

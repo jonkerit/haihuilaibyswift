@@ -35,12 +35,6 @@
 		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
 		9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */; };
 		9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */; };
-		9B4F76631F4BCDF900EDDC03 /* HHOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */; };
-		9B4F76651F4BD81000EDDC03 /* HHOrderHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */; };
-		9B4F76681F4C00DE00EDDC03 /* HHOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */; };
-		9B4F76691F4C00DE00EDDC03 /* HHOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */; };
-		9B4F766B1F4C041800EDDC03 /* HHOrderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */; };
-		9B4F766D1F4C13CB00EDDC03 /* HHOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */; };
 		9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */; };
 		9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A481F45E3CF0055746C /* HHLayerController.swift */; };
 		9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */; };
@@ -62,6 +56,23 @@
 		9BFF8FC21F5D63E1002AF33B /* HHInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC11F5D63E1002AF33B /* HHInfoView.swift */; };
 		9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC31F5E8910002AF33B /* HHInfoCell.swift */; };
 		9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF8FC71F60DEAD002AF33B /* HHSettingController.swift */; };
+		9BFF90081F62367F002AF33B /* HHOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90001F62367F002AF33B /* HHOrderController.swift */; };
+		9BFF90091F62367F002AF33B /* HHOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90021F62367F002AF33B /* HHOrderModel.swift */; };
+		9BFF900A1F62367F002AF33B /* HHOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90041F62367F002AF33B /* HHOrderCell.swift */; };
+		9BFF900B1F62367F002AF33B /* HHOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFF90051F62367F002AF33B /* HHOrderCell.xib */; };
+		9BFF900C1F62367F002AF33B /* HHOrderHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90061F62367F002AF33B /* HHOrderHeadView.swift */; };
+		9BFF900D1F62367F002AF33B /* HHOrderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90071F62367F002AF33B /* HHOrderTableView.swift */; };
+		9BFF900F1F6241B9002AF33B /* HHBaseNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF900E1F6241B9002AF33B /* HHBaseNewsController.swift */; };
+		9BFF90111F628103002AF33B /* HHNewsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90101F628103002AF33B /* HHNewsTableView.swift */; };
+		9BFF90131F6282FC002AF33B /* HHNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90121F6282FC002AF33B /* HHNewsCell.swift */; };
+		9BFF90151F628A0F002AF33B /* HHNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90141F628A0F002AF33B /* HHNewsModel.swift */; };
+		9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF901A1F6660CD002AF33B /* HHSearchController.swift */; };
+		9BFF901D1F66621D002AF33B /* HHHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF901C1F66621D002AF33B /* HHHeaderView.swift */; };
+		9BFF901F1F666283002AF33B /* HHMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF901E1F666283002AF33B /* HHMenuView.swift */; };
+		9BFF90211F6662C0002AF33B /* HHResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90201F6662C0002AF33B /* HHResultView.swift */; };
+		9BFF90231F6662D3002AF33B /* HHHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90221F6662D3002AF33B /* HHHistoryView.swift */; };
+		9BFF90251F66892F002AF33B /* HHMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90241F66892F002AF33B /* HHMenuCell.swift */; };
+		9BFF90271F669464002AF33B /* HHMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF90261F669464002AF33B /* HHMenuModel.swift */; };
 		EBB21E850E374082ACBE04B7 /* Pods_haihuilai_buyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BA5D718C7BAC88A1E4EEA5 /* Pods_haihuilai_buyer.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,12 +107,6 @@
 		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
 		9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTimer.swift; sourceTree = "<group>"; };
 		9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHBaseScrollViewController.swift; sourceTree = "<group>"; };
-		9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderController.swift; sourceTree = "<group>"; };
-		9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderHeadView.swift; sourceTree = "<group>"; };
-		9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderCell.swift; sourceTree = "<group>"; };
-		9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHOrderCell.xib; sourceTree = "<group>"; };
-		9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderTableView.swift; sourceTree = "<group>"; };
-		9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderModel.swift; sourceTree = "<group>"; };
 		9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPhotoPickManager.swift; sourceTree = "<group>"; };
 		9B6E5A481F45E3CF0055746C /* HHLayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHLayerController.swift; sourceTree = "<group>"; };
 		9B6E5A4A1F46ED2A0055746C /* HHPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPickerView.swift; sourceTree = "<group>"; };
@@ -125,6 +130,23 @@
 		9BFF8FC11F5D63E1002AF33B /* HHInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHInfoView.swift; sourceTree = "<group>"; };
 		9BFF8FC31F5E8910002AF33B /* HHInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHInfoCell.swift; sourceTree = "<group>"; };
 		9BFF8FC71F60DEAD002AF33B /* HHSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHSettingController.swift; sourceTree = "<group>"; };
+		9BFF90001F62367F002AF33B /* HHOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderController.swift; sourceTree = "<group>"; };
+		9BFF90021F62367F002AF33B /* HHOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderModel.swift; sourceTree = "<group>"; };
+		9BFF90041F62367F002AF33B /* HHOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderCell.swift; sourceTree = "<group>"; };
+		9BFF90051F62367F002AF33B /* HHOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHOrderCell.xib; sourceTree = "<group>"; };
+		9BFF90061F62367F002AF33B /* HHOrderHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderHeadView.swift; sourceTree = "<group>"; };
+		9BFF90071F62367F002AF33B /* HHOrderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHOrderTableView.swift; sourceTree = "<group>"; };
+		9BFF900E1F6241B9002AF33B /* HHBaseNewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHBaseNewsController.swift; sourceTree = "<group>"; };
+		9BFF90101F628103002AF33B /* HHNewsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNewsTableView.swift; sourceTree = "<group>"; };
+		9BFF90121F6282FC002AF33B /* HHNewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNewsCell.swift; sourceTree = "<group>"; };
+		9BFF90141F628A0F002AF33B /* HHNewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNewsModel.swift; sourceTree = "<group>"; };
+		9BFF901A1F6660CD002AF33B /* HHSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHSearchController.swift; sourceTree = "<group>"; };
+		9BFF901C1F66621D002AF33B /* HHHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHHeaderView.swift; sourceTree = "<group>"; };
+		9BFF901E1F666283002AF33B /* HHMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMenuView.swift; sourceTree = "<group>"; };
+		9BFF90201F6662C0002AF33B /* HHResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHResultView.swift; sourceTree = "<group>"; };
+		9BFF90221F6662D3002AF33B /* HHHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHHistoryView.swift; sourceTree = "<group>"; };
+		9BFF90241F66892F002AF33B /* HHMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMenuCell.swift; sourceTree = "<group>"; };
+		9BFF90261F669464002AF33B /* HHMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMenuModel.swift; sourceTree = "<group>"; };
 		BC6128481E1D396E3399B6D5 /* Pods-haihuilai_buyer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.debug.xcconfig"; sourceTree = "<group>"; };
 		DDDAECBC33DF554AF2EF511B /* Pods-haihuilai_buyer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haihuilai_buyer.release.xcconfig"; path = "Pods/Target Support Files/Pods-haihuilai_buyer/Pods-haihuilai_buyer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,38 +216,11 @@
 		9B4F764C1F4AD90D00EDDC03 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				9B4F764D1F4AD90D00EDDC03 /* Controller */,
-				9B4F764E1F4AD90D00EDDC03 /* Model */,
-				9B4F764F1F4AD90D00EDDC03 /* View */,
+				9BFF8FFE1F62367F002AF33B /* orderDetail */,
+				9BFF8FF81F623608002AF33B /* news */,
+				9BFF90161F665E83002AF33B /* search */,
 			);
 			path = Order;
-			sourceTree = "<group>";
-		};
-		9B4F764D1F4AD90D00EDDC03 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9B4F76621F4BCDF900EDDC03 /* HHOrderController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9B4F764E1F4AD90D00EDDC03 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9B4F766C1F4C13CB00EDDC03 /* HHOrderModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9B4F764F1F4AD90D00EDDC03 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9B4F76641F4BD81000EDDC03 /* HHOrderHeadView.swift */,
-				9B4F766A1F4C041800EDDC03 /* HHOrderTableView.swift */,
-				9B4F76661F4C00DE00EDDC03 /* HHOrderCell.swift */,
-				9B4F76671F4C00DE00EDDC03 /* HHOrderCell.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9B4F76501F4BC61A00EDDC03 /* Home */ = {
@@ -481,6 +476,117 @@
 			path = setting;
 			sourceTree = "<group>";
 		};
+		9BFF8FF81F623608002AF33B /* news */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF8FF91F623608002AF33B /* Controller */,
+				9BFF8FFB1F623608002AF33B /* Model */,
+				9BFF8FFC1F623608002AF33B /* View */,
+			);
+			path = news;
+			sourceTree = "<group>";
+		};
+		9BFF8FF91F623608002AF33B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF900E1F6241B9002AF33B /* HHBaseNewsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9BFF8FFB1F623608002AF33B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90141F628A0F002AF33B /* HHNewsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9BFF8FFC1F623608002AF33B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90101F628103002AF33B /* HHNewsTableView.swift */,
+				9BFF90121F6282FC002AF33B /* HHNewsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9BFF8FFE1F62367F002AF33B /* orderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF8FFF1F62367F002AF33B /* Controller */,
+				9BFF90011F62367F002AF33B /* Model */,
+				9BFF90031F62367F002AF33B /* View */,
+			);
+			path = orderDetail;
+			sourceTree = "<group>";
+		};
+		9BFF8FFF1F62367F002AF33B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90001F62367F002AF33B /* HHOrderController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9BFF90011F62367F002AF33B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90021F62367F002AF33B /* HHOrderModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9BFF90031F62367F002AF33B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90041F62367F002AF33B /* HHOrderCell.swift */,
+				9BFF90051F62367F002AF33B /* HHOrderCell.xib */,
+				9BFF90061F62367F002AF33B /* HHOrderHeadView.swift */,
+				9BFF90071F62367F002AF33B /* HHOrderTableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9BFF90161F665E83002AF33B /* search */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90171F665E83002AF33B /* Controller */,
+				9BFF90181F665E83002AF33B /* Model */,
+				9BFF90191F665E83002AF33B /* View */,
+			);
+			name = search;
+			path = orderDetail/search;
+			sourceTree = "<group>";
+		};
+		9BFF90171F665E83002AF33B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF901A1F6660CD002AF33B /* HHSearchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9BFF90181F665E83002AF33B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF90261F669464002AF33B /* HHMenuModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9BFF90191F665E83002AF33B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9BFF901C1F66621D002AF33B /* HHHeaderView.swift */,
+				9BFF901E1F666283002AF33B /* HHMenuView.swift */,
+				9BFF90201F6662C0002AF33B /* HHResultView.swift */,
+				9BFF90221F6662D3002AF33B /* HHHistoryView.swift */,
+				9BFF90241F66892F002AF33B /* HHMenuCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D444B466CF4E88DEED960C9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,7 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4F76691F4C00DE00EDDC03 /* HHOrderCell.xib in Resources */,
+				9BFF900B1F62367F002AF33B /* HHOrderCell.xib in Resources */,
 				9B33CA041F3AED8600461B4F /* HHLogInView.xib in Resources */,
 				9BF9C4D71DF9934F0065D9F7 /* LaunchScreen.storyboard in Resources */,
 				9BF9C4D41DF9934F0065D9F7 /* Assets.xcassets in Resources */,
@@ -619,20 +725,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BFF8FB81F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift in Sources */,
+				9BFF90211F6662C0002AF33B /* HHResultView.swift in Sources */,
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
-				9B4F76681F4C00DE00EDDC03 /* HHOrderCell.swift in Sources */,
+				9BFF90151F628A0F002AF33B /* HHNewsModel.swift in Sources */,
+				9BFF900D1F62367F002AF33B /* HHOrderTableView.swift in Sources */,
 				9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
-				9B4F76631F4BCDF900EDDC03 /* HHOrderController.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
 				9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */,
-				9B4F766B1F4C041800EDDC03 /* HHOrderTableView.swift in Sources */,
 				9B0BCDA41DFFA4720087FC35 /* UIImageView+Extension.swift in Sources */,
 				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,
 				9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */,
+				9BFF90271F669464002AF33B /* HHMenuModel.swift in Sources */,
 				9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */,
 				9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */,
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
@@ -640,21 +747,29 @@
 				9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */,
 				9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */,
 				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
+				9BFF90111F628103002AF33B /* HHNewsTableView.swift in Sources */,
 				9B0BCDA21DFFA1A50087FC35 /* UILabel+Extension.swift in Sources */,
+				9BFF90231F6662D3002AF33B /* HHHistoryView.swift in Sources */,
+				9BFF900C1F62367F002AF33B /* HHOrderHeadView.swift in Sources */,
 				9BF9C4F21DF993E00065D9F7 /* HHBaseViewController.swift in Sources */,
 				9B6E5A4B1F46ED2A0055746C /* HHPickerView.swift in Sources */,
 				9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */,
 				9B6E5A491F45E3CF0055746C /* HHLayerController.swift in Sources */,
 				9B2E35EA1F4E7E03008E7BAC /* HHHomeController.swift in Sources */,
-				9B4F76651F4BD81000EDDC03 /* HHOrderHeadView.swift in Sources */,
+				9BFF90091F62367F002AF33B /* HHOrderModel.swift in Sources */,
 				9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */,
+				9BFF90131F6282FC002AF33B /* HHNewsCell.swift in Sources */,
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
+				9BFF901D1F66621D002AF33B /* HHHeaderView.swift in Sources */,
+				9BFF900A1F62367F002AF33B /* HHOrderCell.swift in Sources */,
+				9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
 				9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */,
 				9B2E35EC1F4E7E2E008E7BAC /* HHIndividualController.swift in Sources */,
 				9BFF8FC01F5D01CA002AF33B /* HHHomeCell.swift in Sources */,
 				9BFF8FBA1F4EB196002AF33B /* HHMotorcadeSecondCell.swift in Sources */,
 				9BFF8FC21F5D63E1002AF33B /* HHInfoView.swift in Sources */,
+				9BFF90251F66892F002AF33B /* HHMenuCell.swift in Sources */,
 				9B0BCDA61DFFA5EB0087FC35 /* UIBarButtonItem+Extension.swift in Sources */,
 				28AADECD1F456FDA0024D4E3 /* HHChoiceView.swift in Sources */,
 				9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */,
@@ -662,11 +777,13 @@
 				28AADEC51F455B420024D4E3 /* HHRegistProtocolController.swift in Sources */,
 				9BFF8FBE1F5CFB0E002AF33B /* HHHomeNoticeModel.swift in Sources */,
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
-				9B4F766D1F4C13CB00EDDC03 /* HHOrderModel.swift in Sources */,
+				9BFF901F1F666283002AF33B /* HHMenuView.swift in Sources */,
 				9BFF8FBC1F4EC9FD002AF33B /* HHMotorcadeModel.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
 				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,
+				9BFF90081F62367F002AF33B /* HHOrderController.swift in Sources */,
 				9B0BCDA01DFF9D4F0087FC35 /* UIButton+Extension.swift in Sources */,
+				9BFF900F1F6241B9002AF33B /* HHBaseNewsController.swift in Sources */,
 				9B2E35E61F4E7D48008E7BAC /* HHMotorcadeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

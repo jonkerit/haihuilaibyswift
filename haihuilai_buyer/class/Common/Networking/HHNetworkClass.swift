@@ -45,6 +45,22 @@ class HHNetworkClass:NSObject {
         }
     }
     
+    /// 获取消息中心列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getNewsList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock){
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/notifications", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHNewsModel().newsDataArray(dictArray: response!["data"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
     /// 获取导游列表
     ///
     /// - Parameters:
@@ -133,6 +149,36 @@ class HHNetworkClass:NSObject {
         HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/info_complete_rate", parameters: parameter) { (response, error) in
             if SUCCESSFUL(response){
                 networkClassData(response, nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 获取搜索方式的列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getSearchMenuList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/bookings/search_list", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHMenuModel().getMenuDataArray(dataArray: response!["data"] as? [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 获取搜索结果列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getSearchResultList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/info_complete_rate", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHMotorcadeModel().driverList(arrayForDictionary: response!["data"] as! [AnyObject] as! Array<Dictionary<String, Any>>)
+                networkClassData(dataArray,nil)
             }else{
                 networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
             }

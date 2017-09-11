@@ -30,6 +30,7 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
         if self.viewControllers.count != 0 {
             let barButton = UIBarButtonItem(customView: navBar)
             viewController.navigationItem.leftBarButtonItem = barButton
+            viewController.hidesBottomBarWhenPushed = true;
             super.pushViewController(viewController, animated: true)
             
         }
@@ -38,11 +39,8 @@ class HHNavigationController: UINavigationController ,UINavigationControllerDele
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if viewController == self.viewControllers.first {
             interactivePopGestureRecognizer?.delegate = popDelegate as! UIGestureRecognizerDelegate?
-            viewController.hidesBottomBarWhenPushed = false;
-
         }else{
             interactivePopGestureRecognizer?.delegate = nil
-            viewController.hidesBottomBarWhenPushed = true;
         }
     }
     
