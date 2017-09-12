@@ -18,11 +18,13 @@ class HHMenuModel: NSObject {
     override init() {
         super.init()
     }
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
     init(dict:[String: AnyObject]?) {
         super.init()
         setValuesForKeys(dict!)
     }
-    
     func getMenuDataArray(dataArray: [AnyObject]?) -> [HHMenuModel] {
         var arrayM = [HHMenuModel]()
         for objcet in dataArray! {

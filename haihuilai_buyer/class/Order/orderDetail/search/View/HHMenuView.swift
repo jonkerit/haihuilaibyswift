@@ -6,10 +6,11 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 @objc protocol HHMenuViewDelegate:class{
-    @objc optional func chioceMenuViewCell()
+    @objc optional func chioceMenuViewCell(_ menuModel:HHMenuModel?)
 }
 import UIKit
 class HHMenuView: UIView {
+    var choiceCell: HHMenuCell?
     
     var dataArray: [HHMenuModel]? // 数据组
     weak var menuDelegate: HHMenuViewDelegate? // 代理
@@ -103,14 +104,21 @@ extension HHMenuView: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if self.menuDelegate != nil {
-//            let bookingID = dataArray?[indexPath.row].booking_id
-//            if !is_empty_string(bookingID) {
-//                self.orderTableViewDelegate?.openOrderTableView!(bookingId: bookingID)
-//            }else{
-//                HHProgressHUD.shareTool.showHUDAddedTo(title: "订单号不存在", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
-//            }
+        let cell:HHMenuCell = tableView.cellForRow(at: indexPath) as! HHMenuCell
+        if choiceCell == cell {
+            cell.menuTitle.isSelected = !cell.menuTitle.isSelected
+            cell.menuBtn.isHidden = !cell.menuBtn.isHidden
+        } else {
+            if choiceCell != nil {
+                choiceCell?.menuTitle.isSelected = false
+                choiceCell?.menuBtn.isHidden = true
+            }
+            choiceCell = cell
+            choiceCell?.menuTitle.isSelected = true
+            choiceCell?.menuBtn.isHidden = false
+            if self.menuDelegate != nil {
+                self.menuDelegate?.chioceMenuViewCell!(self.dataArray?[indexPath.row])
+            }
         }
     }
     

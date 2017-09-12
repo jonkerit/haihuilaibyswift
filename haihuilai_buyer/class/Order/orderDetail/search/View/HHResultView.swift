@@ -10,13 +10,18 @@ import UIKit
 
 class HHResultView: UIView {
     var dataArray: [HHOrderModel]? // 数据组
+    // 搜索订单的类别
+    var resultViewQuery: String?
+    // 搜索订单的关键字
+    var resultViewTags = "location"
+    
     weak var orderTableViewDelegate: HHOrderTableViewDelegate? // 代理
     
     init() {
         super.init(frame: CGRect.zero)
-        tableView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height:self.frame.size.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height:SCREEN_HEIGHT - 64)
         addSubview(tableView)
-        requireData()
+        searchRequireData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,10 +29,12 @@ class HHResultView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func requireData() {
-        HHNetworkClass().getOrderList(parameter: nil) { (response, errorSting) in
-            self.tableView.mj_header.endRefreshing()
-            self.tableView.mj_footer.resetNoMoreData()
+    func searchRequireData() {
+        if is_empty_string(resultViewQuery) || is_empty_string(resultViewTags){
+            HHProgressHUD().showHUDAddedTo(title: "请输入关键字", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            return
+        }
+        HHNetworkClass().getSearchResultList(parameter: ["tag":resultViewTags as AnyObject, "query":resultViewQuery as AnyObject]) { (response, errorSting) in
             if response != nil{
                 self.dataArray = response as! [HHOrderModel]?
                 self.tableView.reloadData()

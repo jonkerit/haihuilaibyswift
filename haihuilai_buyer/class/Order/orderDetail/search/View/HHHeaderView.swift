@@ -13,7 +13,7 @@ import UIKit
 
 class HHHeaderView: UIView {
     // 代理
-    var headerDelegate: HHHeaderViewDelegate?
+    weak var headerDelegate: HHHeaderViewDelegate?
     
     init() {
         super.init(frame: CGRect.zero)
@@ -26,23 +26,22 @@ class HHHeaderView: UIView {
     }
 
     private func setUI(){
-        addSubview(choiceBtn)
-        addSubview(inputText)
+        addSubview(headerChoiceBtn)
+        addSubview(headerInputView)
         addSubview(cancelBtn)
-        
-        choiceBtn.mas_makeConstraints { (make) in
+        headerChoiceBtn.mas_makeConstraints { (make) in
             make?.left.equalTo()(self)?.setOffset(15)
             make?.bottom.equalTo()(self)?.setOffset(-5)
             make!.size.mas_equalTo()(CGSize(width:80*SCREEN_WIDTH_MATCH, height:34))
         }
         cancelBtn.mas_makeConstraints { (make) in
             make?.right.equalTo()(self)?.setOffset(-15)
-            make!.centerY.equalTo()(self.choiceBtn)
+            make!.centerY.equalTo()(self.headerChoiceBtn)
             make!.width.equalTo()(40)
         }
-        inputText.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self.choiceBtn.mas_right)?.setOffset(10)
-            make!.centerY.equalTo()(self.choiceBtn)
+        headerInputView.mas_makeConstraints { (make) in
+            make?.left.equalTo()(self.headerChoiceBtn.mas_right)?.setOffset(10)
+            make!.centerY.equalTo()(self.headerChoiceBtn)
             make?.right.equalTo()(self.cancelBtn.mas_left)?.setOffset(-10)
             make!.height.equalTo()(34)
         }
@@ -60,8 +59,8 @@ class HHHeaderView: UIView {
         }
     }
     /// 懒加载
-    private lazy var choiceBtn: UIButton = {
-        let btn = UIButton.init(action: #selector(HHHeaderView.btnAction), target: self, title: "导游", imageName: "down", fontColor: HHWORDCOLOR(), fontSize: 14)
+    lazy var headerChoiceBtn: UIButton = {
+        let btn = UIButton.init(action: #selector(HHHeaderView.btnAction), target: self, title: "城市", imageName: "down", fontColor: HHWORDCOLOR(), fontSize: 14)
         btn.backgroundColor = UIColor.white
         btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -80)
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0)
@@ -69,7 +68,7 @@ class HHHeaderView: UIView {
         btn.layer.masksToBounds = true
         return btn
     }()
-    private lazy var inputText: UITextField = {
+    lazy var headerInputView: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor.white
         textField.layer.cornerRadius = 4
@@ -77,6 +76,7 @@ class HHHeaderView: UIView {
         textField.placeholder = "输入开始或结束城市"
         textField.clearsOnBeginEditing = true
         textField.clearButtonMode = .whileEditing
+        textField.returnKeyType = .search
         textField.attributedPlaceholder = NSAttributedString(string: "输入开始或结束城市", attributes: [
             NSForegroundColorAttributeName : UIColor.gray,
             NSFontAttributeName: UIFont.systemFont(ofSize: 14)

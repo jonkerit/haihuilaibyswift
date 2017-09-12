@@ -87,7 +87,9 @@ class HHOrderController: HHBaseScrollViewController {
             // 搜索按钮
             if btnTag == 4 {
                 print("搜索按钮")
-                self?.present(HHSearchController(), animated: true, completion: nil)
+                self?.navigationController?.pushViewController(HHSearchController(), animated: true)
+
+//                self?.present(HHSearchController(), animated: true, completion: nil)
                 return
             }
             // 标签按钮的选择逻辑

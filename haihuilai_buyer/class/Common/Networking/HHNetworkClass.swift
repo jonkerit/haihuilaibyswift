@@ -169,15 +169,15 @@ class HHNetworkClass:NSObject {
             }
         }
     }
-    /// 获取搜索结果列表
+    /// 获取搜索历史列表
     ///
     /// - Parameters:
     ///   - parameter: 参数
     ///   - networkClassData: 结果回调
-    func getSearchResultList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
-        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/info_complete_rate", parameters: parameter) { (response, error) in
+    func getHistoryResultList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/bookings/history_search", parameters: parameter) { (response, error) in
             if SUCCESSFUL(response){
-                let dataArray = HHMotorcadeModel().driverList(arrayForDictionary: response!["data"] as! [AnyObject] as! Array<Dictionary<String, Any>>)
+                let dataArray = HHHistoryModel().getHistoryDataArray(dataArray: response!["data"] as? [AnyObject])
                 networkClassData(dataArray,nil)
             }else{
                 networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
@@ -185,5 +185,34 @@ class HHNetworkClass:NSObject {
         }
     }
 
+    /// 获取搜索结果列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getSearchResultList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/bookings/search", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHOrderModel().orderArrays(arrayForDictionary: response!["data"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 删除搜索历史
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func delegateHistoryOfSearch(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "app/bookings/history_search_remove", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 
 }

@@ -13,6 +13,7 @@ class HHMenuCell: UITableViewCell {
     var menuModel: HHMenuModel?{
         didSet{
             menuTitle.setTitle(menuModel?.content, for: .normal)
+            menuBtn.isHidden = true
         }
     }
     
@@ -49,6 +50,7 @@ class HHMenuCell: UITableViewCell {
     lazy var menuTitle: UIButton = {
         let label = UIButton.init(title: "城市", imageName: nil, fontColor: HHWORDCOLOR(), fontSize: 14)
         label.setTitleColor(HHMAINCOLOR(), for: .selected)
+        label.isUserInteractionEnabled = false
         return label
     }()
     lazy var menuBtn: UIButton = {
