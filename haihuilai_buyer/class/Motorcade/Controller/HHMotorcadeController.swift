@@ -38,15 +38,32 @@ class HHMotorcadeController: HHBaseTableViewController {
         navigationItem.rightBarButtonItem = barItem
         
     }
+    // 微信邀请
+    private func inviteByChat(){
     
+    }
+    // 电话薄邀请
+    private func inviteByPhoneDirectory(){
+        navigationController?.pushViewController(HHInviteController(), animated: true)
+    }
+
     /// @objc方法
     @objc private func openNewCenter(){
-        print("进消息中心")
         self.navigationController?.pushViewController(HHBaseNewsController(), animated: true)
 
     }
     @objc private func invite(){
-        print("添加好友")
+        let alertController: UIAlertController = UIAlertController.init(title: "邀请车队导游", message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction.init(title: "微信邀请", style: .default, handler: { (alter) in
+            self.inviteByChat()
+        }))
+        alertController.addAction(UIAlertAction.init(title: "通讯录邀请", style: .default, handler: { (alter) in
+            self.inviteByPhoneDirectory()
+        }))
+        alertController.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (alter) in
+            
+        }))
+        self.present(alertController, animated: true, completion: nil)
     }
     @objc private func updata(){
         HHNetworkClass().getDriverList(parameter: nil) { (response, errorSting) in
@@ -59,25 +76,6 @@ class HHMotorcadeController: HHBaseTableViewController {
             }
         }
     }
-    
-//    fileprivate func createViewForHeaderView(_ tableView: UITableView,section: Int) -> UIView? {
-//        let backView = UIView()
-//        backView.backgroundColor = HHGRAYCOLOR()
-//        var titleArray: [String]?
-//        if self.motorcadeDataArray == nil {
-//            titleArray = [" ","临时导游","车队导游 (0)"]
-//        }else{
-//            let str:String = "车队导游 (" + String(self.motorcadeDataArray!.count) + ")"
-//            titleArray = [" ","临时导游",str]
-//        }
-//        let label = UILabel.init(title: titleArray![section], fontColor: HHWORDGAYCOLOR(), fontSize: 14, alignment: .left)
-//        backView.addSubview(label)
-//        label.mas_makeConstraints { (make) in
-//            make?.left.equalTo()(backView)?.setOffset(15)
-//            make!.centerY.equalTo()(backView)
-//        }
-//        return backView
-//    }
 }
 
 extension HHMotorcadeController{
@@ -136,7 +134,7 @@ extension HHMotorcadeController{
             let str:String = "车队导游 (" + String(self.motorcadeDataArray!.count) + ")"
             titleArray = [" ","临时导游",str]
         }
-        return HHCommon.shareCommon.createViewForHeaderView(tableView, (titleArray?[section])!)
+        return HHCommon.shareCommon.createViewForHeaderView(tableView, (titleArray?[section])!, 14, HHWORDCOLOR())
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

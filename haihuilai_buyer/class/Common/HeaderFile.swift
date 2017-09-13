@@ -47,10 +47,10 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT_MATCH = UIScreen.main.bounds.height / 667  // 以4.7寸屏为基准
 let SCREEN_WIDTH_MATCH = UIScreen.main.bounds.width / 375
-let APP_HEIGHT = UIScreen.main.applicationFrame.size.height
-let APP_WIDTH = UIScreen.main.applicationFrame.size.width
-let APP_HEIGHT_MATCH = UIScreen.main.applicationFrame.size.height / 667 // 以4.7寸屏为基准
-let APP_WIDTH_MATCH = UIScreen.main.applicationFrame.size.width / 375
+let APP_HEIGHT = UIScreen.main.bounds.size.height
+let APP_WIDTH = UIScreen.main.bounds.size.width
+let APP_HEIGHT_MATCH = UIScreen.main.bounds.size.height / 667 // 以4.7寸屏为基准
+let APP_WIDTH_MATCH = UIScreen.main.bounds.size.width / 375
 
 // view的各个尺寸的定义
 func x(_ object: UIView) -> CGFont{

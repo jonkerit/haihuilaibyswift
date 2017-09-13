@@ -8,8 +8,10 @@
 
 import UIKit
 import AFNetworking
-typealias HHNetworkExameBack = (Int) -> () //或者 () -> Void
+import MessageUI
 
+typealias HHNetworkExameBack = (Int) -> () //或者 () -> Void
+typealias HHContactOrderResult = (_ contentArray:[[HHInviteModel]]?, _ titleArray:[String]?) -> ()
 class HHCommon: NSObject {
     // 单例
     static let shareCommon = HHCommon()
@@ -120,10 +122,10 @@ class HHCommon: NSObject {
     ///   - tableView: tableView
     ///   - section:
     /// - Returns: 一个view
-    func createViewForHeaderView(_ tableView: UITableView,_ title:String) -> UIView? {
+    func createViewForHeaderView(_ tableView: UITableView,_ title:String,_ fontSize:CGFloat, _ fontColor: UIColor) -> UIView? {
         let backView = UIView()
         backView.backgroundColor = HHGRAYCOLOR()
-        let label = UILabel.init(title: title, fontColor: HHWORDGAYCOLOR(), fontSize: 14, alignment: .left)
+        let label = UILabel.init(title: title, fontColor: fontColor, fontSize: fontSize, alignment: .left)
         backView.addSubview(label)
         label.mas_makeConstraints { (make) in
             make?.left.equalTo()(backView)?.setOffset(15)
@@ -132,4 +134,55 @@ class HHCommon: NSObject {
         return backView
     }
 
+    
+    /// 给一个数组分组排序
+    ///
+    /// - Parameters:
+    ///   - inputArray: 需要排序的数组
+    ///   - contactOrderResult: 返回的内容数组和标题数组
+    func sequenceAndGroups(inputArray:[HHInviteModel]?, contactOrderResult:@escaping HHContactOrderResult){
+        if inputArray == nil || inputArray?.count == 0 {
+            return
+        }
+        // 排序分组的temp数组
+        var tempArray = [[HHInviteModel]]()
+        // 排序分组的结果数组
+        var titleArray = [String]()
+        //先将UILocalizedIndexedCollation初始化，
+        let collation = UILocalizedIndexedCollation.current()
+        
+        //得出collation索引的数量，这里是27个（26个字母和1个#）
+        let collationCount = collation.sectionTitles.count
+        
+         //初始化一个数组newSectionsArray用来存放最终的数据，我们最终要得到的数据模型应该形如@[@[以A开头的数据数组], @[以B开头的数据数组], @[以C开头的数据数组], ... @[以#(其它)开头的数据数组]]
+        
+        for i in 0..<collationCount {
+            let array = [HHInviteModel]()
+            tempArray.append(array)
+        }
+        //将每个人按name分到某个section下
+        for inviteModel in inputArray! {
+            let sectionNumber = collation.section(for: inviteModel, collationStringSelector: #selector(getter: inviteModel.inviteName))
+            tempArray[sectionNumber].append(inviteModel)
+        }
+        //对每个section中的数组按照name属性排序
+        for i in 0..<collationCount {
+            let sonArray = tempArray[i]
+            if sonArray.count > 0 {
+                let sortedArrayForSection = collation.sortedArray(from: sonArray, collationStringSelector: #selector(getter: HHInviteModel.inviteName))
+                tempArray[i] = sortedArrayForSection as! [HHInviteModel]
+                titleArray.append(collation.sectionIndexTitles[i])
+            }
+        }
+        
+        // 删除tempArray中的空元素
+        // 排序分组的结果数组
+        var resultArray = [[HHInviteModel]]()
+        for objt in tempArray {
+            if objt.count > 0 {
+                resultArray.append(objt)
+            }
+        }
+        contactOrderResult(resultArray, titleArray)
+    }
 }

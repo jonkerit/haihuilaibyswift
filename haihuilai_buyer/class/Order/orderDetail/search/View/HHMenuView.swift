@@ -97,7 +97,7 @@ extension HHMenuView: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return HHCommon.shareCommon.createViewForHeaderView(tableView, "搜索方式")
+        return HHCommon.shareCommon.createViewForHeaderView(tableView, "搜索方式", 14, HHWORDGAYCOLOR())
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
