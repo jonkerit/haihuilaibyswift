@@ -41,22 +41,22 @@ class HHChoiceView: UIView {
         addSubview(title)
         addSubview(subTitle)
         icon.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self)?.offset()(5)
-            make?.top.equalTo()(self)?.offset()(5)
-            make?.bottom.equalTo()(self)?.offset()(-5)
-            make?.width.mas_equalTo()(70)
+            make!.left.equalTo()(self)?.setOffset(5)
+            make!.top.equalTo()(self)?.setOffset(5)
+            make!.bottom.equalTo()(self)?.setOffset(-5)
+            make!.width.mas_equalTo()(70)
         }
         title.mas_makeConstraints { (make) in
-            make?.top.equalTo()(self.icon)?.offset()(10)
-            make?.left.equalTo()(self.icon.mas_right)?.offset()(10)
-            make?.right.equalTo()(self)?.offset()(-10)
-            make?.height.mas_equalTo()(20)
+            make?.top.equalTo()(self.icon)?.setOffset(10)
+            make?.left.equalTo()(self.icon.mas_right)?.setOffset(10)
+            make?.right.equalTo()(self)?.setOffset(-10)
+            make!.height.mas_equalTo()(20)
         }
         subTitle.mas_makeConstraints { (make) in
-            make?.top.equalTo()(self.title.mas_bottom)
-            make?.left.equalTo()(self.title)
-            make?.right.equalTo()(self.title)
-            make?.bottom.equalTo()(self)
+            make!.top.equalTo()(self.title.mas_bottom)
+            make!.left.equalTo()(self.title)
+            make!.right.equalTo()(self.title)
+            make!.bottom.equalTo()(self)
         }
     }
     

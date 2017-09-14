@@ -185,4 +185,19 @@ class HHCommon: NSObject {
         }
         contactOrderResult(resultArray, titleArray)
     }
+    
+    
+    /// 给label下划线和给定范围颜色
+    ///
+    /// - Parameters:
+    ///   - inputString: 目标字符串
+    ///   - fontColor: 范围颜色
+    ///   - ColorRange: 给定范围
+    /// - Returns: NSAttributedString
+    func drawLineForString(inputString: String, fontColor: UIColor,ColorRange: NSRange) -> NSAttributedString {
+        //设置文字颜色成蓝色，富文本别的设置也几乎就是在这个字典中设置
+        let myAttrString = NSMutableAttributedString.init(string: inputString)
+            myAttrString.setAttributes([NSForegroundColorAttributeName : fontColor,NSUnderlineStyleAttributeName:1], range: ColorRange)
+        return myAttrString
+    }
 }

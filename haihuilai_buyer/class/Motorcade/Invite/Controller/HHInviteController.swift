@@ -8,18 +8,18 @@
 
 import UIKit
 import MessageUI
-class HHInviteController: HHBaseTableViewController {
+class HHInviteController: HHBaseViewController {
     // 短信的内容
     fileprivate var messagecontent: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(HHInviteCell.self, forCellReuseIdentifier: "HHInviteCell")
         setBarItem()
         getMessageContent()
         getContactStore()
+        view.addSubview(tableView)
+        view.addSubview(indexView)
     }
-    
     private func setBarItem(){
         let barItem = UIBarButtonItem.init(title: "邀请", style: .plain, target: self, action:#selector(HHInviteController.inviteAction))
         navigationItem.rightBarButtonItem = barItem
@@ -71,6 +71,21 @@ class HHInviteController: HHBaseTableViewController {
         self.navigationController?.present(vc, animated: true, completion: nil)
     }
     // 懒加载
+    lazy fileprivate var tableView:UITableView = {
+        let rect = CGRect(x:0,y:0,width:self.view.frame.size.width - 25,height:self.view.frame.size.height - 64)
+        let tableView = UITableView.init(frame:rect)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.backgroundColor = HHGRAYCOLOR()
+        tableView.register(HHInviteCell.self, forCellReuseIdentifier: "HHInviteCell")
+        return tableView
+    }()
+    lazy fileprivate var indexView:HHIndexView = {
+        let index = HHIndexView.init(frame:CGRect(x:Int(SCREEN_WIDTH - 25),y:Int(SCREEN_HEIGHT/3),width:25,height:16*self.titleArray.count + 20),dataArray: self.titleArray as [AnyObject])
+        index.indexViewDelelgate = self
+        return index
+    }()
     // 内容（model）的数组
     lazy fileprivate var contentArray = [[HHInviteModel]]()
     // 标题的数组
@@ -80,16 +95,16 @@ class HHInviteController: HHBaseTableViewController {
     
 }
 
-extension HHInviteController{
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension HHInviteController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
         return contentArray.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let array = contentArray[section]
         return array.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var inviteCell = tableView.dequeueReusableCell(withIdentifier: "HHInviteCell") as? HHInviteCell
         if inviteCell == nil {
             inviteCell = HHInviteCell.init(style: .default, reuseIdentifier: "HHInviteCell")
@@ -99,16 +114,17 @@ extension HHInviteController{
         inviteCell?.inviteCellDetail.text = model.inviteNumber
         return inviteCell!
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return HHCommon.shareCommon.createViewForHeaderView(tableView, titleArray[section], 16, HHMAINCOLOR())
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell:HHInviteCell = tableView.cellForRow(at: indexPath) as! HHInviteCell
         cell.inviteCellImage.isSelected = !cell.inviteCellImage.isSelected
@@ -130,5 +146,14 @@ extension HHInviteController:MFMessageComposeViewControllerDelegate{
             HHProgressHUD().showHUDAddedTo(title: "邀请成功", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
 
         }
+    }
+}
+extension HHInviteController:HHIndexViewDelelgate{
+    func tableViewIndex(_ tableViewIndex: HHIndexView, didSelectSection index: NSInteger, withTitle title: NSString) {
+        let sonCount = contentArray[index].count
+        if sonCount<1 {
+            return
+        }
+        tableView.scrollToRow(at: NSIndexPath.init(row: 0, section: index) as IndexPath, at: .middle, animated: true)
     }
 }

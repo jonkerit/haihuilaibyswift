@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HHChioceRoleController: UIViewController {
+class HHChioceRoleController: HHBaseViewController {
     private var selectedName:String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +64,7 @@ class HHChioceRoleController: UIViewController {
         }else{
             print("请选择身份")
         }
+        self.navigationController?.pushViewController(HHSignUpController(), animated: true)
     }
     @objc func choiceCheDao(){
         self.selectedName="chedao"
