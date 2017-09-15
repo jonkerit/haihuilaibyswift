@@ -156,7 +156,7 @@ class HHCommon: NSObject {
         
          //初始化一个数组newSectionsArray用来存放最终的数据，我们最终要得到的数据模型应该形如@[@[以A开头的数据数组], @[以B开头的数据数组], @[以C开头的数据数组], ... @[以#(其它)开头的数据数组]]
         
-        for i in 0..<collationCount {
+        for _ in 0..<collationCount {
             let array = [HHInviteModel]()
             tempArray.append(array)
         }

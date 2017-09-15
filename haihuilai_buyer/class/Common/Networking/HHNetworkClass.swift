@@ -229,4 +229,35 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    
+    /// 注册发送验证码
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func sendTestNumber(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "app/suppliers/captcha", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 注册
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func signUpAccount(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "app/suppliers", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
 }

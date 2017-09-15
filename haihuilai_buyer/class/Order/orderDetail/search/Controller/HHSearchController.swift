@@ -107,7 +107,7 @@ class HHSearchController: HHBaseViewController {
 extension HHSearchController: HHHeaderViewDelegate{
     func cancelAction() {
         view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
     }
     
     func choiceMenuAction() {

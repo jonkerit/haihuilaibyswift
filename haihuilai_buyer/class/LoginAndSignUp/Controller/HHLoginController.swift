@@ -72,7 +72,7 @@ class HHLoginController: UIViewController{
     private func dealBoclk(){
         weak var weakSelf = self
         logInAndSignUpView.signUpOrLoginblocks = {(_) ->  String in
-            weakSelf?.navigationController?.pushViewController(HHLayerController(), animated: true)
+            weakSelf?.navigationController?.pushViewController(HHRegistProtocolController(), animated: true)
             return "注册"
         }
         loginView.choiceCountryB = {

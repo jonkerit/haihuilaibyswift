@@ -128,8 +128,13 @@ let notification_country_number = "NotificationForCountryNumber" // 选择国家
 let notification_changeinto_rootController = "Notification_changeIntoRootController" // 改变根目录
 // 沙河存储的key的定义
 let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
-// 关键字的定义
+// 关键字的定
+#if DEBUG
 let HH_SERVER_URL = "http://test.haihuilai.com"
+#else
+let HH_SERVER_URL = "http://www.haihuilai.com"
+#endif
+
 let HAIHUILAI = "还会来" // 重点字段
 
 // 开发环境打印

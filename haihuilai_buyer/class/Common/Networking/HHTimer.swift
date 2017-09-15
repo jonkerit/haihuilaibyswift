@@ -9,6 +9,7 @@
 import UIKit
 
 class HHTimer: NSObject {
+    static let shareTimer = HHTimer()
     var codeTimer :DispatchSourceTimer?
     
     /// 有总时间的计时器

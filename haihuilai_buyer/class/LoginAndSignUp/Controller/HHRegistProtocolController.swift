@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HHRegistProtocolController: UIViewController {
+class HHRegistProtocolController: HHBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class HHRegistProtocolController: UIViewController {
             make!.left.equalTo()(self.view)
             make!.right.equalTo()(self.view)
             make!.bottom.equalTo()(self.view)
-            make!.height.mas_equalTo()(40)
+            make!.height.mas_equalTo()(60)
         }
     }
     
@@ -40,8 +40,8 @@ class HHRegistProtocolController: UIViewController {
         
         let btn=UIButton.init()
         btn.setTitle("同意并注册", for: .normal)
-        btn.backgroundColor=UIColor.brown
-        btn.titleLabel?.font=UIFont.systemFont(ofSize: 13)
+        btn.backgroundColor = HHMAINCOLOR()
+        btn.titleLabel?.font=UIFont.systemFont(ofSize: 16)
         btn.addTarget(self, action: #selector(agree), for: .touchUpInside)
         return btn
     }()
