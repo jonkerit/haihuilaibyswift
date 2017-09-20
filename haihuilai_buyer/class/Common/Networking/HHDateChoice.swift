@@ -6,8 +6,8 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 @objc protocol HHDateChoiceDelegate: class{
-    @objc optional func cancelBtnBack()
-    @objc optional func ensureBtnBack(stringfirst:String?)
+    @objc optional func dateCancelBtnBack()
+    @objc optional func dateEnsureBtnBack(stringfirst:String?)
     
 }
 
@@ -33,7 +33,7 @@ class HHDateChoice: NSObject {
     }
     
     // @objc方法
-    @objc private func cancelActin(){
+    @objc private func pickERCancelActin(){
        commonTextView.endEditing(true)
     }
     @objc private func ensureActin(){
@@ -42,7 +42,7 @@ class HHDateChoice: NSObject {
         ndf.dateFormat = "yyyy-MM-dd"
         let time = ndf.string(from: self.datePicker.date)
         if self.dateChoiceDelegate != nil {
-            self.dateChoiceDelegate?.ensureBtnBack!(stringfirst: time)
+            self.dateChoiceDelegate?.dateEnsureBtnBack!(stringfirst: time)
         }
     }
 
@@ -66,7 +66,7 @@ class HHDateChoice: NSObject {
         return headView
     }()
     fileprivate lazy var cancelBtn: UIButton = {
-        let btn = UIButton.init(action: #selector(HHDateChoice.cancelActin), target: self, title: "取消", backgroudImageName: "main_dark", fontColor: UIColor.white, fontSize: 16)
+        let btn = UIButton.init(action: #selector(HHDateChoice.pickERCancelActin), target: self, title: "取消", backgroudImageName: "main_dark", fontColor: UIColor.white, fontSize: 16)
         return btn
     }()
     fileprivate lazy var ensureBtn: UIButton = {

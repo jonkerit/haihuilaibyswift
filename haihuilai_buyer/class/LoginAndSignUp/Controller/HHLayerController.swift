@@ -16,8 +16,8 @@ class HHLayerController: HHBaseViewController {
     }
 
     func setUI(){
-//        let agreeBtn = UIButton.init(title:"同意并注册", backgroudImageName: "main_light", fontColor: UIColor.white, fontSize: 18)
-//        agreeBtn.addTarget(self, action:#selector(HHLayerController.nextPage), for: .touchDown)
+        let agreeBtn = UIButton.init(title:"同意并注册", backgroudImageName: "main_light", fontColor: UIColor.white, fontSize: 18)
+        agreeBtn.addTarget(self, action:#selector(HHLayerController.nextPage), for: .touchDown)
         let webView = UIWebView.init(frame: self.view.bounds)
         webView.delegate = self
         

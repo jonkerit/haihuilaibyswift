@@ -7,8 +7,8 @@
 //
 
 @objc protocol HHPickerViewDelegate: class{
-    @objc optional func cancelBtnBack()
-    @objc optional func ensureBtnBack(stringfirst:String?, stringSecond: String?)
+    @objc optional func pickerCancelBtnBack()
+    @objc optional func pickerEnsureBtnBack(stringfirst:String?, stringSecond: String?)
     
 }
 
@@ -16,8 +16,17 @@ import UIKit
 
 class HHPickerView: UIView {
     weak var pickerViewDelegate: HHPickerViewDelegate?
-    var dataArray: [[Any]]?
-    
+    var dataArray: [[Any]]?{
+        didSet{
+            choiceStringFisrt = dataArray?[0][0] as? String
+            if (dataArray?.count)! > 1 {
+                choiceStringSecond = dataArray?[1][0] as? String
+            }
+        }
+    }
+    fileprivate var choiceStringFisrt: String?
+    fileprivate var choiceStringSecond: String?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.black
@@ -71,14 +80,11 @@ class HHPickerView: UIView {
     }
     
     @objc private func cancelActin(){
-        if self.pickerViewDelegate != nil {
-            self.pickerViewDelegate?.ensureBtnBack!(stringfirst: "en", stringSecond: nil)
-        }
         removeView()
     }
     @objc private func ensureActin(){
         if self.pickerViewDelegate != nil {
-            self.pickerViewDelegate?.cancelBtnBack!()
+            self.pickerViewDelegate?.pickerEnsureBtnBack!(stringfirst: choiceStringFisrt, stringSecond: choiceStringSecond)
         }
         removeView()
     }
@@ -132,8 +138,33 @@ extension HHPickerView: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            choiceStringFisrt = dataArray![component][row] as? String
+        }
+        if component == 1 {
+            choiceStringSecond = dataArray![component][row] as? String
+        }
         
     }
+    // 设置label
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        if component == 0 {
+            let label = UILabel.init(title: (dataArray![component][row] as? String)!, fontColor: HHMAINCOLOR(), fontSize: 23, alignment: .center)
+            label.frame = CGRect(x:0,y:0,width:100,height:30)
+            return label
+        }else{
+            let label = UILabel.init(title: (dataArray![component][row] as? String)!, fontColor: HHMAINCOLOR(), fontSize: 20, alignment: .center)
+            label.frame = CGRect(x:0,y:0,width:250,height:30)
+            return label
+        }
+    }
+    // 设置组的宽度和高度
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
+    
+    
+    
 
 }
 

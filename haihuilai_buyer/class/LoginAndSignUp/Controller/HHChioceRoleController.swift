@@ -57,22 +57,23 @@ class HHChioceRoleController: HHBaseViewController {
     }
     
     @objc func nextStep(){
-        if selectedName=="chedao" {
-            print("chedao")
-        }else if selectedName=="duizhang"{
-            print("duizhang")
-        }else{
+        if is_empty_string(selectedName) {
             print("请选择身份")
+            HHProgressHUD.shareTool.showHUDAddedTo(title: "请选择身份", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+        }else{
+            let SU = HHSignUpController()
+            SU.type = selectedName
+            self.navigationController?.pushViewController(SU, animated: true)
         }
-        self.navigationController?.pushViewController(HHSignUpController(), animated: true)
+        
     }
     @objc func choiceCheDao(){
-        self.selectedName="chedao"
+        self.selectedName="DriverSupplier"
         cheDaoV.backgroundColor=HHMAINCOLOR()
         duiZhangV.backgroundColor=UIColor.white
     }
     @objc func choiceDuiZhang(){
-        self.selectedName="duizhang"
+        self.selectedName="CompanySupplier"
         duiZhangV.backgroundColor=HHMAINCOLOR()
         cheDaoV.backgroundColor=UIColor.white
     }

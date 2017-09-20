@@ -160,7 +160,7 @@ class HHSignUpController: HHBaseViewController {
             HHProgressHUD.shareTool.showHUDAddedTo(title: "密码不能为空", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             return
         }
-        if (testTextFild.text?.characters.count)! < 8 {
+        if (testTextFild.text?.characters.count)! < 4 {
             HHProgressHUD.shareTool.showHUDAddedTo(title: "密码至少为8位", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             return
         }
@@ -170,7 +170,13 @@ class HHSignUpController: HHBaseViewController {
         HHNetworkClass().signUpAccount(parameter: parameterDict) { (response, errorString) in
             if SUCCESSFUL(response){
                 HHProgressHUD.shareTool.showHUDAddedTo(title: "注册成功，接下来请填写资料", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
-                // 添加计时器
+                
+                // 记录登录信息
+                HHAccountViewModel.shareAcount.accountModel = HHAccountModel(dict: response?["data"] as! [String : AnyObject])
+                HHAccountViewModel.shareAcount.saveUseAccount(response?["data"] as! [String : AnyObject])
+                // 存储审核状态
+                UserDefaults.standard.set("inactive", forKey: CHECK_STATUS_KEY)
+                // 添加延时器
                 let time = DispatchTimeInterval.seconds(1)
                 let delayTime: DispatchTime = DispatchTime.now() + time
                 DispatchQueue.global().asyncAfter(deadline: delayTime) {

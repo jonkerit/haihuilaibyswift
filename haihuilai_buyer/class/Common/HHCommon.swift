@@ -200,4 +200,68 @@ class HHCommon: NSObject {
             myAttrString.setAttributes([NSForegroundColorAttributeName : fontColor,NSUnderlineStyleAttributeName:1], range: ColorRange)
         return myAttrString
     }
+    
+    /// 判断邮箱的正则
+    ///
+    /// - Parameter email: 邮箱
+    /// - Returns: 结果
+    func validateEmail(email: String?) -> Bool{
+        let pattern = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$"
+        
+        let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue:0))
+        let res = regex.matches(in: email!, options: NSRegularExpression.MatchingOptions(rawValue:0), range: NSMakeRange(0, (email?.characters.count)!))
+        if res.count > 0 {
+            return true
+        }
+        return false
+
+    }
+    /// 判断电话的正则
+    ///
+    /// - Parameter email: 电话号码
+    /// - Returns: 结果
+    func checkPhoneNumber(str:String)->Bool {
+        let pattern = "1[3578]\\d{9}"
+        
+        let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue:0))
+        let res = regex.matches(in: str, options: NSRegularExpression.MatchingOptions(rawValue:0), range: NSMakeRange(0, str.characters.count))
+        if res.count > 0 {
+            return true
+        }
+        return false
+    }
+    
+    /// 获取1970年到现在的年份的数组
+    func fromNowTo1970YearsArray() -> [String] {
+        var dateArray = [String]()
+        let ndf = DateFormatter.init()
+        ndf.dateFormat = "yyyy"
+        var now = Date()
+        
+        var dateString = ndf.string(from: now)
+        dateArray.append(dateString+"年")
+        var dateComponents = DateComponents()
+        dateComponents.year = -1
+        
+        while Int(dateString)! > 1970 {
+            now = NSCalendar.current.date(byAdding: dateComponents, to: now)!
+            dateString = ndf.string(from: now)
+            dateArray.append(dateString+"年")
+        }
+        return dateArray
+    }
+    
+    /// 截取字符串
+    ///
+    /// - inputString: 电话号码
+    /// - start: 开始位置
+    /// = end: 结束位置
+    func subString(inputString: String,start:Int, end:Int)->String {
+        let StartIndex = inputString.index(inputString.startIndex, offsetBy: start)
+        let str = inputString.substring(from: StartIndex)
+        let endNumber = inputString.characters.count - end - 1
+        let endIndex = str.index(str.endIndex, offsetBy:-endNumber)
+        return str.substring(to: endIndex)
+    }
+    
 }

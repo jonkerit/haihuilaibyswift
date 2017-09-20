@@ -125,7 +125,7 @@ extension HHSearchController: HHMenuViewDelegate{
 }
 
 extension HHSearchController: HHDateChoiceDelegate{
-    func ensureBtnBack(stringfirst: String?) {
+    func dateEnsureBtnBack(stringfirst: String?) {
         headerView.headerInputView.text = stringfirst
         updateSearchView(content: stringfirst, tags: menuModels?.tag)
     }

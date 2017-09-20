@@ -25,13 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUIAppearance()
      
         //测试修改
-        let loginNav = HHNavigationController(rootViewController:HHLoginController())
+//        let loginNav = HHNavigationController(rootViewController:HHLoginController())
 
-        if HHAccountViewModel.shareAcount.isLogin {
-            window?.rootViewController = HHbaseBarController()
-        } else {
-            window?.rootViewController = loginNav
-        }
+//        let loginNav = HHNavigationController(rootViewController:HHAdvertisementController())
+//        if HHAccountViewModel.shareAcount.isLogin {
+//            window?.rootViewController = HHbaseBarController()
+//        } else {
+//            window?.rootViewController = loginNav
+//        }
+        window?.rootViewController = HHAdvertisementController()
         window?.makeKeyAndVisible()
         // 改变根目录的通知
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.changeRootController(notification:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
@@ -52,6 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nav = HHNavigationController(rootViewController:HHLoginController())
             window?.rootViewController = nav
         break
+        case "HHRewriteController":
+            let nav = HHNavigationController(rootViewController:HHRewriteController())
+            window?.rootViewController = nav
+            break
         default:
             window?.rootViewController = HHbaseBarController()
         break

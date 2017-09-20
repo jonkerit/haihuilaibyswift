@@ -260,4 +260,34 @@ class HHNetworkClass:NSObject {
         }
     }
 
+    /// 注册后填写信息（一）
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getPersonInfoFirst(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/accounts/user_info", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 对队长名字的搜索结果列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getSearchLeaderList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/teams/search", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHChoiceLeaderModel().choiceLeaderArray(dictArray: response!["data"]?["teams"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 }

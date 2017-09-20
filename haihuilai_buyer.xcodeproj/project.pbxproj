@@ -38,6 +38,15 @@
 		9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */; };
 		9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */; };
 		9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */; };
+		9B37B3A91F6F762D00B8689A /* HHDetailInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3A81F6F762D00B8689A /* HHDetailInfoController.swift */; };
+		9B37B3AB1F6F773B00B8689A /* HHDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3AA1F6F773B00B8689A /* HHDetailInfoCell.swift */; };
+		9B37B3AD1F6FA8F200B8689A /* HHNextOrdelegateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3AC1F6FA8F200B8689A /* HHNextOrdelegateCell.swift */; };
+		9B37B3AF1F6FC29800B8689A /* HHDetailInfoTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3AE1F6FC29800B8689A /* HHDetailInfoTwoCell.swift */; };
+		9B37B3B11F70FBFC00B8689A /* HHAdvertisementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3B01F70FBFC00B8689A /* HHAdvertisementController.swift */; };
+		9B37B3B31F71036400B8689A /* HHRewriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3B21F71036400B8689A /* HHRewriteController.swift */; };
+		9B37B3B91F72569A00B8689A /* HHChoiceLeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3B81F72569A00B8689A /* HHChoiceLeaderController.swift */; };
+		9B37B3BB1F725FDE00B8689A /* HHChoiceLeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3BA1F725FDE00B8689A /* HHChoiceLeaderCell.swift */; };
+		9B37B3BD1F72724600B8689A /* HHChoiceLeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37B3BC1F72724600B8689A /* HHChoiceLeaderModel.swift */; };
 		9B4F764B1F4AAC1D00EDDC03 /* HHTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */; };
 		9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */; };
 		9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */; };
@@ -119,6 +128,15 @@
 		9B33CA0F1F3C4C1700461B4F /* HHChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceModel.swift; sourceTree = "<group>"; };
 		9B33CA111F3C50DE00461B4F /* HHNetworkClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkClass.swift; sourceTree = "<group>"; };
 		9B33CA141F417CDB00461B4F /* HHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHProgressHUD.swift; sourceTree = "<group>"; };
+		9B37B3A81F6F762D00B8689A /* HHDetailInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailInfoController.swift; sourceTree = "<group>"; };
+		9B37B3AA1F6F773B00B8689A /* HHDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailInfoCell.swift; sourceTree = "<group>"; };
+		9B37B3AC1F6FA8F200B8689A /* HHNextOrdelegateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNextOrdelegateCell.swift; sourceTree = "<group>"; };
+		9B37B3AE1F6FC29800B8689A /* HHDetailInfoTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailInfoTwoCell.swift; sourceTree = "<group>"; };
+		9B37B3B01F70FBFC00B8689A /* HHAdvertisementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAdvertisementController.swift; sourceTree = "<group>"; };
+		9B37B3B21F71036400B8689A /* HHRewriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHRewriteController.swift; sourceTree = "<group>"; };
+		9B37B3B81F72569A00B8689A /* HHChoiceLeaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceLeaderController.swift; sourceTree = "<group>"; };
+		9B37B3BA1F725FDE00B8689A /* HHChoiceLeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceLeaderCell.swift; sourceTree = "<group>"; };
+		9B37B3BC1F72724600B8689A /* HHChoiceLeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHChoiceLeaderModel.swift; sourceTree = "<group>"; };
 		9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTimer.swift; sourceTree = "<group>"; };
 		9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHBaseScrollViewController.swift; sourceTree = "<group>"; };
 		9B6E5A461F4593EF0055746C /* HHPhotoPickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPhotoPickManager.swift; sourceTree = "<group>"; };
@@ -233,6 +251,40 @@
 			);
 			name = Tool;
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		9B37B3B41F72535F00B8689A /* ChoiceLeader */ = {
+			isa = PBXGroup;
+			children = (
+				9B37B3B51F72535F00B8689A /* Controller */,
+				9B37B3B61F72535F00B8689A /* Model */,
+				9B37B3B71F72535F00B8689A /* View */,
+			);
+			path = ChoiceLeader;
+			sourceTree = "<group>";
+		};
+		9B37B3B51F72535F00B8689A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B37B3B81F72569A00B8689A /* HHChoiceLeaderController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B37B3B61F72535F00B8689A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B37B3BC1F72724600B8689A /* HHChoiceLeaderModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B37B3B71F72535F00B8689A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B37B3BA1F725FDE00B8689A /* HHChoiceLeaderCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9B4F764C1F4AD90D00EDDC03 /* Order */ = {
@@ -438,6 +490,7 @@
 				9BF9C4E01DF993E00065D9F7 /* HHBaseTableViewController.swift */,
 				9BF9C4E11DF993E00065D9F7 /* HHBaseViewController.swift */,
 				9B4F76601F4BCDB700EDDC03 /* HHBaseScrollViewController.swift */,
+				9B37B3B01F70FBFC00B8689A /* HHAdvertisementController.swift */,
 				9B33CA131F417B5200461B4F /* Tool */,
 			);
 			path = Common;
@@ -446,6 +499,7 @@
 		9BF9C4E71DF993E00065D9F7 /* LoginAndSignUp */ = {
 			isa = PBXGroup;
 			children = (
+				9B37B3B41F72535F00B8689A /* ChoiceLeader */,
 				9BF9C4E81DF993E00065D9F7 /* Controller */,
 				9BF9C4EA1DF993E00065D9F7 /* Model */,
 				9B0BCDB51E027DF10087FC35 /* ViewModel */,
@@ -464,6 +518,8 @@
 				9B6E5A481F45E3CF0055746C /* HHLayerController.swift */,
 				28AADEC61F455B8C0024D4E3 /* HHChioceRoleController.swift */,
 				9B06B1B51F6A75FB00EF5CB4 /* HHSignUpController.swift */,
+				9B37B3A81F6F762D00B8689A /* HHDetailInfoController.swift */,
+				9B37B3B21F71036400B8689A /* HHRewriteController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +543,9 @@
 				9B33CA091F3C432500461B4F /* HHChoiceCountryCell.swift */,
 				9B33CA0A1F3C432500461B4F /* HHChoiceCountryCell.xib */,
 				28AADECC1F456FDA0024D4E3 /* HHChoiceView.swift */,
+				9B37B3AA1F6F773B00B8689A /* HHDetailInfoCell.swift */,
+				9B37B3AC1F6FA8F200B8689A /* HHNextOrdelegateCell.swift */,
+				9B37B3AE1F6FC29800B8689A /* HHDetailInfoTwoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -691,7 +750,7 @@
 				TargetAttributes = {
 					9BF9C4C81DF9934F0065D9F7 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9N33P6WHUJ;
+						DevelopmentTeam = 44L9ZRZ9BD;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -783,9 +842,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B37B3B91F72569A00B8689A /* HHChoiceLeaderController.swift in Sources */,
 				9BFF8FB81F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift in Sources */,
 				9BFF90211F6662C0002AF33B /* HHResultView.swift in Sources */,
 				9B06B1B61F6A75FB00EF5CB4 /* HHSignUpController.swift in Sources */,
+				9B37B3AF1F6FC29800B8689A /* HHDetailInfoTwoCell.swift in Sources */,
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
 				9BFF90151F628A0F002AF33B /* HHNewsModel.swift in Sources */,
 				9BFF900D1F62367F002AF33B /* HHOrderTableView.swift in Sources */,
@@ -796,21 +857,25 @@
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
 				9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */,
+				9B37B3B11F70FBFC00B8689A /* HHAdvertisementController.swift in Sources */,
 				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,
 				9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */,
 				9BFF90271F669464002AF33B /* HHMenuModel.swift in Sources */,
 				9B33CA021F3AEC5B00461B4F /* HHLogInView.swift in Sources */,
 				9BF9C4CD1DF9934F0065D9F7 /* AppDelegate.swift in Sources */,
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
+				9B37B3BD1F72724600B8689A /* HHChoiceLeaderModel.swift in Sources */,
 				9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */,
 				9BFF903B1F68D407002AF33B /* HHInviteCell.swift in Sources */,
 				9B06B1B01F6904D900EF5CB4 /* HHAddressBook.swift in Sources */,
 				9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */,
 				9BFA7AD81E02DC52005D6D3F /* HeaderFile.swift in Sources */,
+				9B37B3B31F71036400B8689A /* HHRewriteController.swift in Sources */,
 				9BFF90391F68D07D002AF33B /* HHInviteController.swift in Sources */,
 				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
 				9BFF90111F628103002AF33B /* HHNewsTableView.swift in Sources */,
 				9BFF90231F6662D3002AF33B /* HHHistoryView.swift in Sources */,
+				9B37B3AD1F6FA8F200B8689A /* HHNextOrdelegateCell.swift in Sources */,
 				9BFF90291F67868B002AF33B /* HHHistoryModel.swift in Sources */,
 				9BFF900C1F62367F002AF33B /* HHOrderHeadView.swift in Sources */,
 				9BF9C4F21DF993E00065D9F7 /* HHBaseViewController.swift in Sources */,
@@ -831,7 +896,10 @@
 				9BFF900A1F62367F002AF33B /* HHOrderCell.swift in Sources */,
 				9B06B1C21F6A7D3200EF5CB4 /* UIButton+Category.swift in Sources */,
 				9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */,
+				9B37B3BB1F725FDE00B8689A /* HHChoiceLeaderCell.swift in Sources */,
+				9B37B3AB1F6F773B00B8689A /* HHDetailInfoCell.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
+				9B37B3A91F6F762D00B8689A /* HHDetailInfoController.swift in Sources */,
 				9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */,
 				9B2E35EC1F4E7E2E008E7BAC /* HHIndividualController.swift in Sources */,
 				9BFF8FC01F5D01CA002AF33B /* HHHomeCell.swift in Sources */,
@@ -973,11 +1041,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9N33P6WHUJ;
+				DEVELOPMENT_TEAM = 44L9ZRZ9BD;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.driverforabroad11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.airtips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -994,11 +1062,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9N33P6WHUJ;
+				DEVELOPMENT_TEAM = 44L9ZRZ9BD;
 				INFOPLIST_FILE = haihuilai_buyer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.driverforabroad11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihuilai.airtips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/haihuilai_buyer/class/Common/haihuilai_buyer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
