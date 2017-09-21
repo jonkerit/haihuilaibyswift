@@ -2,20 +2,20 @@
 //  HHChoiceLeaderCell.swift
 //  haihuilai_buyer
 //
-//  Created by jonker on 17/9/20.
+//  Created by jonker on 17/9/21.
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
 import UIKit
 
-class HHChoiceLeaderCell: UITableViewCell {
+class HHChoiceLeaderCell: UITableViewCell  {
     var choiceLeaderModel: HHChoiceLeaderModel?{
         didSet{
             choiceLeaderTitle.text = choiceLeaderModel?.fullname
         }
     }
     
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()

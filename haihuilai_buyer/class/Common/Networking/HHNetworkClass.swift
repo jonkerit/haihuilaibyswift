@@ -290,4 +290,64 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    /// 区域的洲－列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getLocationFirstList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/locations/zones", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHChoiceLoactionFirstModel().choiceLoactionFirstArray(dictArray: response!["data"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 区域的国家－列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getLocationSecondList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/locations/countries_by_zone", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHChoiceLoactionSecondModel().choiceLoactionSecondArray(dictArray: response!["data"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 区域的地区－列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getLocationThirdList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/locations/cities_by_country", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHChoiceLoactionThirdModel().choiceLoactionThirdArray(dictArray: response!["data"]?["cities"] as! [AnyObject])
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
+    /// 提交注册信息（第三步）
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postPersonInfoThird(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "app/suppliers/info", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 }

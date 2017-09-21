@@ -11,7 +11,10 @@ import UIKit
 class HHDetailInfoController: HHBaseTableViewController {
     // 被选择的cell的tag值
     fileprivate var choiceTag:Int?
-    
+//    // 选择的队长的ID
+//    fileprivate var team_id: String?
+//    // 选择的居住地的ID
+//    fileprivate var location_id: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         setRightBarItem()
@@ -20,17 +23,26 @@ class HHDetailInfoController: HHBaseTableViewController {
         tableView.register(HHNextOrdelegateCell.self, forCellReuseIdentifier: "HHNextOrdelegateCell")
         tableView.register(HHNextOrdelegateCell.self, forCellReuseIdentifier: "HHDetailInfoTwoCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceLeader(notice:)), name:  NSNotification.Name(rawValue: notification_choiceLeader), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceLoaction(notice:)), name:  NSNotification.Name(rawValue: notification_choiceLocation), object: nil)
     }
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     // 获取列表信息
     private func getInfo(){
         HHProgressHUD.shareTool.showHUDAddedTo(title: "加载中...", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
         HHNetworkClass().getPersonInfoFirst(parameter: nil) { (response, errorString) in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             if SUCCESSFUL(response){
-                for key in self.keyArray {
+                for key in self.postKeyArray {
                     let valueString: String? = response?["data"]?[key] as? String ?? ""
                     self.postParameterDict.updateValue(valueString!, forKey: key)
+                }
+                for key in self.showKeyArray {
+                    let valueString: String? = response?["data"]?[key] as? String ?? ""
+                    self.showParameterDict.updateValue(valueString!, forKey: key)
                 }
                 self.tableView.reloadData()
             }else{
@@ -60,7 +72,7 @@ class HHDetailInfoController: HHBaseTableViewController {
         let dict: Dictionary = titleArray[number!]
         // 给detailInfoText赋值
         tableViewCell?.detailInfoText.tag = number!
-        tableViewCell?.detailInfoText.text = self.postParameterDict[self.keyArray[number!]]
+        tableViewCell?.detailInfoText.text = self.showParameterDict[self.showKeyArray[number!]]
         // 给title赋值
         tableViewCell?.detailInfoTitle.text = dict["title"]
         // 给image赋值
@@ -107,10 +119,11 @@ class HHDetailInfoController: HHBaseTableViewController {
             datwPickerView.initWithArray(DataArray:arrayM)
             datwPickerView.pickerViewDelegate = self
             break
-        case 7:HHPrint("跳转到选择区区")
+        case 7:HHPrint("跳转到选择区域")
+        navigationController?.pushViewController(HHChoiceLoactionFirstController(), animated: true)
             break
         case 8:HHPrint("选择队长")
-        navigationController?.present(HHChoiceLeaderController(), animated: true, completion: nil)
+        navigationController?.pushViewController(HHChoiceLeaderController(), animated: true)
             break
         default:
             break
@@ -120,13 +133,26 @@ class HHDetailInfoController: HHBaseTableViewController {
     
     // 上传编辑的信息
     fileprivate func postInfo(){
-        for key in self.keyArray {
+        // 检测信息是否完整
+        for key in self.postKeyArray {
             let valueString: String? = postParameterDict[key] ?? ""
             if valueString?.characters.count == 0 {
                 HHProgressHUD.shareTool.showHUDAddedTo(title: "信息未填写完整，请填写完整", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
                 return
             }
         }
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "资料提交中...", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
+        HHNetworkClass().postPersonInfoThird(parameter: self.postParameterDict as [String : AnyObject]?) { (response, errorString) in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            if SUCCESSFUL(response){
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "资料提交成功", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                HHPrint("进入下一步")
+
+            }else{
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "资料提交失败", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            }
+        }
+        
     }
  
     // 懒加载
@@ -145,9 +171,23 @@ class HHDetailInfoController: HHBaseTableViewController {
     @objc private func barItemAction(){
         tableView.isUserInteractionEnabled = !tableView.isUserInteractionEnabled
     }
+    @objc private func observerChoiceLeader(notice:Notification){
+        let model = notice.object as! HHChoiceLeaderModel
+        
+        self.postParameterDict.updateValue(String(model.team_id), forKey: "sub_team_id")
+        self.showParameterDict.updateValue(model.fullname!, forKey: "team_leader_name")
+        self.tableView.reloadData()
+    }
+    @objc private func observerChoiceLoaction(notice:Notification){
+        let model = notice.object as! HHChoiceLoactionSonModel
+        
+        self.postParameterDict.updateValue(model.location_id!, forKey: "location_id")
+        self.showParameterDict.updateValue(model.location_name!, forKey: "location_name")
+        self.tableView.reloadData()
+    }
     // 懒加载
     fileprivate var postParameterDict = [String: String]()
-    
+    fileprivate var showParameterDict = [String: String]()
     fileprivate var titleArray: [[String: String]] = {
         if HHAccountViewModel.shareAcount.isCompanySupplier {
             return [["title":"真实姓名","isHidden":"1"],["title":"微信号","isHidden":"1"],["title":"邮箱","isHidden":"1"],["title":"开始从业时间","isHidden":"0"],["title":"车队名称","isHidden":"1"],["title":"紧急联系人姓名","isHidden":"1"],["title":"紧急联系人手机号国家编码","isHidden":"0"],["title":"紧急联系人手机号","isHidden":"1"]]
@@ -157,13 +197,21 @@ class HHDetailInfoController: HHBaseTableViewController {
         
     }()
     
-    fileprivate var keyArray:[String] = {
+    fileprivate var showKeyArray:[String] = {
         if HHAccountViewModel.shareAcount.isCompanySupplier {
             return ["fullname","weixin","email","started_working_date","team_name","urgency_name","urgency_phone","urgency_code"]
         }else{
-            return ["fullname","weixin","email","started_working_date","license_date","nation","nation_place","location_name","team_leader_name","location_id","sub_team_id"]
+            return ["fullname","weixin","email","started_working_date","license_date","nation","nation_place","location_name","team_leader_name"]
         }
     
+    }()
+    fileprivate var postKeyArray:[String] = {
+        if HHAccountViewModel.shareAcount.isCompanySupplier {
+            return ["fullname","weixin","email","started_working_date","team_name","urgency_name","urgency_phone","urgency_code"]
+        }else{
+            return ["fullname","weixin","email","started_working_date","license_date","nation","nation_place","location_id","sub_team_id"]
+        }
+        
     }()
     
 }
@@ -177,7 +225,9 @@ extension HHDetailInfoController:HHPickerViewDelegate{
         }else{
             str = stringfirst
         }
-        self.postParameterDict.updateValue(str!, forKey: keyArray[choiceTag!])
+        self.postParameterDict.updateValue(str!, forKey: postKeyArray[choiceTag!])
+        self.showParameterDict.updateValue(str!, forKey: showKeyArray[choiceTag!])
+
         self.tableView.reloadData()
     }
 }
@@ -194,11 +244,13 @@ extension HHDetailInfoController: HHDetailInfoCellDelegate{
     
     func writeDetailInfoCell(textFields: UITextField) {
         // 保存信息
-        self.postParameterDict.updateValue(textFields.text!, forKey: self.keyArray[textFields.tag])
+        self.postParameterDict.updateValue(textFields.text!, forKey: self.postKeyArray[textFields.tag])
+        self.showParameterDict.updateValue(textFields.text!, forKey: self.showKeyArray[textFields.tag])
+
     }
 }
 
-
+// tableview 的代理和数据源方法
 extension HHDetailInfoController{
     override func numberOfSections(in tableView: UITableView) -> Int {
         if isCompanySupplier {

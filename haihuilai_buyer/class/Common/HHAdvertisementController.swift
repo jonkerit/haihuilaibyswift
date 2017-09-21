@@ -59,7 +59,7 @@ class HHAdvertisementController: HHBaseViewController {
         }else if status == "inactive" {
             className = "HHIndividualController"
         }else{
-            className = "HHbaseBarController"
+            className = "HHRewriteController"
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: className)
     }

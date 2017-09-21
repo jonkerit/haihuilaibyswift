@@ -126,6 +126,9 @@ let HHEditionVision = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
 // 通知的定义
 let notification_country_number = "NotificationForCountryNumber" // 选择国家码通知
 let notification_changeinto_rootController = "Notification_changeIntoRootController" // 改变根目录
+let notification_choiceLeader = "Notification_choiceLeader" // 选择车队
+let notification_choiceLocation = "notification_choiceLocation" // 选择居住地
+
 // 沙河存储的key的定义
 let KEY_USER_ACCOUNT = "key_user_account" // 存储用户账户信息
 // 关键字的定

@@ -16,6 +16,14 @@ class HHChoiceLeaderController: HHBaseViewController {
         super.viewDidLoad()
         setUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     private func setUI(){
         view.addSubview(backgroud)
         view.addSubview(tableView)
@@ -51,7 +59,7 @@ class HHChoiceLeaderController: HHBaseViewController {
     }
     // #selector方法
     @objc private func choiceLeaderAction(){
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // 懒加载
@@ -111,7 +119,10 @@ extension HHChoiceLeaderController: UITableViewDelegate, UITableViewDataSource{
         return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cv = HHLeaderDetailController()
+        cv.leaderDetailModel = dataArray?[indexPath.row]
+        navigationController?.pushViewController(cv, animated: true)
     }
 
 
