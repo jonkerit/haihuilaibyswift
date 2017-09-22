@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // 改变根目录的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.changeRootController(notification:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
         // 加载登录信息
        HHAccountViewModel.shareAcount.accountModel =  HHAccountViewModel.shareAcount.foundUserAccount()
         
@@ -35,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         window?.rootViewController = HHAdvertisementController()
         window?.makeKeyAndVisible()
-        // 改变根目录的通知
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.changeRootController(notification:)), name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: nil)
+        
         return true
     }
     
@@ -56,6 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         break
         case "HHRewriteController":
             let nav = HHNavigationController(rootViewController:HHRewriteController())
+            window?.rootViewController = nav
+            break
+        case "HHDetailInfoController":
+            let nav = HHNavigationController(rootViewController:HHDetailInfoController())
             window?.rootViewController = nav
             break
         default:

@@ -11,10 +11,11 @@ import UIKit
 class HHDetailInfoController: HHBaseTableViewController {
     // 被选择的cell的tag值
     fileprivate var choiceTag:Int?
-//    // 选择的队长的ID
-//    fileprivate var team_id: String?
-//    // 选择的居住地的ID
-//    fileprivate var location_id: String?
+    // 紧急联系人国家码
+    fileprivate var countryNumber: String?
+    // 紧急联系人电话号码
+    fileprivate var telehoneNumber: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setRightBarItem()
@@ -26,6 +27,9 @@ class HHDetailInfoController: HHBaseTableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceLeader(notice:)), name:  NSNotification.Name(rawValue: notification_choiceLeader), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceLoaction(notice:)), name:  NSNotification.Name(rawValue: notification_choiceLocation), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceCountry(notice:)), name:  NSNotification.Name(rawValue: notification_country_number), object: nil)
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -87,8 +91,11 @@ class HHDetailInfoController: HHBaseTableViewController {
     
     // 处理点击cell
     fileprivate func handleTouchCellForCompanySupplier(indexTag: Int){
+        choiceTag = indexTag
         if indexTag == 3 {
-            
+            let datwPickerView =  HHPickerView()
+            datwPickerView.initWithArray(DataArray: [HHCommon.shareCommon.fromNowTo1970YearsArray()])
+            datwPickerView.pickerViewDelegate = self
         }
     
     }
@@ -141,6 +148,16 @@ class HHDetailInfoController: HHBaseTableViewController {
                 return
             }
         }
+        // 判断,"urgency_phone","urgency_code"字段
+        if isCompanySupplier {
+            if !is_empty_string(countryNumber) && !is_empty_string(telehoneNumber) {
+                postParameterDict.updateValue(countryNumber!, forKey: "urgency_code")
+                postParameterDict.updateValue(telehoneNumber!, forKey: "urgency_phone")
+            }else{
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "信息未填写完整，请填写完整", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                return
+            }
+        }
         HHProgressHUD.shareTool.showHUDAddedTo(title: "资料提交中...", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
         HHNetworkClass().postPersonInfoThird(parameter: self.postParameterDict as [String : AnyObject]?) { (response, errorString) in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
@@ -149,7 +166,7 @@ class HHDetailInfoController: HHBaseTableViewController {
                 HHPrint("进入下一步")
 
             }else{
-                HHProgressHUD.shareTool.showHUDAddedTo(title: "资料提交失败", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                HHProgressHUD.shareTool.showHUDAddedTo(title: errorString, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
             }
         }
         
@@ -165,9 +182,6 @@ class HHDetailInfoController: HHBaseTableViewController {
         }
     }()
     // #selector方法
-    @objc func choiceCountryNumber(){
-        
-    }
     @objc private func barItemAction(){
         tableView.isUserInteractionEnabled = !tableView.isUserInteractionEnabled
     }
@@ -183,6 +197,12 @@ class HHDetailInfoController: HHBaseTableViewController {
         
         self.postParameterDict.updateValue(model.location_id!, forKey: "location_id")
         self.showParameterDict.updateValue(model.location_name!, forKey: "location_name")
+        self.tableView.reloadData()
+    }
+    @objc private func observerChoiceCountry(notice:Notification){
+        
+        let model = notice.object as! String
+        countryNumber = model
         self.tableView.reloadData()
     }
     // 懒加载
@@ -207,7 +227,7 @@ class HHDetailInfoController: HHBaseTableViewController {
     }()
     fileprivate var postKeyArray:[String] = {
         if HHAccountViewModel.shareAcount.isCompanySupplier {
-            return ["fullname","weixin","email","started_working_date","team_name","urgency_name","urgency_phone","urgency_code"]
+            return ["fullname","weixin","email","started_working_date","team_name","urgency_name"]
         }else{
             return ["fullname","weixin","email","started_working_date","license_date","nation","nation_place","location_id","sub_team_id"]
         }
@@ -235,8 +255,9 @@ extension HHDetailInfoController:HHPickerViewDelegate{
 // 点击detailInfoCell的代理
 extension HHDetailInfoController: HHDetailInfoCellDelegate{
     func selectedDetailInfoCell(cellTag: Int) {
+        view.endEditing(true)
         if isCompanySupplier {
-            
+            handleTouchCellForCompanySupplier(indexTag: cellTag)
         } else {
             handleTouchCellForDriversupply(indexTag: cellTag)
         }
@@ -249,7 +270,17 @@ extension HHDetailInfoController: HHDetailInfoCellDelegate{
 
     }
 }
-
+// 点击detailInfotwoCell的代理
+extension HHDetailInfoController: HHDetailInfoTwoCellDelegate{
+    func choiceCountryAction() {
+        view.endEditing(true)
+        navigationController?.pushViewController(HHChoiceCuntryController(), animated: true)
+    }
+    func writeDetailInfoTwoCell(textFields: UITextField) {
+        telehoneNumber = textFields.text
+    }
+    
+}
 // tableview 的代理和数据源方法
 extension HHDetailInfoController{
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -288,7 +319,30 @@ extension HHDetailInfoController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.separatorStyle = .none
         if isCompanySupplier {
-            if indexPath.section == 0 {
+            if indexPath.section == 2 {
+                var threeCell: HHNextOrdelegateCell? = tableView.dequeueReusableCell(withIdentifier: "HHNextOrdelegateCell") as? HHNextOrdelegateCell
+                if threeCell == nil {
+                    threeCell = HHNextOrdelegateCell.init(style: .default, reuseIdentifier: "HHNextOrdelegateCell")
+                }
+                threeCell?.selectionStyle = .none
+                return threeCell!
+            }else if indexPath.section == 1 && indexPath.row == 3{
+                var twoCell: HHDetailInfoTwoCell? = tableView.dequeueReusableCell(withIdentifier: "HHDetailInfoTwoCell") as? HHDetailInfoTwoCell
+                if twoCell == nil {
+                    twoCell = HHDetailInfoTwoCell.init(style: .default, reuseIdentifier: "HHDetailInfoTwoCell")
+                }
+                twoCell?.selectionStyle = .none
+                // 给cell赋值样式
+                if !is_empty_string(countryNumber) {
+                    twoCell?.detailInfoTwoBtn.setTitle(countryNumber, for: .normal)
+                    twoCell?.detailInfoTwoBtn.setTitleColor(HHWORDCOLOR(), for: .normal)
+                }
+                twoCell?.detailInfoTwoTelephone.text = telehoneNumber
+                twoCell?.detailInfoTwoCellDelegate = self
+                return twoCell!
+
+            
+            }else{
                 var oneCell: HHDetailInfoCell? = tableView.dequeueReusableCell(withIdentifier: "HHDetailInfoCell") as? HHDetailInfoCell
                 if oneCell == nil {
                     oneCell = HHDetailInfoCell.init(style: .default, reuseIdentifier: "HHDetailInfoCell")
@@ -298,13 +352,6 @@ extension HHDetailInfoController{
                 setCellVuale(tableViewCell:oneCell!,index: indexPath)
                 oneCell?.detailInfoCellDelegate = self
                 return oneCell!
-            }else{
-                var twoCell: HHNextOrdelegateCell? = tableView.dequeueReusableCell(withIdentifier: "HHNextOrdelegateCell") as? HHNextOrdelegateCell
-                if twoCell == nil {
-                    twoCell = HHNextOrdelegateCell.init(style: .default, reuseIdentifier: "HHNextOrdelegateCell")
-                }
-                twoCell?.selectionStyle = .none
-                return twoCell!
             }
         }else{
         

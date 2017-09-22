@@ -180,7 +180,9 @@ class HHSignUpController: HHBaseViewController {
                 let time = DispatchTimeInterval.seconds(1)
                 let delayTime: DispatchTime = DispatchTime.now() + time
                 DispatchQueue.global().asyncAfter(deadline: delayTime) {
-                    // 跳转
+                    // 跳转-改变根控制器
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: "HHDetailInfoController")
+
                 }
 
             }else{

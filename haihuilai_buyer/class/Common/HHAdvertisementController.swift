@@ -20,7 +20,7 @@ class HHAdvertisementController: HHBaseViewController {
         if HHAccountViewModel.shareAcount.isLogin {
             getStatus()
         }else{
-             NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: "HHLogInController")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: notification_changeinto_rootController), object: "HHLoginController")
         }
     }
     private func setUI(){

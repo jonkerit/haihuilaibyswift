@@ -52,7 +52,7 @@ class HHChoiceCuntryController: HHBaseViewController {
         return tableView
     }()
     deinit {
-        print("我被移除了")
+        HHPrint("我被移除了")
     }
 }
 
