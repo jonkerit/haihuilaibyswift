@@ -23,6 +23,8 @@
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
 		9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */; };
+		9B10467C1F74F0730037C3EC /* HHDetailPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */; };
+		9B10467E1F74F1B30037C3EC /* HHImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */; };
 		9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */; };
 		9B2E35E61F4E7D48008E7BAC /* HHMotorcadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */; };
 		9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */; };
@@ -119,6 +121,8 @@
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
 		9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HHAccountViewModel.swift; path = haihuilai_buyer/class/Common/Networking/HHAccountViewModel.swift; sourceTree = SOURCE_ROOT; };
 		9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAccountModel.swift; sourceTree = "<group>"; };
+		9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailPictureController.swift; sourceTree = "<group>"; };
+		9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHImageViewCell.swift; sourceTree = "<group>"; };
 		9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHbaseBarController.swift; sourceTree = "<group>"; };
 		9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeController.swift; sourceTree = "<group>"; };
 		9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCalendarController.swift; sourceTree = "<group>"; };
@@ -569,6 +573,7 @@
 				28AADEC61F455B8C0024D4E3 /* HHChioceRoleController.swift */,
 				9B06B1B51F6A75FB00EF5CB4 /* HHSignUpController.swift */,
 				9B37B3A81F6F762D00B8689A /* HHDetailInfoController.swift */,
+				9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */,
 				9B37B3B21F71036400B8689A /* HHRewriteController.swift */,
 			);
 			path = Controller;
@@ -596,6 +601,7 @@
 				9B37B3AA1F6F773B00B8689A /* HHDetailInfoCell.swift */,
 				9B37B3AC1F6FA8F200B8689A /* HHNextOrdelegateCell.swift */,
 				9B37B3AE1F6FC29800B8689A /* HHDetailInfoTwoCell.swift */,
+				9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 				9BFF901D1F66621D002AF33B /* HHHeaderView.swift in Sources */,
 				9B06B1B41F6A20B000EF5CB4 /* HHIndexView.swift in Sources */,
 				9BFF900A1F62367F002AF33B /* HHOrderCell.swift in Sources */,
+				9B10467C1F74F0730037C3EC /* HHDetailPictureController.swift in Sources */,
 				9B06B1C21F6A7D3200EF5CB4 /* UIButton+Category.swift in Sources */,
 				9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */,
 				9B37B3AB1F6F773B00B8689A /* HHDetailInfoCell.swift in Sources */,
@@ -956,6 +963,7 @@
 				9B37B3A91F6F762D00B8689A /* HHDetailInfoController.swift in Sources */,
 				9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */,
 				9BF316D11F73997800218061 /* HHChoiceLeaderCell.swift in Sources */,
+				9B10467E1F74F1B30037C3EC /* HHImageViewCell.swift in Sources */,
 				9B2E35EC1F4E7E2E008E7BAC /* HHIndividualController.swift in Sources */,
 				9BFF8FC01F5D01CA002AF33B /* HHHomeCell.swift in Sources */,
 				9B06B1C41F6A7D3200EF5CB4 /* UILabel+Category.swift in Sources */,

@@ -350,4 +350,19 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    
+    /// 注册后填写信息（二）
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getPersonInfoSecond(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/supplier_profiles/identification_auth", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 }

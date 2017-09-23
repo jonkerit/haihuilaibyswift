@@ -100,12 +100,6 @@ extension HHDetailInfoCell: UITextFieldDelegate{
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        // 筛选信息
-        if textField.tag == 2 && !HHCommon.shareCommon.validateEmail(email: textField.text){
-            HHProgressHUD.shareTool.showHUDAddedTo(title: "请输入正确的邮箱", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
-            return false
-        }
-
         if self.detailInfoCellDelegate != nil {
             self.detailInfoCellDelegate?.writeDetailInfoCell!(textFields: textField)
         }
