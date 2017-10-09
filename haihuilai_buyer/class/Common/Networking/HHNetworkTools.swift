@@ -25,7 +25,12 @@ class HHNetworkTools: AFHTTPSessionManager {
     // 建立一个网络单利baseURL:URL.init(string: "http://test.haihuilai.com")
     static let shareTools: HHNetworkTools = {
         var instace = HHNetworkTools(baseURL: URL(string: HH_SERVER_URL))
-//        print(instace?.responseSerializer.acceptableContentTypes ?? "NO")
+        // 设置请求参数转换为JSON数据格式
+        instace?.requestSerializer = AFJSONRequestSerializer()
+        // 设置反序列化支持的格式
+        instace?.responseSerializer.acceptableContentTypes.insert("text/plain")
+        instace?.responseSerializer.acceptableContentTypes.insert("text/html")
+
         return instace!
     }()
     
@@ -92,7 +97,21 @@ class HHNetworkTools: AFHTTPSessionManager {
     ///   - parameters: 参数
     ///   - dataDictionary: 上传的数据的字典（用文件file地址，扩展性好）
     ///   - networkDataBack: 回调
-    func postData(URLString: String, parameters: [String: AnyObject]?, dataDictionary: [String: AnyObject],networkDataBack: @escaping HHNetworkDataBack) {
+    func postData(isLogin: Bool, URLString: String, parameters: [String: AnyObject]?, dataDictionary: [String: AnyObject]?,networkDataBack: @escaping HHNetworkDataBack) {
+        // 判空字典
+        var parameter = [String: AnyObject]()
+        if parameters != nil {
+            parameter = parameters!
+        }
+        // 是否含有登陆信息
+        if isLogin {
+            let version:String = "Ios_" + (HHEditionVision as! String)
+            parameter.updateValue(HHAccountViewModel.shareAcount.accountEmail as AnyObject, forKey: "user_email")
+            parameter.updateValue(HHAccountViewModel.shareAcount.accountToken as AnyObject, forKey: "user_token")
+            parameter.updateValue(HHAccountViewModel.shareAcount.accountModel?.user_type as AnyObject, forKey: "user_type")
+            parameter.updateValue(version as AnyObject, forKey: "version")
+        }
+        
         // 1. 成功的回调闭包
         let  success = { (dataTask: URLSessionDataTask?, responseObject: Any?) -> Void in
             networkDataBack(responseObject as! [String:AnyObject]?, nil)
@@ -102,18 +121,12 @@ class HHNetworkTools: AFHTTPSessionManager {
             networkDataBack(nil, error)
         }
         post(URLString, parameters: parameters, constructingBodyWith: { (formData) -> Void in
-            let nsDic:NSDictionary = NSDictionary(dictionary: dataDictionary)
+            let nsDic:NSDictionary = NSDictionary(dictionary: dataDictionary!)
             for (key, obj) in nsDic {
                 // 创建文件名称
                 let keyName = key as! String
-                let fileName = keyName.appending("file")
-                // 带异常处理的（throws）
-                do {
-                  try formData?.appendPart(withFileURL: URL(string: obj as! String), name: keyName, fileName: fileName, mimeType: "application/octet-stream")
-                } catch {
-                    print(error)
-                    return
-                }
+                let fileName = keyName.appending(".jpeg")
+                formData?.appendPart(withFileData: obj as! Data, name: keyName, fileName: fileName, mimeType: "image/jpeg")
             }
         }, success: success, failure: failure)
     }

@@ -264,4 +264,27 @@ class HHCommon: NSObject {
         return str.substring(to: endIndex)
     }
     
+    func compressImage(inputImage: UIImage, newWidth: CGFloat) -> UIImage{
+        // 原图片的尺寸
+        let imageWidth = inputImage.size.width
+        let imageHeight = inputImage.size.height
+        //  与目标尺寸的比例
+        let newHight = inputImage.size.height / (inputImage.size.width/newWidth)
+        let scaleWidth = imageWidth / newWidth
+        let scaleHeight = imageHeight / newHight
+        // 创建一个bitmap的context
+        // 并把它设置成为当前正在使用的context
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height:newHight))
+        if scaleWidth > scaleHeight {
+            inputImage.draw(in: CGRect(x:0, y:0, width: imageWidth / scaleHeight, height:newHight))
+        } else {
+            inputImage.draw(in: CGRect(x:0, y:0, width: imageWidth, height: newHight / scaleWidth))
+        }
+         // 从当前context中创建一个改变大小后的图片
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        // 使当前的context出堆栈
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
 }

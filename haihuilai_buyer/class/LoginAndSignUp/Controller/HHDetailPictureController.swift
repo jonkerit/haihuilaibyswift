@@ -284,6 +284,12 @@ extension HHDetailPictureController: HHDetailInfoTwoCellDelegate{
     }
     
 }
+// 点击HHImageViewCell的代理
+extension HHDetailPictureController:HHImageViewCellDelegate{
+    func choiceimageBtnAction(chioceBtn: UIButton) {
+        
+    }
+}
 // tableview 的代理和数据源方法
 extension HHDetailPictureController{
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -321,6 +327,8 @@ extension HHDetailPictureController{
                 imageCell?.imageViewCellBtn.setBackgroundImage(UIImage(named:imageKeyArray[indexPath.section]), for: .normal)
                 imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
                 imageCell?.selectionStyle = .none
+                imageCell?.imageViewCellDelegate = self
+                imageCell?.imageViewCellBtn.tag = indexPath.row
                 return imageCell!
             }
         }else{
@@ -352,6 +360,8 @@ extension HHDetailPictureController{
                     imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
 
                     imageCell?.selectionStyle = .none
+                    imageCell?.imageViewCellDelegate = self
+                    imageCell?.imageViewCellBtn.tag = indexPath.row
                     return imageCell!
                 }
  
@@ -381,7 +391,9 @@ extension HHDetailPictureController{
                     }
                     imageCell?.imageViewCellBtn.setBackgroundImage(UIImage(named:imageKeyArray[indexPath.section]), for: .normal)
                     imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
+                    imageCell?.imageViewCellBtn.tag = indexPath.row
                     imageCell?.selectionStyle = .none
+                    imageCell?.imageViewCellDelegate = self
                     return imageCell!
                 }
 
