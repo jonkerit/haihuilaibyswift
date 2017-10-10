@@ -372,7 +372,22 @@ class HHNetworkClass:NSObject {
     ///   - parameter: 参数
     ///   - networkClassData: 结果回调
     func postImageInfo(parameter: [String:AnyObject]?, dataParameter:[String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
-        HHNetworkTools.shareTools.postData(isLogin: true, URLString: "app/supplier_profiles/pictures", parameters: parameter, dataDictionary: dataParameter) {  (response, error) in
+        HHNetworkTools.shareTools.postData(isLogin: true, URLString: "app/supplier_profiles/pictures", parameters: parameter, dataDictionary: dataParameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 订单详情信息获取
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getDetailOrderInfo(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "/app/bookings/status", parameters: parameter) { (response, error) in
             if SUCCESSFUL(response){
                 networkClassData(response,nil)
             }else{

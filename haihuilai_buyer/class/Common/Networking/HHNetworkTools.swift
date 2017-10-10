@@ -26,10 +26,11 @@ class HHNetworkTools: AFHTTPSessionManager {
     static let shareTools: HHNetworkTools = {
         var instace = HHNetworkTools(baseURL: URL(string: HH_SERVER_URL))
         // 设置请求参数转换为JSON数据格式
-        instace?.requestSerializer = AFJSONRequestSerializer()
+        instace?.requestSerializer = AFHTTPRequestSerializer()
         // 设置反序列化支持的格式
-        instace?.responseSerializer.acceptableContentTypes.insert("text/plain")
+        instace?.responseSerializer = AFJSONResponseSerializer()
         instace?.responseSerializer.acceptableContentTypes.insert("text/html")
+        instace?.responseSerializer.acceptableContentTypes?.insert("text/plain")
 
         return instace!
     }()
@@ -120,13 +121,14 @@ class HHNetworkTools: AFHTTPSessionManager {
         let failure = { (dataTask: URLSessionDataTask?, error: Error?) -> Void in
             networkDataBack(nil, error)
         }
-        post(URLString, parameters: parameters, constructingBodyWith: { (formData) -> Void in
+        self.post(URLString, parameters: parameters, constructingBodyWith: { (formData) -> Void in
             let nsDic:NSDictionary = NSDictionary(dictionary: dataDictionary!)
             for (key, obj) in nsDic {
                 // 创建文件名称
                 let keyName = key as! String
                 let fileName = keyName.appending(".jpeg")
-                formData?.appendPart(withFileData: obj as! Data, name: keyName, fileName: fileName, mimeType: "image/jpeg")
+                let data = UIImageJPEGRepresentation(obj as! UIImage, 1.0)?.base64EncodedData()
+                formData?.appendPart(withFileData: data, name: keyName, fileName: fileName, mimeType: "image/jpeg")
             }
         }, success: success, failure: failure)
     }

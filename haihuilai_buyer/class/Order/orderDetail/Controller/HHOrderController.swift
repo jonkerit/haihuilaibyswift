@@ -169,6 +169,9 @@ extension HHOrderController: UIScrollViewDelegate{
 extension HHOrderController:HHOrderTableViewDelegate{
     func openOrderTableView(bookingId: String?) {
         print((bookingId)!)
+        let vc = HHDetailOrderController()
+        vc.detailOrderBookingId = bookingId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 

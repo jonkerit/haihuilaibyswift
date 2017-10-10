@@ -139,5 +139,6 @@ let HH_SERVER_URL = "http://www.haihuilai.com"
 #endif
 
 let HAIHUILAI = "还会来" // 重点字段
+let iOSLoadOrderEnclosure = "iOSLoadOrderEnclosure" // 获取附件
 
 // 开发环境打印

@@ -118,6 +118,39 @@ class HHDetailPictureController: HHBaseTableViewController {
         }
         
     }
+    // 选择照片
+    fileprivate func choicePhotoImage(){
+        let alertController: UIAlertController = UIAlertController.init(title: "", message: "请选择", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (alert) in
+            
+        }))
+        
+        alertController.addAction(UIAlertAction.init(title: "相册", style: .default, handler: { (alert) in
+            HHPhotoPickManager.shareTools.photoPick(pickerTypes: .PickerType_Photo, targetVC: self, photoPickCallBack: { (response, isDefault) in
+                if isDefault {
+                    self.handleChioceImage(image: response!["UIImagePickerControllerOriginalImage"] as! UIImage)
+                }
+            })
+        }))
+        alertController.addAction(UIAlertAction.init(title: "拍照", style: .default, handler: { (alert) in
+            HHPhotoPickManager.shareTools.photoPick(pickerTypes: .PickerType_Camera, targetVC: self, photoPickCallBack: { (response, isDefault) in
+                if isDefault {
+                    self.handleChioceImage(image: response!["UIImagePickerControllerOriginalImage"] as! UIImage)
+                }
+
+            })
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // 处理选择的照片
+    private func handleChioceImage(image: UIImage){
+        HHProgressHUD.shareTool.showHUDAddedTo(title: "图片处理中", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
+        HHNetworkClass().postImageInfo(parameter: nil, dataParameter: ["driving_license": image]) { (response, errorString) in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            
+        }
+    }
     
     // 上传编辑的信息
     fileprivate func postInfo(){
@@ -287,7 +320,8 @@ extension HHDetailPictureController: HHDetailInfoTwoCellDelegate{
 // 点击HHImageViewCell的代理
 extension HHDetailPictureController:HHImageViewCellDelegate{
     func choiceimageBtnAction(chioceBtn: UIButton) {
-        
+        choiceTag = chioceBtn.tag
+        choicePhotoImage()
     }
 }
 // tableview 的代理和数据源方法
@@ -328,7 +362,7 @@ extension HHDetailPictureController{
                 imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
                 imageCell?.selectionStyle = .none
                 imageCell?.imageViewCellDelegate = self
-                imageCell?.imageViewCellBtn.tag = indexPath.row
+                imageCell?.imageViewCellBtn.tag = indexPath.section
                 return imageCell!
             }
         }else{
@@ -361,7 +395,7 @@ extension HHDetailPictureController{
 
                     imageCell?.selectionStyle = .none
                     imageCell?.imageViewCellDelegate = self
-                    imageCell?.imageViewCellBtn.tag = indexPath.row
+                    imageCell?.imageViewCellBtn.tag = indexPath.section
                     return imageCell!
                 }
  
@@ -391,7 +425,7 @@ extension HHDetailPictureController{
                     }
                     imageCell?.imageViewCellBtn.setBackgroundImage(UIImage(named:imageKeyArray[indexPath.section]), for: .normal)
                     imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
-                    imageCell?.imageViewCellBtn.tag = indexPath.row
+                    imageCell?.imageViewCellBtn.tag = indexPath.section
                     imageCell?.selectionStyle = .none
                     imageCell?.imageViewCellDelegate = self
                     return imageCell!

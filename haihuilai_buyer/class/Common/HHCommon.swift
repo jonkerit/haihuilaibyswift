@@ -264,6 +264,13 @@ class HHCommon: NSObject {
         return str.substring(to: endIndex)
     }
     
+    
+    /// 等比缩放本图片大小
+    ///
+    /// - Parameters:
+    ///   - inputImage: 输入图片
+    ///   - newWidth: 缩放后图片的宽度
+    /// - Returns: 剪切后的图片
     func compressImage(inputImage: UIImage, newWidth: CGFloat) -> UIImage{
         // 原图片的尺寸
         let imageWidth = inputImage.size.width
@@ -285,6 +292,21 @@ class HHCommon: NSObject {
         // 使当前的context出堆栈
         UIGraphicsEndImageContext()
         return newImage!
+    }
+    
+    /// 压缩图片
+    ///
+    /// - Parameter inputImages: 输入图片
+    /// - Returns: data
+    func compressImage(inputImages: UIImage) -> Data {
+        let maxSize = 150*1024
+        var compression = 1.0
+        var compressedData = UIImageJPEGRepresentation(inputImages, CGFloat(compression))
+        while compressedData!.count > maxSize{
+            compression = compression * 0.7
+            compressedData = UIImageJPEGRepresentation(HHCommon.shareCommon.compressImage(inputImage: inputImages, newWidth: inputImages.size.width*CGFloat(compression)), CGFloat(compression))
+        }
+        return compressedData!
     }
     
 }
