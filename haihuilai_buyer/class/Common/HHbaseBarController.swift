@@ -43,7 +43,7 @@ class HHbaseBarController: UITabBarController {
     
     
     // 懒加载
-    lazy var imageArray: [String]? = {
+    private lazy var imageArray: [String]? = {
         if HHAccountViewModel.shareAcount.isCompanySupplier == true {
             let imageArray:Array = ["TAB-dd","TAB－cd","TAB-sdzjBRed","TAB-w"]
             return imageArray
@@ -52,7 +52,7 @@ class HHbaseBarController: UITabBarController {
             return imageArray
         }
     }()
-    lazy var imageSelectArray: [String]? = {
+    private lazy var imageSelectArray: [String]? = {
         if HHAccountViewModel.shareAcount.isCompanySupplier == true {
             let imageSelectArray:Array = ["TAB-dd-sel","TAB－cd-sel","TAB-sdzjBRed-sel","TAB-w-sel"]
             return imageSelectArray

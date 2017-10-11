@@ -395,4 +395,80 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    
+    /// 订单结束服务
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postDetailOrderEnd(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "/app/bookings/finish_travelling", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 订单开始服务
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postDetailOrderStart(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "/app/bookings/confirm_travelling", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 给邮箱发送行程单
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postEmail(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .POST, URLString: "app/bookings/send_download", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 上传意见单
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postOpinionImage(parameter: [String:AnyObject]?, dataParameter:[String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.postData(isLogin: true, URLString: "/app/bookings/opinion", parameters: parameter, dataDictionary: dataParameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    /// 上传行程变更单
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func postTravelChangeImage(parameter: [String:AnyObject]?, dataParameter:[String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.postData(isLogin: true, URLString: "app/bookings/travel_change_info", parameters: parameter, dataDictionary: dataParameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
+
 }

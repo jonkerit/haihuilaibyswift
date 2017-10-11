@@ -24,7 +24,7 @@ class HHAddressBook: NSObject {
             store.requestAccess(for: .contacts, completionHandler: {[weak self] (isRight : Bool,error : Error?) in
                 if isRight == true {
                     self?.getTelephoneNumber()
-                    if (self?.contactArray.count)! > 0 {
+                    if self?.contactArray != nil {
                         addressBookDataBack(self?.contactArray,self?.resultError)
                     }
                 } else {

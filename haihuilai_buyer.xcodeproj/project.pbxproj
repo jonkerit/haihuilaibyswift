@@ -20,6 +20,8 @@
 		9B06B1C41F6A7D3200EF5CB4 /* UILabel+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B06B1BF1F6A7D3200EF5CB4 /* UILabel+Category.swift */; };
 		9B06B1C51F6A7D3200EF5CB4 /* UITextField+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B06B1C01F6A7D3200EF5CB4 /* UITextField+Category.swift */; };
 		9B087ED91F8C9E710019D809 /* HHDetailOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087ED81F8C9E710019D809 /* HHDetailOrderController.swift */; };
+		9B087EDB1F8DCA610019D809 /* HHJourneyChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EDA1F8DCA610019D809 /* HHJourneyChangeController.swift */; };
+		9B087EDD1F8DCA950019D809 /* HHPostEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EDC1F8DCA950019D809 /* HHPostEmailController.swift */; };
 		9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */; };
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
@@ -118,6 +120,8 @@
 		9B06B1BF1F6A7D3200EF5CB4 /* UILabel+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Category.swift"; sourceTree = "<group>"; };
 		9B06B1C01F6A7D3200EF5CB4 /* UITextField+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Category.swift"; sourceTree = "<group>"; };
 		9B087ED81F8C9E710019D809 /* HHDetailOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailOrderController.swift; sourceTree = "<group>"; };
+		9B087EDA1F8DCA610019D809 /* HHJourneyChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHJourneyChangeController.swift; sourceTree = "<group>"; };
+		9B087EDC1F8DCA950019D809 /* HHPostEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPostEmailController.swift; sourceTree = "<group>"; };
 		9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCommon.swift; sourceTree = "<group>"; };
 		9B0BCDAB1E0024380087FC35 /* haihuilai_buyer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "haihuilai_buyer-Bridging-Header.h"; path = "class/Common/haihuilai_buyer-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
@@ -666,6 +670,8 @@
 			children = (
 				9BFF90001F62367F002AF33B /* HHOrderController.swift */,
 				9B087ED81F8C9E710019D809 /* HHDetailOrderController.swift */,
+				9B087EDA1F8DCA610019D809 /* HHJourneyChangeController.swift */,
+				9B087EDC1F8DCA950019D809 /* HHPostEmailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -909,6 +915,7 @@
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
 				9BFF90151F628A0F002AF33B /* HHNewsModel.swift in Sources */,
 				9BFF900D1F62367F002AF33B /* HHOrderTableView.swift in Sources */,
+				9B087EDD1F8DCA950019D809 /* HHPostEmailController.swift in Sources */,
 				9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
@@ -933,6 +940,7 @@
 				9B37B3B31F71036400B8689A /* HHRewriteController.swift in Sources */,
 				9BFF90391F68D07D002AF33B /* HHInviteController.swift in Sources */,
 				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
+				9B087EDB1F8DCA610019D809 /* HHJourneyChangeController.swift in Sources */,
 				9BFF90111F628103002AF33B /* HHNewsTableView.swift in Sources */,
 				9BFF90231F6662D3002AF33B /* HHHistoryView.swift in Sources */,
 				9B37B3AD1F6FA8F200B8689A /* HHNextOrdelegateCell.swift in Sources */,
