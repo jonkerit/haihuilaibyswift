@@ -22,6 +22,10 @@
 		9B087ED91F8C9E710019D809 /* HHDetailOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087ED81F8C9E710019D809 /* HHDetailOrderController.swift */; };
 		9B087EDB1F8DCA610019D809 /* HHJourneyChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EDA1F8DCA610019D809 /* HHJourneyChangeController.swift */; };
 		9B087EDD1F8DCA950019D809 /* HHPostEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EDC1F8DCA950019D809 /* HHPostEmailController.swift */; };
+		9B087EDF1F8F05720019D809 /* HHTemporaryGuideListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EDE1F8F05720019D809 /* HHTemporaryGuideListController.swift */; };
+		9B087EE11F8F06790019D809 /* HHTemporaryGuideTableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EE01F8F06790019D809 /* HHTemporaryGuideTableview.swift */; };
+		9B087EE31F8F091B0019D809 /* HHTempGuideMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EE21F8F091B0019D809 /* HHTempGuideMode.swift */; };
+		9B087EE51F8F41A80019D809 /* HHTempGuideDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087EE41F8F41A80019D809 /* HHTempGuideDetailController.swift */; };
 		9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */; };
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
@@ -122,6 +126,10 @@
 		9B087ED81F8C9E710019D809 /* HHDetailOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailOrderController.swift; sourceTree = "<group>"; };
 		9B087EDA1F8DCA610019D809 /* HHJourneyChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHJourneyChangeController.swift; sourceTree = "<group>"; };
 		9B087EDC1F8DCA950019D809 /* HHPostEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHPostEmailController.swift; sourceTree = "<group>"; };
+		9B087EDE1F8F05720019D809 /* HHTemporaryGuideListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTemporaryGuideListController.swift; sourceTree = "<group>"; };
+		9B087EE01F8F06790019D809 /* HHTemporaryGuideTableview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTemporaryGuideTableview.swift; sourceTree = "<group>"; };
+		9B087EE21F8F091B0019D809 /* HHTempGuideMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTempGuideMode.swift; sourceTree = "<group>"; };
+		9B087EE41F8F41A80019D809 /* HHTempGuideDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTempGuideDetailController.swift; sourceTree = "<group>"; };
 		9B0BCDA91DFFD3FB0087FC35 /* HHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCommon.swift; sourceTree = "<group>"; };
 		9B0BCDAB1E0024380087FC35 /* haihuilai_buyer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "haihuilai_buyer-Bridging-Header.h"; path = "class/Common/haihuilai_buyer-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
@@ -369,6 +377,8 @@
 			isa = PBXGroup;
 			children = (
 				9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */,
+				9B087EDE1F8F05720019D809 /* HHTemporaryGuideListController.swift */,
+				9B087EE41F8F41A80019D809 /* HHTempGuideDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -377,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				9BFF8FBB1F4EC9FD002AF33B /* HHMotorcadeModel.swift */,
+				9B087EE21F8F091B0019D809 /* HHTempGuideMode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,6 +395,7 @@
 		9B4F765B1F4BC67E00EDDC03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B087EE01F8F06790019D809 /* HHTemporaryGuideTableview.swift */,
 				9BFF8FB71F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift */,
 				9BFF8FB91F4EB196002AF33B /* HHMotorcadeSecondCell.swift */,
 			);
@@ -919,10 +931,12 @@
 				9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
+				9B087EE31F8F091B0019D809 /* HHTempGuideMode.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
 				9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */,
+				9B087EDF1F8F05720019D809 /* HHTemporaryGuideListController.swift in Sources */,
 				9B37B3B11F70FBFC00B8689A /* HHAdvertisementController.swift in Sources */,
 				9B33CA0E1F3C449A00461B4F /* HHChoiceCountryModel.swift in Sources */,
 				9B4F76611F4BCDB700EDDC03 /* HHBaseScrollViewController.swift in Sources */,
@@ -940,6 +954,7 @@
 				9B37B3B31F71036400B8689A /* HHRewriteController.swift in Sources */,
 				9BFF90391F68D07D002AF33B /* HHInviteController.swift in Sources */,
 				9B33CA151F417CDB00461B4F /* HHProgressHUD.swift in Sources */,
+				9B087EE51F8F41A80019D809 /* HHTempGuideDetailController.swift in Sources */,
 				9B087EDB1F8DCA610019D809 /* HHJourneyChangeController.swift in Sources */,
 				9BFF90111F628103002AF33B /* HHNewsTableView.swift in Sources */,
 				9BFF90231F6662D3002AF33B /* HHHistoryView.swift in Sources */,
@@ -972,6 +987,7 @@
 				9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */,
 				9B37B3AB1F6F773B00B8689A /* HHDetailInfoCell.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
+				9B087EE11F8F06790019D809 /* HHTemporaryGuideTableview.swift in Sources */,
 				9B37B3A91F6F762D00B8689A /* HHDetailInfoController.swift in Sources */,
 				9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */,
 				9BF316D11F73997800218061 /* HHChoiceLeaderCell.swift in Sources */,

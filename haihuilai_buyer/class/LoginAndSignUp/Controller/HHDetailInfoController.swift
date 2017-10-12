@@ -267,15 +267,36 @@ extension HHDetailInfoController: HHPickerViewDelegate{
 
 // 点击detailInfoCell的代理
 extension HHDetailInfoController: HHDetailInfoCellDelegate{
-    func selectedDetailInfoCell(cellTag: Int) {
+    func selectedDetailInfoCell(cellTag: Int)  -> Bool {
         if !isEdited! {
-            return
+            return false
         }
-        view.endEditing(true)
-        if isCompanySupplier {
-            handleTouchCellForCompanySupplier(indexTag: cellTag)
+        if HHAccountViewModel.shareAcount.isCompanySupplier {
+            if cellTag == 3{
+                // 跳转页面
+                view.endEditing(true)
+                if isCompanySupplier {
+                    handleTouchCellForCompanySupplier(indexTag: cellTag)
+                } else {
+                    handleTouchCellForDriversupply(indexTag: cellTag)
+                }
+                return false
+            }else{
+                return true
+            }
         } else {
-            handleTouchCellForDriversupply(indexTag: cellTag)
+            if cellTag > 2{
+                // 跳转页面
+                view.endEditing(true)
+                if isCompanySupplier {
+                    handleTouchCellForCompanySupplier(indexTag: cellTag)
+                } else {
+                    handleTouchCellForDriversupply(indexTag: cellTag)
+                }
+                return false
+            }else{
+                return true
+            }
         }
     }
     

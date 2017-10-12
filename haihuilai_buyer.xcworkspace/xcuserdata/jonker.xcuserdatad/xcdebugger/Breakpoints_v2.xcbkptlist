@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "haihuilai_buyer/class/Common/Networking/HHDateChoice.swift"
-            timestampString = "527584536.77098"
+            filePath = "haihuilai_buyer/class/Motorcade/Controller/HHTempGuideDetailController.swift"
+            timestampString = "529494191.3053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "pickERCancelActin()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "dateEnsureBtnBack(stringfirst:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "haihuilai_buyer/class/Motorcade/Controller/HHTempGuideDetailController.swift"
+            timestampString = "529494191.3053"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "selectedDetailInfoCell(cellTag:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -277,16 +277,16 @@ extension HHDetailPictureController: HHPickerViewDelegate{
 
 // 点击detailInfoCell的代理
 extension HHDetailPictureController: HHDetailInfoCellDelegate{
-    func selectedDetailInfoCell(cellTag: Int) {
+    func selectedDetailInfoCell(cellTag: Int) -> Bool {
         if !isEdited! {
-            return
+            return false
         }
-        view.endEditing(true)
         if isCompanySupplier {
             handleTouchCellForCompanySupplier(indexTag: cellTag)
         } else {
             handleTouchCellForDriversupply(indexTag: cellTag)
         }
+        return false
     }
     
     func writeDetailInfoCell(textFields: UITextField) {

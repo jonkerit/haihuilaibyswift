@@ -145,6 +145,10 @@ extension HHMotorcadeController{
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            navigationController?.pushViewController(HHTemporaryGuideListController(), animated: true)
+        }
+        
     }
     
 }

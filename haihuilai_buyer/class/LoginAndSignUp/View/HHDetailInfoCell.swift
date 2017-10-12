@@ -6,7 +6,7 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 @objc protocol HHDetailInfoCellDelegate: class{
-    @objc optional func selectedDetailInfoCell(cellTag:Int)
+    @objc optional func selectedDetailInfoCell(cellTag:Int) -> Bool
     @objc optional func writeDetailInfoCell(textFields: UITextField)
 
 }
@@ -76,26 +76,11 @@ extension HHDetailInfoCell: UITextFieldDelegate{
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if HHAccountViewModel.shareAcount.isCompanySupplier {
-            if textField.tag == 3{
-                // 跳转页面
-                if self.detailInfoCellDelegate != nil {
-                    self.detailInfoCellDelegate?.selectedDetailInfoCell!(cellTag: textField.tag)
-                }
-                return false
-            } else {
-                return true
-            }
-        } else {
-            if textField.tag > 2{
-                // 跳转页面
-                if self.detailInfoCellDelegate != nil {
-                    self.detailInfoCellDelegate?.selectedDetailInfoCell!(cellTag: textField.tag)
-                }
-                return false
-            } else {
-                return true
-            }
+        // 跳转页面
+        if self.detailInfoCellDelegate != nil {
+            return (self.detailInfoCellDelegate?.selectedDetailInfoCell!(cellTag: textField.tag))!
+        }else{
+            return true
         }
     }
     
