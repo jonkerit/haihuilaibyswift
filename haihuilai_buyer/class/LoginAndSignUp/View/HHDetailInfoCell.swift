@@ -6,7 +6,7 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 @objc protocol HHDetailInfoCellDelegate: class{
-    @objc optional func selectedDetailInfoCell(cellTag:Int) -> Bool
+    @objc optional func selectedDetailInfoCell(cellTag:Int)
     @objc optional func writeDetailInfoCell(textFields: UITextField)
 
 }
@@ -31,7 +31,8 @@ class HHDetailInfoCell: UITableViewCell {
         contentView.addSubview(detailInfoText)
         contentView.addSubview(detailInfoImage)
         contentView.addSubview(detailInfoLine)
-        
+        detailInfoText.addSubview(detailInfoBtn)
+        detailInfoBtn.isHidden = true
         detailInfoTitle.mas_makeConstraints { (make) in
             make?.left.equalTo()(self.contentView)?.setOffset(15)
             make?.top.equalTo()(self.contentView.mas_top)?.setOffset(15)
@@ -50,8 +51,18 @@ class HHDetailInfoCell: UITableViewCell {
             make?.top.equalTo()(self.detailInfoText.mas_bottom)?.setOffset(10)
             make!.size.mas_equalTo()(CGSize(width:SCREEN_WIDTH-15, height:1))
         }
+        detailInfoBtn.mas_makeConstraints { (make) in
+            make?.left.equalTo()(self.contentView)?.setOffset(15)
+            make?.top.equalTo()(self.detailInfoTitle.mas_bottom)?.setOffset(10)
+            make!.width.equalTo()(250)
+        }
     }
     
+    @objc private func detailInfoaction(btn:UIButton){
+        if self.detailInfoCellDelegate != nil {
+            self.detailInfoCellDelegate?.selectedDetailInfoCell!(cellTag: btn.tag)
+        }
+    }
     // 懒加载
     lazy var detailInfoTitle: UILabel = {
         let label = UILabel.init(title: "真实姓名", fontColor: HHWORDGAYCOLOR(), fontSize: 12, alignment: .left)
@@ -63,6 +74,10 @@ class HHDetailInfoCell: UITableViewCell {
         field.returnKeyType = .done
         return field
     }()
+    lazy var detailInfoBtn: UIButton = {
+        let btn = UIButton.init(action: #selector(detailInfoaction(btn:)), target: self, title: nil, imageName: nil, fontColor: nil, fontSize: nil)
+        return btn
+    }()
     lazy var detailInfoImage: UIImageView = UIImageView.init(imageName: "DL-jt")
     lazy var detailInfoLine: UILabel = {
         let label = UILabel.init()
@@ -72,22 +87,19 @@ class HHDetailInfoCell: UITableViewCell {
 }
 extension HHDetailInfoCell: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.endEditing(true)
+        endEditing(true)
         return true
     }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // 跳转页面
-        if self.detailInfoCellDelegate != nil {
-            return (self.detailInfoCellDelegate?.selectedDetailInfoCell!(cellTag: textField.tag))!
-        }else{
-            return true
-        }
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if self.detailInfoCellDelegate != nil {
             self.detailInfoCellDelegate?.writeDetailInfoCell!(textFields: textField)
         }
-        return true
     }
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if self.detailInfoCellDelegate != nil {
+//            self.detailInfoCellDelegate?.writeDetailInfoCell!(textFields: textField)
+//        }
+//        return true
+//    }
 }

@@ -13,13 +13,20 @@
 
 import UIKit
 
-class HHDateChoice: NSObject {
+class HHDateChoice: UITextField {
     weak var dateChoiceDelegate:HHDateChoiceDelegate?
     
-    func setDatePicker(superView: UIView?){
-        headView.addSubview(cancelBtn)
-        headView.addSubview(ensureBtn)
-        
+    init() {
+        super.init(frame: CGRect.zero)
+        DatePicker()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func DatePicker(){
+        inputAccessoryView = self.headView
+        inputView = self.datePicker
         cancelBtn.mas_makeConstraints { (make) in
             make!.centerY.equalTo()(self.headView)
             make!.left.equalTo()(self.headView)?.setOffset(20)
@@ -28,16 +35,16 @@ class HHDateChoice: NSObject {
             make!.centerY.equalTo()(self.headView)
             make!.right.equalTo()(self.headView)?.setOffset(-20)
         }
-        superView?.addSubview(commonTextView)
-        commonTextView.becomeFirstResponder()
+        HHKeyWindow?.addSubview(self)
+        self.becomeFirstResponder()
     }
     
     // @objc方法
     @objc private func pickERCancelActin(){
-       commonTextView.endEditing(true)
+       endEditing(true)
     }
     @objc private func ensureActin(){
-        commonTextView.endEditing(true)
+        endEditing(true)
         let ndf = DateFormatter()
         ndf.dateFormat = "yyyy-MM-dd"
         let time = ndf.string(from: self.datePicker.date)
@@ -54,15 +61,12 @@ class HHDateChoice: NSObject {
         datePicker.backgroundColor = UIColor.white
         return datePicker
     }()
-    fileprivate lazy var commonTextView: UITextView = {
-        let textIn = UITextView()
-        textIn.inputAccessoryView = self.headView
-        textIn.inputView = self.datePicker
-        return textIn
-    }()
+
     fileprivate lazy var headView: UIView = {
         let headView = UIView.init(frame: CGRect(x:0,y:0,width:SCREEN_WIDTH,height:50))
         headView.backgroundColor = HHMAINDEEPCOLOR()
+        headView.addSubview(self.cancelBtn)
+        headView.addSubview(self.ensureBtn)
         return headView
     }()
     fileprivate lazy var cancelBtn: UIButton = {

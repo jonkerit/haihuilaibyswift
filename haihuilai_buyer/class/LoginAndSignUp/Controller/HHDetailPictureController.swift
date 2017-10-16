@@ -67,6 +67,8 @@ class HHDetailPictureController: HHBaseTableViewController {
     fileprivate func setCellVuale(tableViewCell:HHDetailInfoCell?,index: IndexPath?){
     
         tableViewCell?.detailInfoText.tag = (index?.row)!
+        tableViewCell?.detailInfoBtn.tag = (index?.row)!
+
         tableViewCell?.detailInfoText.text = self.showParameterDict[self.showKeyArray[(index?.row)!]]
     }
     
@@ -277,16 +279,15 @@ extension HHDetailPictureController: HHPickerViewDelegate{
 
 // 点击detailInfoCell的代理
 extension HHDetailPictureController: HHDetailInfoCellDelegate{
-    func selectedDetailInfoCell(cellTag: Int) -> Bool {
+    func selectedDetailInfoCell(cellTag: Int){
         if !isEdited! {
-            return false
+            return
         }
         if isCompanySupplier {
             handleTouchCellForCompanySupplier(indexTag: cellTag)
         } else {
             handleTouchCellForDriversupply(indexTag: cellTag)
         }
-        return false
     }
     
     func writeDetailInfoCell(textFields: UITextField) {

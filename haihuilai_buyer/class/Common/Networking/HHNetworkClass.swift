@@ -486,5 +486,33 @@ class HHNetworkClass:NSObject {
         }
     }
 
+    /// 临时导游信息获取
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getTempGuideInfo(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/drivers/user_info", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 
+    /// 获取保险列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getInsuranceIist(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "/app/cars/insurances", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
 }

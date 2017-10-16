@@ -6,21 +6,59 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
+enum DeliveTempGuide: String{
+    case ADDTEMPGUIDE = "addTempGuide"
+    case EDITTEMPGUIDE = "editTempGuide"
+    case DELIVETEMPGUIDE = "deliveTmpGuide"
+}
 import UIKit
-
+import SDWebImage
 class HHTempGuideDetailController: HHBaseTableViewController {
+    
+    // 订单号
+    var tempGuideBookingId: String?
+    // driver_id
+    var tempGuideDriver_id: String?
     // 被选择的cell的tag值
     fileprivate var choiceTag:Int?
     // 国家码
     fileprivate var countryNumber: String?
+    // 保险的字典
+    fileprivate var insuranceDic = [String: String]()
+    //
     // 控制全文是否可编辑
-    fileprivate var isEdited:Bool? = false
+    fileprivate var isEdited:Bool = false {
+        didSet{
+            if isEdited {
+                rightBarBtn.setTitle("保存", for: .normal)
+            } else {
+                rightBarBtn.setTitle("编辑", for: .normal)
+            }
+        }
+        
+    }
+    // 打开页面的来源
+    var tempGuidefrom: DeliveTempGuide?{
+        didSet{
+            switch tempGuidefrom! {
+            case .ADDTEMPGUIDE:
+                break
+            case .EDITTEMPGUIDE:
+                break
+            case .DELIVETEMPGUIDE:
+                break
+            default:
+                break
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setRightBarItem()
-//        getInfo()
-        
+        if tempGuidefrom == .EDITTEMPGUIDE || tempGuidefrom == .DELIVETEMPGUIDE {
+             getInfo()
+        }
         tableView.register(HHDetailInfoCell.self, forCellReuseIdentifier: "HHDetailInfoCell")
         tableView.register(HHNextOrdelegateCell.self, forCellReuseIdentifier: "HHNextOrdelegateCell")
         tableView.register(HHNextOrdelegateCell.self, forCellReuseIdentifier: "HHImageViewCell")
@@ -28,23 +66,28 @@ class HHTempGuideDetailController: HHBaseTableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(observerChoiceCountry(notice:)), name:  NSNotification.Name(rawValue: notification_country_number), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HHTempGuideDetailController.keyboardWillShow(notifice:)), name: .UIKeyboardWillShow, object: nil)
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     // 获取列表信息
     private func getInfo(){
+        if is_empty_string(tempGuideDriver_id) {
+            return
+        }
         HHProgressHUD.shareTool.showHUDAddedTo(title: "加载中...", isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
-        HHNetworkClass().getPersonInfoSecond(parameter: nil) { (response, errorString) in
+        HHNetworkClass().getTempGuideInfo(parameter: ["driver_id":tempGuideDriver_id! as AnyObject]) { (response, errorString) in
             HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
             if SUCCESSFUL(response){
-                for key in self.showKeyArray {
-                    let valueString: String? = response?["data"]?[key] as? String ?? ""
-                    self.postParameterDict.updateValue(valueString!, forKey: key)
-                }
+                self.countryNumber = response?["data"]?["driver_country_code"] as! String?
                 for key in self.showKeyArray {
                     let valueString: String? = response?["data"]?[key] as? String ?? ""
                     self.showParameterDict.updateValue(valueString!, forKey: key)
+                }
+                for key in self.postKeyArray {
+                    let valueString: String? = response?["data"]?[key] as? String ?? ""
+                    self.postParameterDict.updateValue(valueString!, forKey: key)
                 }
                 self.tableView.reloadData()
             }else{
@@ -55,7 +98,7 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     }
     //  设置可以编辑按钮
     private func setRightBarItem(){
-        let rightBar = UIBarButtonItem.init(title: "编辑", style: .plain, target: self, action: #selector(HHTempGuideDetailController.barItemAction))
+        let rightBar = UIBarButtonItem.init(customView: rightBarBtn)
         navigationItem.rightBarButtonItem = rightBar
         
     }
@@ -63,31 +106,45 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     fileprivate func setCellVuale(tableViewCell:HHDetailInfoCell?,index: IndexPath?){
         
         tableViewCell?.detailInfoText.tag = (index?.section)!
+        tableViewCell?.detailInfoBtn.tag = (index?.section)!
+        tableViewCell?.detailInfoTitle.text = titleArray[(index?.section)!]
         tableViewCell?.detailInfoText.text = self.showParameterDict[self.showKeyArray[(index?.section)!]]
     }
     
     // 处理点击cell
-    fileprivate func handleTouchCellForCompanySupplier(indexTag: Int){
-        choiceTag = indexTag
+//    fileprivate func handleTouchCellForCompanySupplier(indexTag: Int){
+//        choiceTag = indexTag
 //        if indexTag == 3 {
 //            let datwPickerView =  HHPickerView()
 //            datwPickerView.initWithArray(DataArray: [HHCommon.shareCommon.fromNowTo1970YearsArray()])
 //            datwPickerView.pickerViewDelegate = self
 //        }
         
-    }
+//    }
     
     fileprivate func handleTouchCellForDriversupply(indexTag: Int){
         choiceTag = indexTag
         switch indexTag {
         case 4:
-//            let datwPickerView =  HHPickerView()
-//            datwPickerView.initWithArray(DataArray: [HHCommon.shareCommon.fromNowTo1970YearsArray()])
-//            datwPickerView.pickerViewDelegate = self
+            HHProgressHUD.shareTool.showHUDAddedTo(title:nil, isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
+            HHNetworkClass().getInsuranceIist(parameter: ["has_no": "0" as AnyObject], networkClassData: { (response, errorString) in
+                HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+                if SUCCESSFUL(response) {
+                    var insuranceName = [String]()
+                    for obj in response?["data"] as! [[String: AnyObject]] {
+                        insuranceName.append(obj["insurance"] as! String)
+                        self.insuranceDic.updateValue(obj["insurance_id"] as! String, forKey: obj["insurance"] as! String)
+                    }
+                    let datwPickerView =  HHPickerView()
+                    datwPickerView.initWithArray(DataArray: [insuranceName])
+                    datwPickerView.pickerViewDelegate = self
+                }else{
+                    HHProgressHUD.shareTool.showHUDAddedTo(title:errorString, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                }
+            })
             break
         case 5:
             let dateChoice = HHDateChoice()
-                dateChoice.setDatePicker(superView: self.view)
                 dateChoice.dateChoiceDelegate = self
             break
         default:
@@ -97,6 +154,9 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     }
     // 选择照片
     fileprivate func choicePhotoImage(){
+        if !isEdited {
+            return
+        }
         let alertController: UIAlertController = UIAlertController.init(title: "", message: "请选择", preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (alert) in
             
@@ -152,8 +212,8 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     
     // #selector方法
     @objc private func barItemAction(barItem:UIBarButtonItem){
+        isEdited = !isEdited
         view.endEditing(true)
-        isEdited = !isEdited!
         
     }
     @objc private func observerChoiceLeader(notice:Notification){
@@ -175,54 +235,60 @@ class HHTempGuideDetailController: HHBaseTableViewController {
         tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: .none)
     }
     @objc private func keyboardWillShow(notifice:NSNotification){
-        if !isEdited! {
+        if !isEdited {
             view.endEditing(false)
         }
     }
     // 懒加载
-    fileprivate var postParameterDict = [String: String]()
-    fileprivate var showParameterDict = [String: String]()
-    fileprivate var titleArray: [String] = ["真实姓名","联系电话","微信号","驾照","可提供保险","保险有效期","保险照",""]
-    fileprivate var showKeyArray:[String] = ["driver_name","driver_mobile","driver_weixin","driver_insurance","driver_insurance_date","driver_id","driver_insurance_id"]
-//    fileprivate var postKeyArray:[String] = ["full_name","mobile","weixin","insurance_date","driver_id","insurance_id"];
-    fileprivate var imageArray:[UIImage?] = [nil,nil,nil,UIImage(named:"driver"),nil, nil, UIImage(named:"ensure"), nil]
+    fileprivate lazy var postParameterDict = [String: String]()
+    fileprivate lazy var showParameterDict = [String: String]()
+    fileprivate lazy var titleArray: [String] = ["真实姓名","联系电话","微信号","驾照","可提供保险","保险有效期","保险照",""]
+    fileprivate lazy var showKeyArray:[String] = ["driver_name","driver_mobile","driver_weixin","driver_picture","driver_insurance","driver_insurance_date","driver_safe_certificate","driver_id"]
+    fileprivate lazy var postKeyArray:[String] = ["full_name","mobile","weixin","driver_picture","driver_insurance_id","insurance_date","driver_safe_certificate","driver_id"];
+    fileprivate lazy var imageArray:[UIImage?] = [nil,nil,nil,UIImage(named:"driver"),nil, nil, UIImage(named:"ensure"), nil]
+    fileprivate lazy var postImageArray:[UIImage?] = [nil,nil,nil,nil,nil, nil, nil, nil]
+    fileprivate lazy var rightBarBtn: UIButton = {
+        let btn = UIButton.init(action: #selector(HHTempGuideDetailController.barItemAction), target: self as AnyObject, title: "编辑", imageName: "DL-jt", fontColor: UIColor.white, fontSize: 16)
+        return btn
+    }()
 }
 /// 日历选择代理
 extension HHTempGuideDetailController: HHDateChoiceDelegate{
     func dateEnsureBtnBack(stringfirst: String?) {
-        
+        // 保存信息
+        self.postParameterDict.updateValue(stringfirst!, forKey: self.showKeyArray[5])
+        self.showParameterDict.updateValue(stringfirst!, forKey: self.showKeyArray[5])
+        self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 5)], with: .none)
     }
 }
 
 // 点击detailInfoCell的代理
 extension HHTempGuideDetailController: HHDetailInfoCellDelegate{
-    func selectedDetailInfoCell(cellTag: Int) -> Bool {
-        if !isEdited! {
-            return false
+    func selectedDetailInfoCell(cellTag: Int){
+        if !isEdited {
+            return
         }
         if cellTag == 4 || cellTag == 5 {
             view.endEditing(true)
             handleTouchCellForDriversupply(indexTag: cellTag)
-            return true
-        }else{
-            return true
         }
     }
     
     func writeDetailInfoCell(textFields: UITextField) {
-        if !isEdited! {
+        if !isEdited {
             return
         }
         // 保存信息
         self.postParameterDict.updateValue(textFields.text!, forKey: self.showKeyArray[textFields.tag])
         self.showParameterDict.updateValue(textFields.text!, forKey: self.showKeyArray[textFields.tag])
+        self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: textFields.tag)], with: .none)
         
     }
 }
 // 点击detailInfotwoCell的代理
 extension HHTempGuideDetailController: HHDetailInfoTwoCellDelegate{
     func choiceCountryAction() {
-        if !isEdited! {
+        if !isEdited {
             return
         }
         view.endEditing(true)
@@ -238,6 +304,15 @@ extension HHTempGuideDetailController:HHImageViewCellDelegate{
     func choiceimageBtnAction(chioceBtn: UIButton) {
         choiceTag = chioceBtn.tag
         choicePhotoImage()
+    }
+}
+// 保险类型选择
+extension HHTempGuideDetailController: HHPickerViewDelegate{
+    func pickerEnsureBtnBack(stringfirst: String?, stringSecond: String?) {
+        // 保存信息
+        self.postParameterDict.updateValue(insuranceDic[stringfirst!]!, forKey: self.showKeyArray[4])
+        self.showParameterDict.updateValue(stringfirst!, forKey: self.showKeyArray[4])
+        self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 4)], with: .none)
     }
 }
 // tableview 的代理和数据源方法
@@ -267,7 +342,17 @@ extension HHTempGuideDetailController{
             }
             imageCell?.imageViewCellBtn.setBackgroundImage(imageArray[indexPath.section], for: .normal)
             imageCell?.imageViewCellTitle.text = titleArray[indexPath.section]
-            
+            let urlString =  self.showParameterDict[self.showKeyArray[indexPath.section]]
+            //  下载照片
+            if !is_empty_string(urlString) && self.postImageArray [indexPath.section] == nil {
+                let str = HH_SERVER_URL + urlString!
+                imageCell?.imageViewCellBtn.sd_setBackgroundImage(with: URL.init(string: str), for: .normal, completed: { (images, error, models, url) in
+                    if images != nil {
+                        self.imageArray[indexPath.section] = images
+                        self.postImageArray [indexPath.section] = images
+                    }
+                })
+            }
             imageCell?.selectionStyle = .none
             imageCell?.imageViewCellDelegate = self
             imageCell?.imageViewCellBtn.tag = indexPath.section
@@ -298,8 +383,11 @@ extension HHTempGuideDetailController{
             }
             if indexPath.section == 0 || indexPath.section == 2 {
                 oneCell?.detailInfoImage.isHidden = true
+                oneCell?.detailInfoBtn.isHidden = true
+                oneCell?.detailInfoImage.image = UIImage(named:"DL-jt")
             } else {
                 oneCell?.detailInfoImage.isHidden = false
+                oneCell?.detailInfoBtn.isHidden = false
                 oneCell?.detailInfoImage.image = UIImage(named:"GRZX-xljt")
             }
             oneCell?.selectionStyle = .none
@@ -321,6 +409,9 @@ extension HHTempGuideDetailController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !isEdited {
+            return
+        }
         if indexPath.section == 7 {
             // 确认
         } else if indexPath.section == 3 || indexPath.section == 6 {

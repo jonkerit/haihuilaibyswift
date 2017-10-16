@@ -22,7 +22,8 @@ class HHSearchController: HHBaseViewController {
 
             switch string {
             case "date":
-                dateChoice.setDatePicker(superView: self.view)
+                let dateChoice = HHDateChoice()
+                dateChoice.dateChoiceDelegate = self
                 break
             case "booking":
                 headerView.headerInputView.keyboardType = .numbersAndPunctuation
@@ -144,7 +145,8 @@ extension HHSearchController: UITextFieldDelegate{
         // 弹出不同的键盘
         let string = menuModels?.tag ?? ""
         if string == "date" {
-            dateChoice.setDatePicker(superView: self.view)
+            let dateChoice = HHDateChoice()
+            dateChoice.dateChoiceDelegate = self
             return false
         }
         return true

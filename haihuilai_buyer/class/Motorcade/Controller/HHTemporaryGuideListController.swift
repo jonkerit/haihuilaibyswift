@@ -36,6 +36,7 @@ class HHTemporaryGuideListController: HHBaseViewController {
     // #selector方法
     @objc private func addTemporaryGuide(){
         let vc = HHTempGuideDetailController()
+        vc.tempGuidefrom = .ADDTEMPGUIDE
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -47,6 +48,8 @@ class HHTemporaryGuideListController: HHBaseViewController {
 extension HHTemporaryGuideListController: HHTemporaryGuideDelegate{
     func openTemporaryGuide(driverId: String?) {
         let vc = HHTempGuideDetailController()
+        vc.tempGuidefrom = .EDITTEMPGUIDE
+        vc.tempGuideDriver_id = driverId
         navigationController?.pushViewController(vc, animated: true)
         
     }

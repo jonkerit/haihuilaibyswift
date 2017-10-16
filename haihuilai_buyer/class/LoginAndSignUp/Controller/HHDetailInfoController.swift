@@ -82,6 +82,8 @@ class HHDetailInfoController: HHBaseTableViewController {
         let dict: Dictionary = titleArray[number!]
         // 给detailInfoText赋值
         tableViewCell?.detailInfoText.tag = number!
+        tableViewCell?.detailInfoBtn.tag = number!
+
         tableViewCell?.detailInfoText.text = self.showParameterDict[self.showKeyArray[number!]]
         // 给title赋值
         tableViewCell?.detailInfoTitle.text = dict["title"]
@@ -89,8 +91,12 @@ class HHDetailInfoController: HHBaseTableViewController {
         let strs: String = dict["isHidden"]!
         if strs == "1"  {
             tableViewCell?.detailInfoImage.isHidden = true
+            tableViewCell?.detailInfoBtn.isHidden = true
+
         }else{
             tableViewCell?.detailInfoImage.isHidden = false
+            tableViewCell?.detailInfoBtn.isHidden = false
+
         }
     
     }
@@ -267,9 +273,9 @@ extension HHDetailInfoController: HHPickerViewDelegate{
 
 // 点击detailInfoCell的代理
 extension HHDetailInfoController: HHDetailInfoCellDelegate{
-    func selectedDetailInfoCell(cellTag: Int)  -> Bool {
+    func selectedDetailInfoCell(cellTag: Int){
         if !isEdited! {
-            return false
+            return
         }
         if HHAccountViewModel.shareAcount.isCompanySupplier {
             if cellTag == 3{
@@ -280,9 +286,6 @@ extension HHDetailInfoController: HHDetailInfoCellDelegate{
                 } else {
                     handleTouchCellForDriversupply(indexTag: cellTag)
                 }
-                return false
-            }else{
-                return true
             }
         } else {
             if cellTag > 2{
@@ -293,9 +296,6 @@ extension HHDetailInfoController: HHDetailInfoCellDelegate{
                 } else {
                     handleTouchCellForDriversupply(indexTag: cellTag)
                 }
-                return false
-            }else{
-                return true
             }
         }
     }
