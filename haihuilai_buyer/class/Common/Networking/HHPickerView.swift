@@ -149,8 +149,8 @@ extension HHPickerView: UIPickerViewDelegate, UIPickerViewDataSource{
     // 设置label
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         if component == 0 {
-            let label = UILabel.init(title: (dataArray![component][row] as? String)!, fontColor: HHMAINCOLOR(), fontSize: 23, alignment: .center)
-            label.frame = CGRect(x:0,y:0,width:100,height:30)
+            let label = UILabel.init(title: (dataArray![component][row] as? String)!, fontColor: HHMAINCOLOR(), fontSize: 20, alignment: .center)
+            label.frame = CGRect(x:0,y:0,width:250,height:30)
             return label
         }else{
             let label = UILabel.init(title: (dataArray![component][row] as? String)!, fontColor: HHMAINCOLOR(), fontSize: 20, alignment: .center)
@@ -162,7 +162,6 @@ extension HHPickerView: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 40
     }
-    
     
     
 

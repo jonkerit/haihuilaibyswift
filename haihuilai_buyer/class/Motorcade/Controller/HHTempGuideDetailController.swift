@@ -25,7 +25,8 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     fileprivate var countryNumber: String?
     // 保险的字典
     fileprivate var insuranceDic = [String: String]()
-    //
+    // 第一个textfild未编辑状态
+    fileprivate var responseTextFild: UITextField?
     // 控制全文是否可编辑
     fileprivate var isEdited:Bool = false {
         didSet{
@@ -104,7 +105,9 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     }
     // 给HHDetailInfoCell赋值
     fileprivate func setCellVuale(tableViewCell:HHDetailInfoCell?,index: IndexPath?){
-        
+        if index?.section == 0 {
+            responseTextFild = tableViewCell?.detailInfoText
+        }
         tableViewCell?.detailInfoText.tag = (index?.section)!
         tableViewCell?.detailInfoBtn.tag = (index?.section)!
         tableViewCell?.detailInfoTitle.text = titleArray[(index?.section)!]
@@ -183,6 +186,7 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     // 处理选择的照片
     private func handleChioceImage(image: UIImage){
         imageArray[choiceTag!] = image
+        postImageArray[choiceTag!] = image
         tableView.reloadRows(at: [IndexPath.init(row: 0, section: choiceTag!)], with: .none)
     }
     
@@ -212,9 +216,57 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     
     // #selector方法
     @objc private func barItemAction(barItem:UIBarButtonItem){
-        isEdited = !isEdited
         view.endEditing(true)
+        if !isEdited {
+            // 标题是编辑的时候（isEdited ＝ fasle）点击不上传
+            responseTextFild?.becomeFirstResponder()
+            isEdited = !isEdited
+
+            return
+        }
+        // 判空
+        if is_empty_string(countryNumber){
+            HHProgressHUD.shareTool.showHUDAddedTo(title: "没有国家码", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            return
+        }
+        let checkKey = ["full_name","mobile","weixin","insurance_id","insurance_date"]
         
+        for objt in checkKey {
+            if is_empty_string(postParameterDict[objt]){
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "信息未填完整", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                return
+            }
+        }
+        // 判断图片是否完整和更新
+        if postImageArray[3] == nil {
+            if postParameterDict[postKeyArray[3]] == nil  {
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "没有选择驾照", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                return
+            }
+        }
+        // 判断图片是否完整和更新
+        if postImageArray[6] == nil {
+            if postParameterDict[postKeyArray[6]] == nil  {
+                HHProgressHUD.shareTool.showHUDAddedTo(title: "没有选择驾照", isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+                return
+            }
+        }
+        
+        var pictrueDict = [String: AnyObject]()
+        if postImageArray[3] != nil {
+            pictrueDict.updateValue(postImageArray[3]!, forKey: "driver_insurance")
+            postParameterDict.removeValue(forKey: "driver_insurance")
+        }
+        
+        if postImageArray[6] != nil {
+            pictrueDict.updateValue(postImageArray[3]!, forKey: "driver_safe_certificate")
+            postParameterDict.removeValue(forKey: "driver_safe_certificate")
+        }
+        // 上传或者保存信息
+        
+        // 成功之后才执行
+        isEdited = !isEdited
+
     }
     @objc private func observerChoiceLeader(notice:Notification){
         let model = notice.object as! HHChoiceLeaderModel
@@ -243,12 +295,13 @@ class HHTempGuideDetailController: HHBaseTableViewController {
     fileprivate lazy var postParameterDict = [String: String]()
     fileprivate lazy var showParameterDict = [String: String]()
     fileprivate lazy var titleArray: [String] = ["真实姓名","联系电话","微信号","驾照","可提供保险","保险有效期","保险照",""]
-    fileprivate lazy var showKeyArray:[String] = ["driver_name","driver_mobile","driver_weixin","driver_picture","driver_insurance","driver_insurance_date","driver_safe_certificate","driver_id"]
-    fileprivate lazy var postKeyArray:[String] = ["full_name","mobile","weixin","driver_picture","driver_insurance_id","insurance_date","driver_safe_certificate","driver_id"];
+    fileprivate lazy var showKeyArray:[String] = ["driver_name","driver_mobile","driver_weixin","driver_picture","driver_insurance","driver_insurance_date","driver_safe_certificate"]
+    fileprivate lazy var postKeyArray:[String] = ["full_name","mobile","weixin","picture","insurance_id","insurance_date","safe_certificate"]
     fileprivate lazy var imageArray:[UIImage?] = [nil,nil,nil,UIImage(named:"driver"),nil, nil, UIImage(named:"ensure"), nil]
     fileprivate lazy var postImageArray:[UIImage?] = [nil,nil,nil,nil,nil, nil, nil, nil]
     fileprivate lazy var rightBarBtn: UIButton = {
-        let btn = UIButton.init(action: #selector(HHTempGuideDetailController.barItemAction), target: self as AnyObject, title: "编辑", imageName: "DL-jt", fontColor: UIColor.white, fontSize: 16)
+        let btn = UIButton.init(action: #selector(HHTempGuideDetailController.barItemAction), target: self as AnyObject, title: "编辑", imageName: nil, fontColor: UIColor.white, fontSize: 18)
+        btn.frame = CGRect(x:0,y:0,width:40,height:17)
         return btn
     }()
 }
@@ -349,7 +402,6 @@ extension HHTempGuideDetailController{
                 imageCell?.imageViewCellBtn.sd_setBackgroundImage(with: URL.init(string: str), for: .normal, completed: { (images, error, models, url) in
                     if images != nil {
                         self.imageArray[indexPath.section] = images
-                        self.postImageArray [indexPath.section] = images
                     }
                 })
             }

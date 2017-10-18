@@ -32,6 +32,8 @@
 		9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */; };
 		9B10467C1F74F0730037C3EC /* HHDetailPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */; };
 		9B10467E1F74F1B30037C3EC /* HHImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */; };
+		9B111F131F95E690007F112D /* HHCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B111F121F95E690007F112D /* HHCalenderView.swift */; };
+		9B111F151F960496007F112D /* HHTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B111F141F960496007F112D /* HHTestController.swift */; };
 		9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */; };
 		9B2E35E61F4E7D48008E7BAC /* HHMotorcadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */; };
 		9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */; };
@@ -137,6 +139,8 @@
 		9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAccountModel.swift; sourceTree = "<group>"; };
 		9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailPictureController.swift; sourceTree = "<group>"; };
 		9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHImageViewCell.swift; sourceTree = "<group>"; };
+		9B111F121F95E690007F112D /* HHCalenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCalenderView.swift; sourceTree = "<group>"; };
+		9B111F141F960496007F112D /* HHTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTestController.swift; sourceTree = "<group>"; };
 		9B2E35E31F4E7865008E7BAC /* HHbaseBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHbaseBarController.swift; sourceTree = "<group>"; };
 		9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorcadeController.swift; sourceTree = "<group>"; };
 		9B2E35E71F4E7D91008E7BAC /* HHCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCalendarController.swift; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 				9B4F764A1F4AAC1D00EDDC03 /* HHTimer.swift */,
 				9BFF902A1F67BA10002AF33B /* HHDateChoice.swift */,
 				9B06B1B31F6A20B000EF5CB4 /* HHIndexView.swift */,
+				9B111F121F95E690007F112D /* HHCalenderView.swift */,
+				9B111F141F960496007F112D /* HHTestController.swift */,
 			);
 			name = Tool;
 			path = Networking;
@@ -987,6 +993,8 @@
 				9BFF901B1F6660CD002AF33B /* HHSearchController.swift in Sources */,
 				9B37B3AB1F6F773B00B8689A /* HHDetailInfoCell.swift in Sources */,
 				9B33CA081F3C41D300461B4F /* HHChoiceCuntryController.swift in Sources */,
+				9B111F131F95E690007F112D /* HHCalenderView.swift in Sources */,
+				9B111F151F960496007F112D /* HHTestController.swift in Sources */,
 				9B087EE11F8F06790019D809 /* HHTemporaryGuideTableview.swift in Sources */,
 				9B37B3A91F6F762D00B8689A /* HHDetailInfoController.swift in Sources */,
 				9BFF8FC41F5E8910002AF33B /* HHInfoCell.swift in Sources */,
