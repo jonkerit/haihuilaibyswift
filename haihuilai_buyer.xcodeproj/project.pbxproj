@@ -30,6 +30,14 @@
 		9B0BCDB41E014A9A0087FC35 /* HHNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */; };
 		9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */; };
 		9B0BCDB91E027FAF0087FC35 /* HHAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */; };
+		9B0DA1EF1F987A9600DB3A41 /* HHMemberDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1EE1F987A9600DB3A41 /* HHMemberDetailController.swift */; };
+		9B0DA1F11F98813F00DB3A41 /* HHMemberDetailOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1F01F98813F00DB3A41 /* HHMemberDetailOneCell.swift */; };
+		9B0DA1F31F98853000DB3A41 /* HHMemberDetailTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1F21F98853000DB3A41 /* HHMemberDetailTwoCell.swift */; };
+		9B0DA1F51F98854100DB3A41 /* HHMemberDetailThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1F41F98854100DB3A41 /* HHMemberDetailThreeCell.swift */; };
+		9B0DA1F71F988A1C00DB3A41 /* HHMemberDetailThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1F61F988A1C00DB3A41 /* HHMemberDetailThreeView.swift */; };
+		9B0DA1F91F99A49300DB3A41 /* HHMotorCadeDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA1F81F99A49300DB3A41 /* HHMotorCadeDetailModel.swift */; };
+		9B0DA2081F9DBDD100DB3A41 /* HHIncomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA2071F9DBDD100DB3A41 /* HHIncomeController.swift */; };
+		9B0DA20C1F9DC7FA00DB3A41 /* HHIncomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0DA20B1F9DC7FA00DB3A41 /* HHIncomeHeaderView.swift */; };
 		9B10467C1F74F0730037C3EC /* HHDetailPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */; };
 		9B10467E1F74F1B30037C3EC /* HHImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */; };
 		9B111F131F95E690007F112D /* HHCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B111F121F95E690007F112D /* HHCalenderView.swift */; };
@@ -137,6 +145,14 @@
 		9B0BCDB31E014A9A0087FC35 /* HHNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHNetworkTools.swift; sourceTree = "<group>"; };
 		9B0BCDB61E027E420087FC35 /* HHAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HHAccountViewModel.swift; path = haihuilai_buyer/class/Common/Networking/HHAccountViewModel.swift; sourceTree = SOURCE_ROOT; };
 		9B0BCDB81E027FAF0087FC35 /* HHAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHAccountModel.swift; sourceTree = "<group>"; };
+		9B0DA1EE1F987A9600DB3A41 /* HHMemberDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMemberDetailController.swift; sourceTree = "<group>"; };
+		9B0DA1F01F98813F00DB3A41 /* HHMemberDetailOneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMemberDetailOneCell.swift; sourceTree = "<group>"; };
+		9B0DA1F21F98853000DB3A41 /* HHMemberDetailTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMemberDetailTwoCell.swift; sourceTree = "<group>"; };
+		9B0DA1F41F98854100DB3A41 /* HHMemberDetailThreeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMemberDetailThreeCell.swift; sourceTree = "<group>"; };
+		9B0DA1F61F988A1C00DB3A41 /* HHMemberDetailThreeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMemberDetailThreeView.swift; sourceTree = "<group>"; };
+		9B0DA1F81F99A49300DB3A41 /* HHMotorCadeDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHMotorCadeDetailModel.swift; sourceTree = "<group>"; };
+		9B0DA2071F9DBDD100DB3A41 /* HHIncomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHIncomeController.swift; sourceTree = "<group>"; };
+		9B0DA20B1F9DC7FA00DB3A41 /* HHIncomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHIncomeHeaderView.swift; sourceTree = "<group>"; };
 		9B10467B1F74F0730037C3EC /* HHDetailPictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHDetailPictureController.swift; sourceTree = "<group>"; };
 		9B10467D1F74F1B30037C3EC /* HHImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHImageViewCell.swift; sourceTree = "<group>"; };
 		9B111F121F95E690007F112D /* HHCalenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHCalenderView.swift; sourceTree = "<group>"; };
@@ -271,6 +287,39 @@
 			path = View/ViewModel;
 			sourceTree = "<group>";
 		};
+		9B0DA1FA1F9DBD5500DB3A41 /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				9B0DA1FB1F9DBD5500DB3A41 /* Controller */,
+				9B0DA1FF1F9DBD5500DB3A41 /* Model */,
+				9B0DA2001F9DBD5500DB3A41 /* View */,
+			);
+			path = Income;
+			sourceTree = "<group>";
+		};
+		9B0DA1FB1F9DBD5500DB3A41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B0DA2071F9DBDD100DB3A41 /* HHIncomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B0DA1FF1F9DBD5500DB3A41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B0DA2001F9DBD5500DB3A41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B0DA20B1F9DC7FA00DB3A41 /* HHIncomeHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9B33CA131F417B5200461B4F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +385,7 @@
 		9B4F76541F4BC61A00EDDC03 /* Individual */ = {
 			isa = PBXGroup;
 			children = (
+				9B0DA1FA1F9DBD5500DB3A41 /* Income */,
 				9B4F76551F4BC61A00EDDC03 /* Controller */,
 				9B4F76561F4BC61A00EDDC03 /* Model */,
 				9B4F76571F4BC61A00EDDC03 /* View */,
@@ -385,6 +435,7 @@
 				9B2E35E51F4E7D48008E7BAC /* HHMotorcadeController.swift */,
 				9B087EDE1F8F05720019D809 /* HHTemporaryGuideListController.swift */,
 				9B087EE41F8F41A80019D809 /* HHTempGuideDetailController.swift */,
+				9B0DA1EE1F987A9600DB3A41 /* HHMemberDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -394,6 +445,7 @@
 			children = (
 				9BFF8FBB1F4EC9FD002AF33B /* HHMotorcadeModel.swift */,
 				9B087EE21F8F091B0019D809 /* HHTempGuideMode.swift */,
+				9B0DA1F81F99A49300DB3A41 /* HHMotorCadeDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,6 +456,10 @@
 				9B087EE01F8F06790019D809 /* HHTemporaryGuideTableview.swift */,
 				9BFF8FB71F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift */,
 				9BFF8FB91F4EB196002AF33B /* HHMotorcadeSecondCell.swift */,
+				9B0DA1F01F98813F00DB3A41 /* HHMemberDetailOneCell.swift */,
+				9B0DA1F21F98853000DB3A41 /* HHMemberDetailTwoCell.swift */,
+				9B0DA1F41F98854100DB3A41 /* HHMemberDetailThreeCell.swift */,
+				9B0DA1F61F988A1C00DB3A41 /* HHMemberDetailThreeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -925,20 +981,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0DA1F31F98853000DB3A41 /* HHMemberDetailTwoCell.swift in Sources */,
 				9BF316C71F73984800218061 /* HHChoiceLeaderController.swift in Sources */,
 				9BFF8FB81F4EAEA4002AF33B /* HHMotorcadeFirstCell.swift in Sources */,
 				9BFF90211F6662C0002AF33B /* HHResultView.swift in Sources */,
+				9B0DA1F11F98813F00DB3A41 /* HHMemberDetailOneCell.swift in Sources */,
 				9B06B1B61F6A75FB00EF5CB4 /* HHSignUpController.swift in Sources */,
 				9B37B3AF1F6FC29800B8689A /* HHDetailInfoTwoCell.swift in Sources */,
 				9B6E5A471F4593EF0055746C /* HHPhotoPickManager.swift in Sources */,
 				9BFF90151F628A0F002AF33B /* HHNewsModel.swift in Sources */,
 				9BFF900D1F62367F002AF33B /* HHOrderTableView.swift in Sources */,
 				9B087EDD1F8DCA950019D809 /* HHPostEmailController.swift in Sources */,
+				9B0DA1F51F98854100DB3A41 /* HHMemberDetailThreeCell.swift in Sources */,
+				9B0DA1EF1F987A9600DB3A41 /* HHMemberDetailController.swift in Sources */,
 				9B2E35E41F4E7865008E7BAC /* HHbaseBarController.swift in Sources */,
 				9BD560A31F31A04D0054AF8F /* HHLogInAndSignUpView.swift in Sources */,
 				9B0BCDB71E027E420087FC35 /* HHAccountViewModel.swift in Sources */,
 				9B087EE31F8F091B0019D809 /* HHTempGuideMode.swift in Sources */,
 				9BF9C4F41DF993E00065D9F7 /* HHLoginController.swift in Sources */,
+				9B0DA20C1F9DC7FA00DB3A41 /* HHIncomeHeaderView.swift in Sources */,
 				9BF9C4F11DF993E00065D9F7 /* HHBaseTableViewController.swift in Sources */,
 				9B33CA121F3C50DE00461B4F /* HHNetworkClass.swift in Sources */,
 				9BFF8FC81F60DEAD002AF33B /* HHSettingController.swift in Sources */,
@@ -952,6 +1013,7 @@
 				9B33CA0B1F3C432500461B4F /* HHChoiceCountryCell.swift in Sources */,
 				9BF316D31F7399A700218061 /* HHLeaderDetailCell.swift in Sources */,
 				9BF316C91F73984800218061 /* HHChoiceLeaderModel.swift in Sources */,
+				9B0DA2081F9DBDD100DB3A41 /* HHIncomeController.swift in Sources */,
 				9B2E35E81F4E7D91008E7BAC /* HHCalendarController.swift in Sources */,
 				9BFF903B1F68D407002AF33B /* HHInviteCell.swift in Sources */,
 				9B06B1B01F6904D900EF5CB4 /* HHAddressBook.swift in Sources */,
@@ -983,6 +1045,7 @@
 				9B0BCDAA1DFFD3FB0087FC35 /* HHCommon.swift in Sources */,
 				9B087ED91F8C9E710019D809 /* HHDetailOrderController.swift in Sources */,
 				9BFF90131F6282FC002AF33B /* HHNewsCell.swift in Sources */,
+				9B0DA1F91F99A49300DB3A41 /* HHMotorCadeDetailModel.swift in Sources */,
 				9BF9C4F31DF993E00065D9F7 /* HHNavigationController.swift in Sources */,
 				9B06B1C31F6A7D3200EF5CB4 /* UIImageView+Category.swift in Sources */,
 				9BFF901D1F66621D002AF33B /* HHHeaderView.swift in Sources */,
@@ -1016,6 +1079,7 @@
 				9B33CA061F3B054A00461B4F /* HHLoadNibDelegate.swift in Sources */,
 				9BFF901F1F666283002AF33B /* HHMenuView.swift in Sources */,
 				9BFF8FBC1F4EC9FD002AF33B /* HHMotorcadeModel.swift in Sources */,
+				9B0DA1F71F988A1C00DB3A41 /* HHMemberDetailThreeView.swift in Sources */,
 				9BF00B241E0910E90045E4D0 /* HHTestViewController.swift in Sources */,
 				9B33CA101F3C4C1700461B4F /* HHChoiceModel.swift in Sources */,
 				9BFF90081F62367F002AF33B /* HHOrderController.swift in Sources */,

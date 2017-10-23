@@ -91,5 +91,25 @@ extension UIButton {
             addTarget(target, action: action!, for: .touchUpInside)
         }
     }
+    
+    
+    
+    
+    /// runtime 给button添加属性
+    struct ButtonRuntimeKey {
+        // 给button的
+        static let motorCadeDetailModel = UnsafeRawPointer.init(bitPattern: "motorCadeDetailModel".hashValue)
+
+    }
+    
+    var motorCadeModel: HHMotorCadeDetailModel? {
+        set {
+            objc_setAssociatedObject(self, ButtonRuntimeKey.motorCadeDetailModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return  objc_getAssociatedObject(self,ButtonRuntimeKey.motorCadeDetailModel) as? HHMotorCadeDetailModel
+        }
+    }
+    
 }
 

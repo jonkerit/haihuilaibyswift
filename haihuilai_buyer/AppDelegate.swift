@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = nav
             break
         default:
-            window?.rootViewController = HHTestController()
+            window?.rootViewController = HHbaseBarController()
         break
         }
     }

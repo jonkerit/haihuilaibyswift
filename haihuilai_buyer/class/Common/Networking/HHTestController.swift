@@ -22,7 +22,7 @@ class HHTestController: UIViewController {
 //        }
         
 
-        calenderView.inputDate = Date.init(timeIntervalSinceNow: 60 * 60 * 24 * 63)
+        calenderView.inputDate = Date.init(timeIntervalSinceNow: 60 * 60 * 24 * 13)
 
     }
 

@@ -168,6 +168,9 @@ class HHIndividualController: HHBaseViewController {
         print("设置")
         navigationController?.pushViewController(HHSettingController(), animated: true)
     }
+    @objc private func goToIncome(){
+        self.navigationController?.pushViewController(HHIncomeController(), animated: true)
+    }
     ///  数据处理
     @objc private func updata(){
         HHProgressHUD.shareTool.showHUDAddedTo(title: nil, isImage: true, boardView: HHKeyWindow, animated: true)
@@ -261,6 +264,7 @@ class HHIndividualController: HHBaseViewController {
         let barItem = UIBarButtonItem.init(image: UIImage(named: HHAccountViewModel.shareAcount.noticeImageName)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(HHIndividualController.openNewCenter))
         navigationItem.leftBarButtonItem = barItem
     }
+
     
     
     private lazy var warmLabel: UILabel = {
@@ -295,12 +299,15 @@ class HHIndividualController: HHBaseViewController {
     }()
     private lazy var incomeView: UIView = {
         let view = UIView()
+        let incomeBtn = UIButton()
+        incomeBtn.addTarget(self, action: #selector(goToIncome), for: .touchUpInside)
         view.layer.cornerRadius = 4
         view.layer.masksToBounds = true
         view.backgroundColor = UIColor.white
         let label = UILabel.init(title: "我的收入", fontColor: HHWORDCOLOR(), fontSize: 16, alignment: .left)
         view.addSubview(label)
         view.addSubview(self.imageViews)
+        view.addSubview(incomeBtn)
         label.mas_makeConstraints({ (make) in
             make!.left.equalTo()(view)?.setOffset(15)
             make!.centerY.equalTo()(view)
@@ -308,6 +315,9 @@ class HHIndividualController: HHBaseViewController {
         self.imageViews.mas_makeConstraints({ (make) in
             make!.right.equalTo()(view)?.setOffset(-15)
             make!.centerY.equalTo()(view)
+        })
+        incomeBtn.mas_makeConstraints({ (make) in
+            make?.edges.equalTo()(view)
         })
         return view
     }()

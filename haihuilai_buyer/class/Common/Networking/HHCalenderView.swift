@@ -6,12 +6,17 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
+/// 定义一个闭包
+typealias HHCalenderViewBackForFront = (_ postDate: Date) -> ()
+typealias HHCalenderViewBackForNext = (_ postDate: Date) -> ()
 import UIKit
 
 // 定义日期控件的间距
 let datePad = 5
 class HHCalenderView: UIView {
-    
+    var backForFront: HHCalenderViewBackForFront?
+    var backForNext: HHCalenderViewBackForNext?
+
     var inputDate: Date?{
         didSet{
             if inputDate != nil {
@@ -24,11 +29,27 @@ class HHCalenderView: UIView {
                 let ndf = DateFormatter()
                 ndf.dateFormat = "yyyy年MM月"
                 headlabel.text = ndf.string(from: self.inputDate!)
-
             }
         }
     }
     
+    // 设置日历的按钮的状态
+    func setCalenderButton(choiceButtonArray:[HHMotorCadeDetailModel]?){
+        if is_empty_array(choiceButtonArray as [AnyObject]?) {
+            return
+        }
+        for objct in daysArray {
+            objct.backgroundColor = RGBCOLOR(255, 255, 255)
+            for model in choiceButtonArray! {
+                if String(objct.tag) == model.daysForDate {
+                    objct.backgroundColor = RGBCOLOR(245, 171, 90)
+                    objct.motorCadeModel = model
+                }
+            }
+        }
+    }
+    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,15 +65,13 @@ class HHCalenderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUI(){
+        private func setUI(){
         setHeadUI()
         setBodyUI()
     }
     
     private func setHeadUI(){
         addSubview(headView)
-        headView.backgroundColor = UIColor.green
-        headlabel.backgroundColor = UIColor.red
         headView.addSubview(self.leftBtn)
         headView.addSubview(self.rightBtn)
         headView.addSubview(self.headlabel)
@@ -121,7 +140,10 @@ class HHCalenderView: UIView {
         
         // 计算本月页面其他月日期的位置
         for i in stride(from: 0, to: daysArray.count, by: 1){
-            
+            // 让重用的button回归
+            daysArray[i].backgroundColor = RGBCOLOR(255, 255, 255)
+            daysArray[i].tag = 0
+            daysArray[i].motorCadeModel = nil
             // button的位置布局
             bodyView.addSubview(daysArray[i])
             let b: Int = i/7
@@ -134,23 +156,23 @@ class HHCalenderView: UIView {
                 make?.top.equalTo()(self.bodyView.mas_top)?.setOffset(y)
                 make!.size.equalTo()(CGSize(width:self.btnSize,height:self.btnSize))
             })
-            
             // 给button设置日期title
-            if i < firstWeekdayThisMonth - 1 {
+            if i < firstWeekdayThisMonth {
                 // 上一个月的日期
-                let frontday = daysInFrontMonth - firstWeekdayThisMonth + i + 2
+                let frontday = daysInFrontMonth - firstWeekdayThisMonth + i + 1
                 daysArray[i].setTitle(String(frontday), for: .normal)
                 daysArray[i].setTitleColor(UIColor.init(colorLiteralRed: (155/255.0), green: (155/255.0), blue: (155/255.0), alpha: (1)), for: .normal)
                 daysArray[i].isUserInteractionEnabled = false
-            }else if i > (daysInThisMonth + firstWeekdayThisMonth - 2){
+
+            }else if i > (daysInThisMonth + firstWeekdayThisMonth - 1){
                 // 下一个月的日期
-                let frontday = i - daysInThisMonth - firstWeekdayThisMonth + 2
+                let frontday = i - daysInThisMonth - firstWeekdayThisMonth + 1
                 daysArray[i].setTitle(String(frontday), for: .normal)
                 daysArray[i].setTitleColor(UIColor.init(colorLiteralRed: (155/255.0), green: (155/255.0), blue: (155/255.0), alpha: (1)), for: .normal)
                 daysArray[i].isUserInteractionEnabled = false
             }else{
                 // 本月的日期
-                let frontday = i - firstWeekdayThisMonth + 2
+                let frontday = i - firstWeekdayThisMonth + 1
                 daysArray[i].tag = frontday
                 daysArray[i].setTitle(String(frontday), for: .normal)
                 daysArray[i].setTitleColor(UIColor.init(colorLiteralRed: (79/255.0), green: (79/255.0), blue: (79/255.0), alpha: (1)), for: .normal)
@@ -164,12 +186,16 @@ class HHCalenderView: UIView {
     private func totaldaysInMonth(date: Date) -> Int{
        return (Calendar.current.range(of: .day, in: .month, for: date)?.count)!
     }
-    // 返回一个月的第一天是周几
+    // 返回一个月的今天天是周几
     func getWeekDay(dateTime:Date)->Int{
+        let ndf = DateFormatter()
+        ndf.dateFormat = "dd"
+        let today =  Int(ndf.string(from: self.inputDate!))
+        
         let interval = Int(dateTime.timeIntervalSince1970) + TimeZone.current.secondsFromGMT()
-        let days = Int(interval/86400) // 24*60*60
-        let weekday = (days%7+7)%7
-        return weekday == 0 ? 7 : weekday
+        let days = Int(interval/(24*60*60)) - today! + 1 // 1970到dateTime1号的天数
+        let weekdays = ((days + 4)%7+7)%7 // 1970-1-1是周四，所以要减一个4
+        return weekdays
     }
     
     // 求距离现在的X的时间（月）
@@ -183,20 +209,33 @@ class HHCalenderView: UIView {
     
     //  #selector 方法
     @objc private func dateAction(btn: UIButton){
-        btn.isSelected = !btn.isSelected
+        if btn.motorCadeModel != nil {
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: notification_CalenderBtn), object: btn.motorCadeModel)
+        }
     }
     @objc private func leftBtnAction(btn: UIButton){
         inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: -1)
+        if self.backForFront != nil {
+            self.backForFront!(inputDate!)
+        }
     }
     @objc private func rightBtnAction(btn: UIButton){
         inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: 1)
+        if self.backForNext != nil {
+            self.backForNext!(inputDate!)
+        }
     }
     @objc private func setupNextMonth(){
-        inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: 1)
-
+        inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: -1)
+        if self.backForNext != nil {
+            self.backForNext!(inputDate!)
+        }
     }
     @objc private func setupFrontMonth(){
-        inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: -1)
+        inputDate = nextOrFrontMonth(inputdate: inputDate!, spaceTime: 1)
+        if self.backForFront != nil {
+            self.backForFront!(inputDate!)
+        }
     }
     // 懒加载
     // 日期的button的数组
@@ -208,8 +247,6 @@ class HHCalenderView: UIView {
             btn.addTarget(self, action: #selector(dateAction(btn:)), for: .touchUpInside)
             btn.layer.masksToBounds = true
             btn.layer.cornerRadius = self.btnSize/2
-            btn.setBackgroundImage(UIImage(named:"orange-off"), for: .selected)
-
             array.append(btn)
         }
         return array
@@ -230,7 +267,6 @@ class HHCalenderView: UIView {
         let label = UILabel()
         let ndf = DateFormatter()
         ndf.dateFormat = "yyyy年MM月"
-
         label.text = ndf.string(from: self.inputDate!)
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = UIColor.init(colorLiteralRed: (29/255.0), green: (29/255.0), blue: (29/255.0), alpha: (1))

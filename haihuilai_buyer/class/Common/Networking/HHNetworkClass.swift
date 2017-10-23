@@ -515,4 +515,36 @@ class HHNetworkClass:NSObject {
             }
         }
     }
+    
+    /// 车队导游信息获取
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getGuideInfo(parameter: [String:AnyObject], networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/driver_suppliers/info?", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 获取导游的库存的列表
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getDriverStockList(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultBlock) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "/app/stocks/list", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                let dataArray = HHMotorCadeDetailModel().calendarModelWithArray(arrayForDictionary: response!["data"] as! [AnyObject] as! Array<Dictionary<String, Any>>)
+                networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+
 }

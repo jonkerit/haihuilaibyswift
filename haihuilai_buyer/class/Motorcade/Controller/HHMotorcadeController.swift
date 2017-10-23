@@ -147,7 +147,13 @@ extension HHMotorcadeController{
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
             navigationController?.pushViewController(HHTemporaryGuideListController(), animated: true)
+        }else if indexPath.section == 2 {
+            let vc = HHMemberDetailController()
+            vc.memberDetailDriverId = motorcadeDataArray?[indexPath.row].driver_supplier_id
+            vc.memberDetailFrom = .EDITTEMPGUIDE
+            navigationController?.pushViewController(vc, animated: true)
         }
+        
         
     }
     
