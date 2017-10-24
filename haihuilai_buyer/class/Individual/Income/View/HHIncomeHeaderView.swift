@@ -6,19 +6,31 @@
 //  Copyright © 2017年 haihuilai. All rights reserved.
 //
 
+typealias incomeHeaderBackblock = () -> ()
+typealias incomeHeaderAccountblock = () -> ()
+typealias incomeHeaderWithdrawblock = () -> ()
+
 import UIKit
 
 class HHIncomeHeaderView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
 
+    // 返回block
+    var incomeBackblock: incomeHeaderBackblock?
+    // 帐户block
+    var incomeAccountblock: incomeHeaderAccountblock?
+    // 提现block
+    var incomeWithdrawblock: incomeHeaderWithdrawblock?
+    //  数据的字典
+    var incomeHeaderData: [String: AnyObject]?{
+        didSet{
+            //  给总金额赋值
+            incomeHeaderNumber.text = incomeHeaderData?["locale_can_withdraw"] as! String?
+            // 给三个label赋值
+            incomeHeaderTotalNum.text = incomeHeaderData?["locale_received"] as! String?
+            incomeHeaderAlreadyNum.text = incomeHeaderData?["locale_withdrawal"] as! String?
+            incomeHeaderDoingNum.text = incomeHeaderData?["locale_review_withdraw"] as! String?
+        }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     override func layoutSubviews() {
         setUI()
     }
@@ -142,13 +154,19 @@ class HHIncomeHeaderView: UIView {
     }
     // #selector 方法
     @objc private func clickAction(){
-        
+        if self.incomeBackblock != nil {
+            self.incomeBackblock!()
+        }
     }
     @objc private func accountAction(){
-    
+        if self.incomeAccountblock != nil {
+            self.incomeAccountblock!()
+        }
     }
     @objc private func cashBtnAction(){
-    
+        if self.incomeWithdrawblock != nil {
+            self.incomeWithdrawblock!()
+        }
     }
     // 懒加载
     private lazy var incomeHeaderBack: UIButton = {

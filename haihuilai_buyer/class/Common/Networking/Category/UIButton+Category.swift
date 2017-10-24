@@ -6,6 +6,7 @@
 //  Copyright © 2016年 haihuilai. All rights reserved.
 //
 
+typealias extensionButtonBlock = ()->()
 import UIKit
 
 extension UIButton {
@@ -99,7 +100,7 @@ extension UIButton {
     struct ButtonRuntimeKey {
         // 给button的
         static let motorCadeDetailModel = UnsafeRawPointer.init(bitPattern: "motorCadeDetailModel".hashValue)
-
+        static let actionBlock = UnsafeRawPointer.init(bitPattern: "actionBlock".hashValue)
     }
     
     var motorCadeModel: HHMotorCadeDetailModel? {
@@ -110,6 +111,7 @@ extension UIButton {
             return  objc_getAssociatedObject(self,ButtonRuntimeKey.motorCadeDetailModel) as? HHMotorCadeDetailModel
         }
     }
+    
     
 }
 

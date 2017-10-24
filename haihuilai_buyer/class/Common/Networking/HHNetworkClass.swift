@@ -522,7 +522,7 @@ class HHNetworkClass:NSObject {
     ///   - parameter: 参数
     ///   - networkClassData: 结果回调
     func getGuideInfo(parameter: [String:AnyObject], networkClassData: @escaping HHResultDataBack) {
-        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/driver_suppliers/info?", parameters: parameter) { (response, error) in
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/driver_suppliers/info", parameters: parameter) { (response, error) in
             if SUCCESSFUL(response){
                 networkClassData(response,nil)
             }else{
@@ -541,6 +541,21 @@ class HHNetworkClass:NSObject {
             if SUCCESSFUL(response){
                 let dataArray = HHMotorCadeDetailModel().calendarModelWithArray(arrayForDictionary: response!["data"] as! [AnyObject] as! Array<Dictionary<String, Any>>)
                 networkClassData(dataArray,nil)
+            }else{
+                networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
+            }
+        }
+    }
+    
+    /// 车队导游信息获取
+    ///
+    /// - Parameters:
+    ///   - parameter: 参数
+    ///   - networkClassData: 结果回调
+    func getIncomeInfo(parameter: [String:AnyObject]?, networkClassData: @escaping HHResultDataBack) {
+        HHNetworkTools.shareTools.request(isLogin: true, method: .GET, URLString: "app/transactions/money_info", parameters: parameter) { (response, error) in
+            if SUCCESSFUL(response){
+                networkClassData(response,nil)
             }else{
                 networkClassData(nil, HHCommon.shareCommon.handleError(response, error))
             }

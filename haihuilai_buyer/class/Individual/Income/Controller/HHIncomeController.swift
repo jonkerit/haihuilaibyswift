@@ -10,10 +10,27 @@ import UIKit
 
 class HHIncomeController: HHBaseViewController {
 
+    // 数据字典
+    private var dataDic: [String: AnyObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
+        upDate()
+        dealBlock()
+    }
+    
+    private func upDate(){
+        HHProgressHUD.shareTool.showHUDAddedTo(title: nil, isImage: true, isDisappear: false, boardView: HHKeyWindow, animated: true)
+        HHNetworkClass().getIncomeInfo(parameter: nil) { (response, errorString) in
+            HHProgressHUD.shareTool.hideHUDForView(boardView: HHKeyWindow, animated: true)
+            if SUCCESSFUL(response){
+                self.dataDic = response?["data"] as! [String : AnyObject]?
+                self.headerView.incomeHeaderData = self.dataDic
+            }else{
+                HHProgressHUD.shareTool.showHUDAddedTo(title: errorString, isImage: false, isDisappear: true, boardView: HHKeyWindow, animated: true)
+            }
+        }
     }
     
     private func setUI(){
@@ -38,7 +55,27 @@ class HHIncomeController: HHBaseViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+
+    }
     
+    // block
+    private func dealBlock(){
+        weak var weakSelf = self
+        headerView.incomeBackblock = {
+            weakSelf?.navigationController?.popViewController(animated: true)
+        }
+        headerView.incomeAccountblock = {
+            // 
+            HHPrint("添加帐户")
+        }
+        headerView.incomeWithdrawblock = {
+            //
+            HHPrint("提现")
+        }
+    }
     //  懒加载
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -67,9 +104,10 @@ extension HHIncomeController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.separatorStyle = .none
-        let orderCell = tableView.dequeueReusableCell(withIdentifier: "HHMotorcadeSecondCell", for: indexPath) as! HHMotorcadeSecondCell
-        orderCell.selectionStyle = .none
-        return orderCell
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "HHMotorcadeSecondCell", for: indexPath) as! HHMotorcadeSecondCell
+        Cell.detailLabel.isHidden = true
+        Cell.selectionStyle = .none
+        return Cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
